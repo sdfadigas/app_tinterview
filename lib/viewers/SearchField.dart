@@ -10,7 +10,10 @@ import 'package:app_tinterview/viewers/FrontendPage.dart';
 import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
 import 'package:app_tinterview/viewers/MobilePage.dart';
 import 'package:app_tinterview/viewers/AboutPage.dart';
-import 'package:app_tinterview/controllers/LoginSocial.dart';
+import 'package:app_tinterview/models/LoginLogoutGoogle.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+
 
 class SearchField extends StatefulWidget {
   @override

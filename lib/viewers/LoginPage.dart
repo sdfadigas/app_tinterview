@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:app_tinterview/viewers/CadastroPage.dart';
 import 'package:app_tinterview/viewers/SearchField.dart';
-import 'package:app_tinterview/controllers/LoginSocial.dart';
+import 'package:app_tinterview/models/LoginLogoutGoogledart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
