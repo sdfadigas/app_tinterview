@@ -1,3 +1,4 @@
+import 'package:app_tinterview/viewers/LoginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -9,6 +10,7 @@ import 'package:app_tinterview/viewers/FrontendPage.dart';
 import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
 import 'package:app_tinterview/viewers/MobilePage.dart';
 import 'package:app_tinterview/viewers/AboutPage.dart';
+import 'package:app_tinterview/controllers/LoginSocial.dart';
 
 class SearchField extends StatefulWidget {
   @override
@@ -103,8 +105,9 @@ class _SearchFieldState extends State<SearchField> {
             ListTile(
               leading: Icon(Icons.logout, color: Color(0xFFeeeeee)),
               title: Text('Sair', style: TextStyle(color: Color(0xFFeeeeee))),
-              onTap: () {
-                //  Implementar ação para Logout
+              onTap: () async {
+                await LoginController().signOut();
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
               },
             ),
           ],),

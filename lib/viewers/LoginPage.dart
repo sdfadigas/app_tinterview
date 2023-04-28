@@ -25,16 +25,16 @@ class _LoginState extends State<Login> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 (Padding(
-                    padding: EdgeInsets.only(bottom: 50),
+                    padding: EdgeInsets.only(bottom: 32),
                     child: Image.asset(
                       "images/logo.png",
-                      width: 70,
-                      height: 70,
+                      width: 100,
+                      height: 100,
                     ))),
 
 
                 Padding(
-                    padding: EdgeInsets.only(top: 32, bottom: 4),
+                    padding: EdgeInsets.only(top: 12, bottom: 4),
                     child: SignInButton(Buttons.Google,
                         text: "Login com o Google", onPressed: () async {
                       final user = await _loginController.signInWithGoogle();
