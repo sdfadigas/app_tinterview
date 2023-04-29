@@ -51,275 +51,275 @@ class _SearchFieldState extends State<SearchField> {
         ),
       ),
       endDrawer: Drawer(
-    child: Container(
-      color: Color(0xFF222222),
-    alignment: Alignment.centerRight,
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
+        child: Container(
+          color: Color(0xFF222222),
+          alignment: Alignment.centerRight,
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
 
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children:[
-                  GestureDetector(
-                    onTap: _pickImage,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: 30,
-                      backgroundImage: _image != null ? FileImage(_image!) : null,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:[
+                    GestureDetector(
+                      onTap: _pickImage,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        radius: 30,
+                        backgroundImage: _image != null ? FileImage(_image!) : null,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    'Nome do Usuário',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            ListTile(
-
-              leading: Icon(Icons.bookmark, color: Color(0xFFeeeeee)),
-              title: Text('Meus Itens Salvos', style: TextStyle(color: Color(0xFFeeeeee))),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ItensSalvosPage()));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.question_answer, color: Color(0xFFeeeeee)),
-              title: Text('Questões para Praticar', style: TextStyle(color: Color(0xFFeeeeee))),
-              onTap: () {
-                //  tem que ver se vai implementar mesmo
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.info, color: Color(0xFFeeeeee)),
-              title: Text('Sobre',style: TextStyle(color: Color(0xFFeeeeee))),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => AboutPage()));
-              },
-            ),
-            Divider(),
-
-            ListTile(
-              leading: Icon(Icons.logout, color: Color(0xFFeeeeee)),
-              title: Text('Sair', style: TextStyle(color: Color(0xFFeeeeee))),
-              onTap: () async {
-                await LoginController().signOut();
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
-              },
-            ),
-          ],),
-        ),
-      ),
-      body:
-      SingleChildScrollView (
-    child:
-      Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(16.0),
-
-            child: TextField(
-
-              onChanged: (value) {
-                setState(() {
-                  _searchText = value;
-                });
-              },
-              decoration: InputDecoration(
-                labelText: 'Digite sua busca',
-                suffixIcon: Icon(Icons.search),
-                labelStyle: TextStyle(
-                  color: Color(0xFF222222)
-                ),
-                suffixStyle: TextStyle(
-                  color: Color(0xFF222222),
-                ),
-                border: OutlineInputBorder(
-
-                ),
-              ),
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(FlutterIcons.js_faw5d),
-                iconSize: 48,
-                color: Color(0xFFeeeeee),
-                onPressed: () {
-                  // Ação do ícone
-                }, // Ícone JavaScript
-              ),
-              IconButton(
-                  icon: Icon(FlutterIcons.html5_faw5d), // Ícone HTML
-                  iconSize: 48,
-                  color: Color(0xFFeeeeee),
-                  onPressed: () {
-                    // Ação do ícone
-                  }),
-              IconButton(
-                  icon: Icon(FlutterIcons.css3_alt_faw5d), // Ícone HTML
-                  iconSize: 48,
-                  color: Color(0xFFeeeeee),
-                  onPressed: () {
-                    // Ação do ícone
-                  }),
-              IconButton(
-                  icon: Icon(FlutterIcons.python_faw5d), // Ícone HTML
-                  iconSize: 48,
-                  color: Color(0xFFeeeeee),
-                  onPressed: () {
-                    // Ação do ícone
-                  }),
-              IconButton(
-                  icon: Icon(FlutterIcons.java_faw5d), // Ícone HTML
-                  iconSize: 48,
-                  color: Color(0xFFeeeeee),
-                  onPressed: () {
-                    // Ação do ícone
-                  }),
-            ],
-          ),
-          SizedBox(height: 16),
-          InkWell(
-            onTap: () {
-              // Ação do anúncio quando for clicado
-              print('Anúncio clicado!');
-            },
-            child: Container(
-              width: double.infinity,
-              height: 100,
-              color: Colors.grey,
-              child: Center(
-                child: Text(
-                  'Anúncio', // Conteúdo da caixa de anúncio
-                  style: TextStyle(fontSize: 24, color: Colors.white),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              InkWell(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => FrontendPage()));
-                },
-                child: Container(
-                  width: 150,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color(0xFF363533),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Frontend',
-                      textAlign: TextAlign.center,
+                    SizedBox(height: 10),
+                    Text(
+                      'Nome do Usuário',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                        color: Color(0xFFeeeeee),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => BackendPage()));
-                },
-                child: Container(
-                  width: 150,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color(0xFF363533),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Backend',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                        color: Color(0xFFeeeeee),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => MobilePage()));
-                      },
-                      child: Container(
-                        width: 150,
-                        height: 150,
-                        decoration: BoxDecoration(
-                          color: Color(0xFF363533),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Mobile',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: Color(0xFFeeeeee),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => BancoDeDadosPage()));
-                      },
-                      child: Container(
-                        width: 150,
-                        height: 150,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Color(0xFF363533),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Banco de dados',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: Color(0xFFeeeeee),
-                            ),
-                          ),
-                        ),
+                        fontSize: 18,
+                        color: Colors.white,
                       ),
                     ),
                   ],
                 ),
-              ]),
+              ),
+              ListTile(
 
-        ],
-      ),),
+                leading: Icon(Icons.bookmark, color: Color(0xFFeeeeee)),
+                title: Text('Meus Itens Salvos', style: TextStyle(color: Color(0xFFeeeeee))),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ItensSalvosPage()));
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.question_answer, color: Color(0xFFeeeeee)),
+                title: Text('Questões para Praticar', style: TextStyle(color: Color(0xFFeeeeee))),
+                onTap: () {
+                  //  tem que ver se vai implementar mesmo
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.info, color: Color(0xFFeeeeee)),
+                title: Text('Sobre',style: TextStyle(color: Color(0xFFeeeeee))),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AboutPage()));
+                },
+              ),
+              Divider(),
+
+              ListTile(
+                leading: Icon(Icons.logout, color: Color(0xFFeeeeee)),
+                title: Text('Sair', style: TextStyle(color: Color(0xFFeeeeee))),
+                onTap: () async {
+                  await LoginController().signOut();
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+                },
+              ),
+            ],),
+        ),
+      ),
+      body:
+      SingleChildScrollView (
+        child:
+        Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(16.0),
+
+              child: TextField(
+
+                onChanged: (value) {
+                  setState(() {
+                    _searchText = value;
+                  });
+                },
+                decoration: InputDecoration(
+                  labelText: 'Digite sua busca',
+                  suffixIcon: Icon(Icons.search),
+                  labelStyle: TextStyle(
+                      color: Color(0xFF222222)
+                  ),
+                  suffixStyle: TextStyle(
+                    color: Color(0xFF222222),
+                  ),
+                  border: OutlineInputBorder(
+
+                  ),
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(FlutterIcons.js_faw5d),
+                  iconSize: 48,
+                  color: Color(0xFFeeeeee),
+                  onPressed: () {
+                    // Ação do ícone
+                  }, // Ícone JavaScript
+                ),
+                IconButton(
+                    icon: Icon(FlutterIcons.html5_faw5d), // Ícone HTML
+                    iconSize: 48,
+                    color: Color(0xFFeeeeee),
+                    onPressed: () {
+                      // Ação do ícone
+                    }),
+                IconButton(
+                    icon: Icon(FlutterIcons.css3_alt_faw5d), // Ícone HTML
+                    iconSize: 48,
+                    color: Color(0xFFeeeeee),
+                    onPressed: () {
+                      // Ação do ícone
+                    }),
+                IconButton(
+                    icon: Icon(FlutterIcons.python_faw5d), // Ícone HTML
+                    iconSize: 48,
+                    color: Color(0xFFeeeeee),
+                    onPressed: () {
+                      // Ação do ícone
+                    }),
+                IconButton(
+                    icon: Icon(FlutterIcons.java_faw5d), // Ícone HTML
+                    iconSize: 48,
+                    color: Color(0xFFeeeeee),
+                    onPressed: () {
+                      // Ação do ícone
+                    }),
+              ],
+            ),
+            SizedBox(height: 16),
+            InkWell(
+              onTap: () {
+                // Ação do anúncio quando for clicado
+                print('Anúncio clicado!');
+              },
+              child: Container(
+                width: double.infinity,
+                height: 100,
+                color: Colors.grey,
+                child: Center(
+                  child: Text(
+                    'Anúncio', // Conteúdo da caixa de anúncio
+                    style: TextStyle(fontSize: 24, color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => FrontendPage()));
+                  },
+                  child: Container(
+                    width: 150,
+                    height: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0xFF363533),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Frontend',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                          color: Color(0xFFeeeeee),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => BackendPage()));
+                  },
+                  child: Container(
+                    width: 150,
+                    height: 150,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0xFF363533),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Backend',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                          color: Color(0xFFeeeeee),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => MobilePage()));
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF363533),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Mobile',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24,
+                                color: Color(0xFFeeeeee),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => BancoDeDadosPage()));
+                        },
+                        child: Container(
+                          width: 150,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Color(0xFF363533),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Banco de dados',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24,
+                                color: Color(0xFFeeeeee),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ]),
+
+          ],
+        ),),
     );
   }
 }

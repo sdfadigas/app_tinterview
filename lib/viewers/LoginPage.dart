@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:app_tinterview/viewers/SearchField.dart';
-import 'package:app_tinterview/models/LoginLogoutGoogledart';
+import 'package:app_tinterview/models/LoginLogoutGoogle.dart';
+
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -12,6 +13,8 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   final LoginController _loginController = LoginController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,42 +30,34 @@ class _LoginState extends State<Login> {
                     padding: EdgeInsets.only(bottom: 32),
                     child: Image.asset(
                       "images/logo.png",
-                      width: 100,
-                      height: 100,
+                      width: 120,
+                      height: 120,
                     ))),
 
 
-                Padding(
-                    padding: EdgeInsets.only(top: 12, bottom: 4),
-                    child: SignInButton(Buttons.Google,
-                        text: "Login com o Google", onPressed: () async {
-                      final user = await _loginController.signInWithGoogle();
+               Padding(
+                  padding: EdgeInsets.only(top: 12, bottom: 4),
+                  child: SizedBox(
 
-                      if (user != null) {
-                        Navigator.pushReplacement(
+                    width: double.infinity,
+                    child: SignInButton(
+                      Buttons.Google,
+                      text: "Login com o Google",
+                      onPressed: () async {
+                        final user = await _loginController.signInWithGoogle();
+
+                        if (user != null) {
+                          Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => SearchField()));
-                      }
-                    })),
-                Padding(
-                    padding: EdgeInsets.only(bottom: 4),
-                    child: SignInButton(
-                      Buttons.GitHub,
-                      text: "Login com o GitHUb",
-                      onPressed: () {
-                        //instanciar a função de login com o github
+                            MaterialPageRoute(builder: (context) => SearchField()),
+                          );
+                        }
                       },
-                    )),
-                Padding(
-                    padding: EdgeInsets.only(bottom: 32),
-                    child: SignInButton(
-                      Buttons.Facebook,
-                      text: "Login com o Facebook",
-                      onPressed: () {
-                        //instanciar a função de login com o facebook
-                      },
-                    )),
+                    ),
+                  ),
+                )
+                ,
+                Padding(padding: EdgeInsets.only(top: 16, bottom: 4)),
                 Center(
                     child: GestureDetector(
                   onTap: () {
@@ -72,6 +67,7 @@ class _LoginState extends State<Login> {
                   child: Text('Iniciar como convidado',
                       style: TextStyle(
                           color: Color(0xFFE7D110),
+                          fontSize: 16,
                           fontWeight: FontWeight.bold)),
                 )),
               ],
