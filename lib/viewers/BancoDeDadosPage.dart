@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
+import 'package:app_tinterview/controllers/CustomDrawer.dart';
 
 class BancoDeDadosPage extends StatefulWidget {
   @override
@@ -21,22 +21,8 @@ class _BancoDeDadosPageState extends State<BancoDeDadosPage> {
           "images/logo.png",
           width: 50,
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.bookmark),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ItensSalvosPage()));
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {
-              // Ação do ícone de menu hamburguer
-            },
-          ),
-        ],
-      ),
+             ),
+      endDrawer: CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
