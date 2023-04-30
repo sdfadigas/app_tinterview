@@ -56,7 +56,12 @@ class _SearchFieldState extends State<SearchField> {
                 ),
               ),
             ),
+            SingleChildScrollView(
+              padding: EdgeInsets.only(left:16, right: 16),
+              scrollDirection: Axis.horizontal,
+              child:
             Row(
+
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 IconButton(
@@ -95,8 +100,73 @@ class _SearchFieldState extends State<SearchField> {
                     onPressed: () {
                       // Ação do ícone
                     }),
+                IconButton(
+                    icon: Icon(FlutterIcons.ruby_mco), // Ícone HTML
+                    iconSize: 48,
+                    color: Color(0xFFeeeeee),
+                    onPressed: () {
+                      // Ação do ícone
+                    }),
+                IconButton(
+                    icon: Icon(FlutterIcons.php_faw5d), // Ícone HTML
+                    iconSize: 48,
+                    color: Color(0xFFeeeeee),
+                    onPressed: () {
+                      // Ação do ícone
+                    }),
+                IconButton(
+                    icon: Icon(FlutterIcons.language_swift_mco), // Ícone HTML
+                    iconSize: 48,
+                    color: Color(0xFFeeeeee),
+                    onPressed: () {
+                      // Ação do ícone
+                    }),
+                IconButton(
+                    icon: Icon(FlutterIcons.react_faw5d), // Ícone HTML
+                    iconSize: 48,
+                    color: Color(0xFFeeeeee),
+                    onPressed: () {
+                      // Ação do ícone
+                    }),
+                IconButton(
+                    icon: Icon(FlutterIcons.vuejs_faw5d), // Ícone HTML
+                    iconSize: 48,
+                    color: Color(0xFFeeeeee),
+                    onPressed: () {
+                      // Ação do ícone
+                    }),
+                IconButton(
+                    icon: Icon(FlutterIcons.angular_faw5d), // Ícone HTML
+                    iconSize: 48,
+                    color: Color(0xFFeeeeee),
+                    onPressed: () {
+                      // Ação do ícone
+                    }),
+                IconButton(
+                    icon: Icon(FlutterIcons.flask_empty_mco), // Ícone HTML
+                    iconSize: 48,
+                    color: Color(0xFFeeeeee),
+                    onPressed: () {
+                      // Ação do ícone
+                    }),
+                IconButton(
+                    icon: Icon(FlutterIcons.language_ruby_on_rails_mco), // Ícone HTML
+                    iconSize: 48,
+                    color: Color(0xFFeeeeee),
+                    onPressed: () {
+                      // Ação do ícone
+                    }),
+
+                IconButton(
+                    icon: Icon(FlutterIcons.firebase_mco), // Ícone HTML
+                    iconSize: 48,
+                    color: Color(0xFFeeeeee),
+                    onPressed: () {
+                      // Ação do ícone
+                    }),
+
               ],
-            ),
+            ),),
             SizedBox(height: 18),
             InkWell(
               onTap: () {
