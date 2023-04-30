@@ -8,12 +8,12 @@ import 'package:app_tinterview/viewers/ExercisesPage.dart';
 import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
 
 
-class ImagePickerExample extends StatefulWidget {
+class DrawerPage extends StatefulWidget {
   @override
-  _ImagePickerExampleState createState() => _ImagePickerExampleState();
+  _DrawerPageState createState() => _DrawerPageState();
 }
 
-class _ImagePickerExampleState extends State<ImagePickerExample> {
+class _DrawerPageState extends State<DrawerPage> {
   File? _image;
 
   Future<void> _pickImage() async {

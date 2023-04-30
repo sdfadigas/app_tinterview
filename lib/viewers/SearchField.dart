@@ -66,9 +66,7 @@ class _SearchFieldState extends State<SearchField> {
                             _image != null ? FileImage(_image!) : null,
                       ),
                     ),
-                    SizedBox(height: 16),
-                    Text('Selecione uma imagem'),
-                    SizedBox(height: 10),
+                 SizedBox(height: 12,),
                     Text(
                       "Boas Vindas!",
                       style: TextStyle(
