@@ -46,7 +46,7 @@ class _MobilePageState extends State<MobilePage> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             InkWell(
               onTap: () {
                 // Ação do anúncio quando for clicado
@@ -73,7 +73,7 @@ class _MobilePageState extends State<MobilePage> {
                         fontWeight: FontWeight.bold)),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             Column(
               children: <Widget>[
                 Text("Tipo de Entrevista",
@@ -81,7 +81,7 @@ class _MobilePageState extends State<MobilePage> {
                         fontSize: 20,
                         color: Color(0xFFD9D9D9),
                         fontWeight: FontWeight.bold)),
-                SizedBox(height: 16),
+                SizedBox(height: 18),
                 InkWell(
                   onTap: () {
                     setState(() {
@@ -100,8 +100,7 @@ class _MobilePageState extends State<MobilePage> {
                         border: Border.all(
                           color: _pressed[0]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
+                             : Color(0xFF363533), width: 2,
                         )),
                     child: Center(
                       child: Text(
@@ -116,7 +115,7 @@ class _MobilePageState extends State<MobilePage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 18),
                 InkWell(
                   onTap: () {
                     setState(() {
@@ -135,8 +134,7 @@ class _MobilePageState extends State<MobilePage> {
                         border: Border.all(
                           color: _pressed[1]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
+                             : Color(0xFF363533), width: 2,
                         )),
                     child: Center(
                       child: Text(
@@ -153,7 +151,7 @@ class _MobilePageState extends State<MobilePage> {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             Column(
               children: <Widget>[
                 Text("Senioridade",
@@ -161,7 +159,7 @@ class _MobilePageState extends State<MobilePage> {
                         fontSize: 20,
                         color: Color(0xFFD9D9D9),
                         fontWeight: FontWeight.bold)),
-                SizedBox(height: 16)
+                SizedBox(height: 18)
               ],
             ),
             Row(
@@ -186,8 +184,7 @@ class _MobilePageState extends State<MobilePage> {
                         border: Border.all(
                           color: _pressed[2]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
+                             : Color(0xFF363533), width: 2,
                         )),
                     child: Center(
                       child: Text(
@@ -220,8 +217,7 @@ class _MobilePageState extends State<MobilePage> {
                         border: Border.all(
                           color: _pressed[3]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
+                             : Color(0xFF363533), width: 2,
                         )),
                     child: Center(
                       child: Text(
@@ -255,8 +251,7 @@ class _MobilePageState extends State<MobilePage> {
                         border: Border.all(
                           color: _pressed[4]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
+                             : Color(0xFF363533), width: 2,
                         )),
                     child: Center(
                       child: Text(
@@ -273,7 +268,7 @@ class _MobilePageState extends State<MobilePage> {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -296,8 +291,7 @@ class _MobilePageState extends State<MobilePage> {
                         border: Border.all(
                           color: _pressed[5]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
+                             : Color(0xFF363533), width: 2,
                         )),
                     child: Center(
                       child: Text(
@@ -330,8 +324,7 @@ class _MobilePageState extends State<MobilePage> {
                         border: Border.all(
                           color: _pressed[6]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
+                             : Color(0xFF363533), width: 2,
                         )),
                     child: Center(
                       child: Text(
@@ -348,7 +341,7 @@ class _MobilePageState extends State<MobilePage> {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             Column(
               children: <Widget>[
                 Text("Linguagens",
@@ -358,7 +351,7 @@ class _MobilePageState extends State<MobilePage> {
                         fontWeight: FontWeight.bold)),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -381,8 +374,7 @@ class _MobilePageState extends State<MobilePage> {
                         border: Border.all(
                           color: _pressed[7]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
+                             : Color(0xFF363533), width: 2,
                         )),
                     child: Center(
                       child: Text(
@@ -416,8 +408,7 @@ class _MobilePageState extends State<MobilePage> {
                         border: Border.all(
                           color: _pressed[8]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
+                             : Color(0xFF363533), width: 2,
                         )),
                     child: Center(
                       child: Text(
@@ -434,7 +425,7 @@ class _MobilePageState extends State<MobilePage> {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -457,8 +448,7 @@ class _MobilePageState extends State<MobilePage> {
                         border: Border.all(
                           color: _pressed[9]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
+                             : Color(0xFF363533), width: 2,
                         )),
                     child: Center(
                       child: Text(
@@ -475,7 +465,7 @@ class _MobilePageState extends State<MobilePage> {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             Column(
               children: <Widget>[
                 Text("Frameworks",
@@ -485,7 +475,7 @@ class _MobilePageState extends State<MobilePage> {
                         fontWeight: FontWeight.bold)),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -509,8 +499,7 @@ class _MobilePageState extends State<MobilePage> {
                         border: Border.all(
                           color: _pressed[10]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
+                             : Color(0xFF363533), width: 2,
                         )),
                     child: Center(
                       child: Text(
@@ -545,8 +534,7 @@ class _MobilePageState extends State<MobilePage> {
                         border: Border.all(
                           color: _pressed[11]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
+                             : Color(0xFF363533), width: 2,
                         )),
                     child: Center(
                       child: Text(
@@ -563,7 +551,7 @@ class _MobilePageState extends State<MobilePage> {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -587,8 +575,7 @@ class _MobilePageState extends State<MobilePage> {
                         border: Border.all(
                           color: _pressed[12]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
+                             : Color(0xFF363533), width: 2,
                         )),
                     child: Center(
                       child: Text(
@@ -605,7 +592,7 @@ class _MobilePageState extends State<MobilePage> {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             Column(
               children: <Widget>[
                 ElevatedButton(
@@ -624,7 +611,7 @@ class _MobilePageState extends State<MobilePage> {
                           color: Color(0xFF222222),
                           fontWeight: FontWeight.bold)),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 18),
               ],
             )
           ],

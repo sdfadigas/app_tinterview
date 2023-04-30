@@ -29,7 +29,7 @@ class _ItensSalvosPageState extends State<ItensSalvosPage> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(height: 16),
+            SizedBox(height: 18),
 
             Row(
               children: <Widget>[
@@ -53,7 +53,7 @@ class _ItensSalvosPageState extends State<ItensSalvosPage> {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             InkWell(
               onTap: () {
                 // Ação do anúncio quando for clicado

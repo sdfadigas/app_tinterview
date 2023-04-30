@@ -11,7 +11,7 @@ import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
 import 'package:app_tinterview/viewers/MobilePage.dart';
 import 'package:app_tinterview/viewers/AboutPage.dart';
 import 'package:app_tinterview/models/LoginLogoutGoogle.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+
 
 
 
@@ -72,7 +72,7 @@ class _SearchFieldState extends State<SearchField> {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      'Nome do Usuário',
+                      "Boas Vindas!",
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.white,
@@ -187,7 +187,7 @@ class _SearchFieldState extends State<SearchField> {
                     }),
               ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             InkWell(
               onTap: () {
                 // Ação do anúncio quando for clicado
@@ -205,7 +205,7 @@ class _SearchFieldState extends State<SearchField> {
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -262,7 +262,7 @@ class _SearchFieldState extends State<SearchField> {
             Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  SizedBox(height: 16),
+                  SizedBox(height: 18),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[

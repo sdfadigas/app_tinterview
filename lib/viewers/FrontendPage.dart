@@ -32,7 +32,8 @@ class _FrontendPageState extends State<FrontendPage> {
           IconButton(
             icon: Icon(Icons.bookmark),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ItensSalvosPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ItensSalvosPage()));
             },
           ),
           IconButton(
@@ -46,11 +47,10 @@ class _FrontendPageState extends State<FrontendPage> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             InkWell(
               onTap: () {
                 // Ação do anúncio quando for clicado
-                print('Anúncio clicado!');
               },
               child: Container(
                 width: double.infinity,
@@ -58,7 +58,7 @@ class _FrontendPageState extends State<FrontendPage> {
                 color: Colors.grey,
                 child: Center(
                   child: Text(
-                    'Anúncio', // Conteúdo da caixa de anúncio
+                    'Anúncio',
                     style: TextStyle(fontSize: 24, color: Colors.white),
                   ),
                 ),
@@ -73,15 +73,24 @@ class _FrontendPageState extends State<FrontendPage> {
                         fontWeight: FontWeight.bold)),
               ],
             ),
-            SizedBox(height: 16),
-            Column(
+            SizedBox(height: 20),
+            Container(
+              padding: EdgeInsets.only(left: 24),
+              alignment: Alignment.centerLeft,
+              child: Text("Tipo de Entrevista",
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Color(0xFFD9D9D9),
+                      fontWeight: FontWeight.bold)),
+            ),
+            SizedBox(height: 18),
+        Container(
+          padding: EdgeInsets.only(left: 24),
+          alignment: Alignment.centerLeft,
+            child: Row(
+
               children: <Widget>[
-                Text("Tipo de Entrevista",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Color(0xFFD9D9D9),
-                        fontWeight: FontWeight.bold)),
-                SizedBox(height: 16),
+
                 InkWell(
                   onTap: () {
                     setState(() {
@@ -91,7 +100,8 @@ class _FrontendPageState extends State<FrontendPage> {
                         );
                   },
                   child: Container(
-                    width: 120,
+                    margin: EdgeInsets.only(right: 16),
+                    width: 160,
                     height: 50,
                     decoration: BoxDecoration(
                         color:
@@ -100,9 +110,19 @@ class _FrontendPageState extends State<FrontendPage> {
                         border: Border.all(
                           color: _pressed[0]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
-                        )),
+                             : Color(0xFF363533),
+                        ),
+                      boxShadow: _pressed[0]
+                          ? [
+                        BoxShadow(
+                          color: Colors.white24.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(2, 2),
+                        )
+                      ]
+                          : null,
+                    ),
                     child: Center(
                       child: Text(
                         'Code Interview',
@@ -116,7 +136,7 @@ class _FrontendPageState extends State<FrontendPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 18),
                 InkWell(
                   onTap: () {
                     setState(() {
@@ -126,7 +146,7 @@ class _FrontendPageState extends State<FrontendPage> {
                         );
                   },
                   child: Container(
-                    width: 150,
+                    width: 170,
                     height: 50,
                     decoration: BoxDecoration(
                         color:
@@ -135,9 +155,19 @@ class _FrontendPageState extends State<FrontendPage> {
                         border: Border.all(
                           color: _pressed[1]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
-                        )),
+                             : Color(0xFF363533), width: 2,
+                        ),
+                      boxShadow: _pressed[1]
+                          ? [
+                        BoxShadow(
+                          color: Colors.white24.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(2, 2),
+                        )
+                      ]
+                          : null,
+                    ),
                     child: Center(
                       child: Text(
                         'Entrevista Técnica',
@@ -152,20 +182,25 @@ class _FrontendPageState extends State<FrontendPage> {
                   ),
                 ),
               ],
-            ),
-            SizedBox(height: 16),
-            Column(
-              children: <Widget>[
+            ),),
+            SizedBox(height: 18),
+
+            Container(
+                padding: EdgeInsets.only(left: 24),
+              alignment: Alignment.centerLeft,
+                child:
                 Text("Senioridade",
                     style: TextStyle(
                         fontSize: 20,
                         color: Color(0xFFD9D9D9),
-                        fontWeight: FontWeight.bold)),
-                SizedBox(height: 16)
-              ],
-            ),
+                        fontWeight: FontWeight.bold))),
+                SizedBox(height: 18),
+          Container(
+            padding: EdgeInsets.only(left: 24),
+      alignment: Alignment.centerLeft,
+            child:
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+
               children: <Widget>[
                 InkWell(
                   onTap: () {
@@ -176,7 +211,7 @@ class _FrontendPageState extends State<FrontendPage> {
                         );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 8, right: 8),
+                    margin: EdgeInsets.only(right: 22),
                     width: 100,
                     height: 50,
                     decoration: BoxDecoration(
@@ -186,9 +221,19 @@ class _FrontendPageState extends State<FrontendPage> {
                         border: Border.all(
                           color: _pressed[2]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
-                        )),
+                             : Color(0xFF363533), width: 2,
+                        ),
+                      boxShadow: _pressed[2]
+                          ? [
+                        BoxShadow(
+                          color: Colors.white24.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(2, 2),
+                        )
+                      ]
+                          : null,
+                    ),
                     child: Center(
                       child: Text(
                         'Estágio',
@@ -220,9 +265,19 @@ class _FrontendPageState extends State<FrontendPage> {
                         border: Border.all(
                           color: _pressed[3]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
-                        )),
+                             : Color(0xFF363533), width: 2,
+                        ),
+                      boxShadow: _pressed[3]
+                          ? [
+                        BoxShadow(
+                          color: Colors.white24.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(2, 2),
+                        )
+                      ]
+                          : null,
+                    ),
                     child: Center(
                       child: Text(
                         'Trainee',
@@ -245,7 +300,7 @@ class _FrontendPageState extends State<FrontendPage> {
                         );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 8, right: 8),
+                    margin: EdgeInsets.only(left: 22, right: 22),
                     width: 100,
                     height: 50,
                     decoration: BoxDecoration(
@@ -255,9 +310,19 @@ class _FrontendPageState extends State<FrontendPage> {
                         border: Border.all(
                           color: _pressed[4]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
-                        )),
+                             : Color(0xFF363533), width: 2,
+                        ),
+                      boxShadow: _pressed[4]
+                          ? [
+                        BoxShadow(
+                          color: Colors.white24.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(2, 2),
+                        )
+                      ]
+                          : null,
+                    ),
                     child: Center(
                       child: Text(
                         'Junior',
@@ -272,10 +337,10 @@ class _FrontendPageState extends State<FrontendPage> {
                   ),
                 ),
               ],
-            ),
-            SizedBox(height: 16),
+            ),),
+            SizedBox(height: 18),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+
               children: <Widget>[
                 InkWell(
                   onTap: () {
@@ -286,7 +351,7 @@ class _FrontendPageState extends State<FrontendPage> {
                         );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 8, right: 8),
+                    margin: EdgeInsets.only(left: 24),
                     width: 100,
                     height: 50,
                     decoration: BoxDecoration(
@@ -296,9 +361,19 @@ class _FrontendPageState extends State<FrontendPage> {
                         border: Border.all(
                           color: _pressed[5]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
-                        )),
+                             : Color(0xFF363533), width: 2,
+                        ),
+                      boxShadow: _pressed[5]
+                          ? [
+                        BoxShadow(
+                          color: Colors.white24.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(2, 2),
+                        )
+                      ]
+                          : null,
+                    ),
                     child: Center(
                       child: Text(
                         'Pleno',
@@ -321,6 +396,7 @@ class _FrontendPageState extends State<FrontendPage> {
                         );
                   },
                   child: Container(
+                    margin: EdgeInsets.only(left: 22, right: 22),
                     width: 100,
                     height: 50,
                     decoration: BoxDecoration(
@@ -330,9 +406,19 @@ class _FrontendPageState extends State<FrontendPage> {
                         border: Border.all(
                           color: _pressed[6]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
-                        )),
+                             : Color(0xFF363533), width: 2,
+                        ),
+                      boxShadow: _pressed[6]
+                          ? [
+                        BoxShadow(
+                          color: Colors.white24.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(2, 2),
+                        )
+                      ]
+                          : null,
+                    ),
                     child: Center(
                       child: Text(
                         'Sênior',
@@ -348,19 +434,20 @@ class _FrontendPageState extends State<FrontendPage> {
                 ),
               ],
             ),
-            SizedBox(height: 16),
-            Column(
-              children: <Widget>[
+            SizedBox(height: 18),
+            Container(
+              padding: EdgeInsets.only(left: 24),
+              alignment: Alignment.centerLeft,
+              child:
                 Text("Linguagens",
                     style: TextStyle(
                         fontSize: 20,
                         color: Color(0xFFD9D9D9),
                         fontWeight: FontWeight.bold)),
-              ],
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+
               children: <Widget>[
                 InkWell(
                   onTap: () {
@@ -371,8 +458,8 @@ class _FrontendPageState extends State<FrontendPage> {
                         );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 8, right: 8),
-                    width: 80,
+                    margin: EdgeInsets.only(left: 24),
+                    width: 100,
                     height: 50,
                     decoration: BoxDecoration(
                         color:
@@ -381,9 +468,19 @@ class _FrontendPageState extends State<FrontendPage> {
                         border: Border.all(
                           color: _pressed[7]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
-                        )),
+                             : Color(0xFF363533), width: 2,
+                        ),
+                      boxShadow: _pressed[7]
+                          ? [
+                        BoxShadow(
+                          color: Colors.white24.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(2, 2),
+                        )
+                      ]
+                          : null,
+                    ),
                     child: Center(
                       child: Text(
                         'HTML',
@@ -406,8 +503,8 @@ class _FrontendPageState extends State<FrontendPage> {
                         );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 8, right: 8),
-                    width: 80,
+                    margin: EdgeInsets.only(left: 22, right: 22),
+                    width: 100,
                     height: 50,
                     decoration: BoxDecoration(
                         color:
@@ -416,8 +513,7 @@ class _FrontendPageState extends State<FrontendPage> {
                         border: Border.all(
                           color: _pressed[8]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
+                             : Color(0xFF363533), width: 2,
                         )),
                     child: Center(
                       child: Text(
@@ -432,12 +528,8 @@ class _FrontendPageState extends State<FrontendPage> {
                     ),
                   ),
                 ),
-              ],
-            ),
-            SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+
+
                 InkWell(
                   onTap: () {
                     setState(() {
@@ -447,7 +539,7 @@ class _FrontendPageState extends State<FrontendPage> {
                         );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 8, right: 8),
+
                     width: 100,
                     height: 50,
                     decoration: BoxDecoration(
@@ -457,9 +549,19 @@ class _FrontendPageState extends State<FrontendPage> {
                         border: Border.all(
                           color: _pressed[9]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
-                        )),
+                             : Color(0xFF363533), width: 2,
+                        ),
+                      boxShadow: _pressed[9]
+                          ? [
+                        BoxShadow(
+                          color: Colors.white24.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(2, 2),
+                        )
+                      ]
+                          : null,
+                    ),
                     child: Center(
                       child: Text(
                         'JavaScript',
@@ -475,19 +577,21 @@ class _FrontendPageState extends State<FrontendPage> {
                 ),
               ],
             ),
-            SizedBox(height: 16),
-            Column(
-              children: <Widget>[
+            SizedBox(height: 18),
+            Container(
+              padding: EdgeInsets.only(left: 24),
+              alignment: Alignment.centerLeft,
+              child:
                 Text("Frameworks",
                     style: TextStyle(
                         fontSize: 20,
                         color: Color(0xFFD9D9D9),
                         fontWeight: FontWeight.bold)),
-              ],
+
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 18),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+
               children: <Widget>[
                 InkWell(
                   onTap: () {
@@ -498,8 +602,8 @@ class _FrontendPageState extends State<FrontendPage> {
                         );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 8, right: 8),
-                    width: 80,
+                    margin: EdgeInsets.only(left: 24),
+                    width: 100,
                     height: 50,
                     decoration: BoxDecoration(
                         color: _pressed[10]
@@ -509,9 +613,19 @@ class _FrontendPageState extends State<FrontendPage> {
                         border: Border.all(
                           color: _pressed[10]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
-                        )),
+                             : Color(0xFF363533), width: 2,
+                        ),
+                      boxShadow: _pressed[10]
+                          ? [
+                        BoxShadow(
+                          color: Colors.white24.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(2, 2),
+                        )
+                      ]
+                          : null,
+                    ),
                     child: Center(
                       child: Text(
                         'React',
@@ -534,8 +648,8 @@ class _FrontendPageState extends State<FrontendPage> {
                         );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 8, right: 8),
-                    width: 80,
+                      margin: EdgeInsets.only(left: 22, right: 22),
+                    width: 100,
                     height: 50,
                     decoration: BoxDecoration(
                         color: _pressed[11]
@@ -545,9 +659,19 @@ class _FrontendPageState extends State<FrontendPage> {
                         border: Border.all(
                           color: _pressed[11]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
-                        )),
+                             : Color(0xFF363533), width: 2,
+                        ),
+                      boxShadow: _pressed[11]
+                          ? [
+                        BoxShadow(
+                          color: Colors.white24.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(2, 2),
+                        )
+                      ]
+                          : null,
+                    ),
                     child: Center(
                       child: Text(
                         'Vue.js',
@@ -561,9 +685,8 @@ class _FrontendPageState extends State<FrontendPage> {
                     ),
                   ),
                 ),
-              ],
-            ),
-            SizedBox(height: 16),
+
+            SizedBox(height: 22),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -576,8 +699,8 @@ class _FrontendPageState extends State<FrontendPage> {
                         );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(left: 8, right: 8),
-                    width: 90,
+
+                    width: 100,
                     height: 50,
                     decoration: BoxDecoration(
                         color: _pressed[12]
@@ -587,9 +710,19 @@ class _FrontendPageState extends State<FrontendPage> {
                         border: Border.all(
                           color: _pressed[12]
                               ? Color(0xFFD9D9D9)
-                              : Color(0xFFFAE800),
-                          width: 2,
-                        )),
+                             : Color(0xFF363533), width: 2,
+                        ),
+                      boxShadow: _pressed[12]
+                          ? [
+                        BoxShadow(
+                          color: Colors.white24.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 2,
+                          offset: Offset(2, 2),
+                        )
+                      ]
+                          : null,
+                    ),
                     child: Center(
                       child: Text(
                         'Angular',
@@ -604,8 +737,8 @@ class _FrontendPageState extends State<FrontendPage> {
                   ),
                 ),
               ],
-            ),
-            SizedBox(height: 16),
+            ),]),
+            SizedBox(height: 22),
             Column(
               children: <Widget>[
                 ElevatedButton(
@@ -624,7 +757,7 @@ class _FrontendPageState extends State<FrontendPage> {
                           color: Color(0xFF222222),
                           fontWeight: FontWeight.bold)),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 18),
               ],
             )
           ],

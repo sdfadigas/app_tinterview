@@ -50,6 +50,8 @@ dependencies:
   flutter_facebook_auth: ^5.0.8
   github_sign_in: ^0.0.4
   github_signin_promax: ^0.0.7+2
+  googleapis: ^11.0.0
+  googleapis_auth: ^1.4.0
 
 
 dev_dependencies:

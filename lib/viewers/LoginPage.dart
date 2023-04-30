@@ -4,6 +4,7 @@ import 'package:app_tinterview/viewers/SearchField.dart';
 import 'package:app_tinterview/models/LoginLogoutGoogle.dart';
 
 
+
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -55,8 +56,26 @@ class _LoginState extends State<Login> {
                       },
                     ),
                   ),
-                )
-                ,
+                ),
+                Padding(
+                    padding: EdgeInsets.only(bottom: 4),
+                    child: SignInButton(
+                      Buttons.GitHub,
+                      text: "Login com o GitHUb",
+                      onPressed: () {
+                        //instanciar a função de login com o github
+                      },
+                    )),
+                Padding(
+                    padding: EdgeInsets.only(bottom: 32),
+                    child: SignInButton(
+                      Buttons.Facebook,
+                      text: "Login com o Facebook",
+                      onPressed: () {
+                        //instanciar a função de login com o facebook
+                      },
+                    )),
+
                 Padding(padding: EdgeInsets.only(top: 16, bottom: 4)),
                 Center(
                     child: GestureDetector(
