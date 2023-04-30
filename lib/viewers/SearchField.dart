@@ -10,6 +10,8 @@ import 'package:app_tinterview/viewers/FrontendPage.dart';
 import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
 import 'package:app_tinterview/viewers/MobilePage.dart';
 import 'package:app_tinterview/viewers/AboutPage.dart';
+import 'package:app_tinterview/viewers/ExercisesPage.dart';
+
 import 'package:app_tinterview/models/LoginLogoutGoogle.dart';
 
 
@@ -93,6 +95,8 @@ class _SearchFieldState extends State<SearchField> {
                 leading: Icon(Icons.question_answer, color: Color(0xFFeeeeee)),
                 title: Text('Questões para Praticar', style: TextStyle(color: Color(0xFFeeeeee))),
                 onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ExercisesPage()));
+
                   //  tem que ver se vai implementar mesmo
                 },
               ),

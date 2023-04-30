@@ -45,13 +45,7 @@ dependencies:
   firebase_core: ^2.10.0
   cloud_firestore: ^4.5.3
   firebase_core_platform_interface: ^4.6.0
-  flutterfire: ^0.0.1
-  flutter_dotenv: ^5.0.2
-  flutter_facebook_auth: ^5.0.8
-  github_sign_in: ^0.0.4
-  github_signin_promax: ^0.0.7+2
-  googleapis: ^11.0.0
-  googleapis_auth: ^1.4.0
+
 
 
 dev_dependencies:
