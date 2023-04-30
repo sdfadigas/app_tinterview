@@ -2,7 +2,6 @@ import 'package:app_tinterview/viewers/LoginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import 'package:image_picker_android/image_picker_android.dart';
 import 'package:flutter_icons_null_safety/flutter_icons_null_safety.dart';
 import 'package:app_tinterview/viewers/BackendPage.dart';
 import 'package:app_tinterview/viewers/BancoDeDadosPage.dart';
@@ -11,11 +10,7 @@ import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
 import 'package:app_tinterview/viewers/MobilePage.dart';
 import 'package:app_tinterview/viewers/AboutPage.dart';
 import 'package:app_tinterview/viewers/ExercisesPage.dart';
-
 import 'package:app_tinterview/models/LoginLogoutGoogle.dart';
-
-
-
 
 class SearchField extends StatefulWidget {
   @override
@@ -27,14 +22,14 @@ class _SearchFieldState extends State<SearchField> {
   File? _image;
 
   Future<void> _pickImage() async {
-    final pickedFile = await ImagePickerAndroid().pickImage(source: ImageSource.gallery);
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       setState(() {
         _image = File(pickedFile.path);
       });
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -60,18 +55,19 @@ class _SearchFieldState extends State<SearchField> {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children:[
+                  children: [
                     GestureDetector(
                       onTap: _pickImage,
                       child: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 30,
-                        backgroundImage: _image != null ? FileImage(_image!) : null,
+                        radius: 50,
+                        backgroundImage:
+                            _image != null ? FileImage(_image!) : null,
                       ),
                     ),
+                    SizedBox(height: 16),
+                    Text('Selecione uma imagem'),
                     SizedBox(height: 10),
                     Text(
                       "Boas Vindas!",
@@ -84,72 +80,73 @@ class _SearchFieldState extends State<SearchField> {
                 ),
               ),
               ListTile(
-
                 leading: Icon(Icons.bookmark, color: Color(0xFFeeeeee)),
-                title: Text('Meus Itens Salvos', style: TextStyle(color: Color(0xFFeeeeee))),
+                title: Text('Meus Itens Salvos',
+                    style: TextStyle(color: Color(0xFFeeeeee))),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ItensSalvosPage()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ItensSalvosPage()));
                 },
               ),
               ListTile(
                 leading: Icon(Icons.question_answer, color: Color(0xFFeeeeee)),
-                title: Text('Questões para Praticar', style: TextStyle(color: Color(0xFFeeeeee))),
+                title: Text('Questões para Praticar',
+                    style: TextStyle(color: Color(0xFFeeeeee))),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ExercisesPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ExercisesPage()));
 
                   //  tem que ver se vai implementar mesmo
                 },
               ),
               ListTile(
                 leading: Icon(Icons.info, color: Color(0xFFeeeeee)),
-                title: Text('Sobre',style: TextStyle(color: Color(0xFFeeeeee))),
+                title:
+                    Text('Sobre', style: TextStyle(color: Color(0xFFeeeeee))),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AboutPage()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AboutPage()));
                 },
               ),
               Divider(),
-
               ListTile(
                 leading: Icon(Icons.logout, color: Color(0xFFeeeeee)),
                 title: Text('Sair', style: TextStyle(color: Color(0xFFeeeeee))),
                 onTap: () async {
                   await LoginController().signOut();
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Login()));
                 },
               ),
-            ],),
+            ],
+          ),
         ),
       ),
-      body:
-      SingleChildScrollView (
-        child:
-        Column(
+      body: SingleChildScrollView(
+        child: Column(
           children: <Widget>[
             Padding(
               padding: EdgeInsets.all(16.0),
-
               child: TextField(
-                 onChanged: (value) {
+                onChanged: (value) {
                   setState(() {
-
                     _searchText = value;
                   });
                 },
-                  decoration: InputDecoration(
-                    hintText: 'Digite sua busca',
-                    hintStyle: TextStyle(color: Colors.grey[700]),
-                    suffixIcon: Icon(Icons.search, color: Colors.grey),
-                    labelStyle: TextStyle(color: Color(0xFF222222)),
-                    suffixStyle: TextStyle(color: Color(0xFF222222)),
-                    filled: true,
-                    fillColor: Color(0xFFE5E5E5),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-
-                    ),
+                decoration: InputDecoration(
+                  hintText: 'Digite sua busca',
+                  hintStyle: TextStyle(color: Colors.grey[700]),
+                  suffixIcon: Icon(Icons.search, color: Colors.grey),
+                  labelStyle: TextStyle(color: Color(0xFF222222)),
+                  suffixStyle: TextStyle(color: Color(0xFF222222)),
+                  filled: true,
+                  fillColor: Color(0xFFE5E5E5),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
                   ),
-
-
+                ),
               ),
             ),
             Row(
@@ -217,7 +214,10 @@ class _SearchFieldState extends State<SearchField> {
               children: <Widget>[
                 InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => FrontendPage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FrontendPage()));
                   },
                   child: Container(
                     width: 150,
@@ -241,7 +241,8 @@ class _SearchFieldState extends State<SearchField> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => BackendPage()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => BackendPage()));
                   },
                   child: Container(
                     width: 150,
@@ -274,7 +275,10 @@ class _SearchFieldState extends State<SearchField> {
                     children: <Widget>[
                       InkWell(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => MobilePage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MobilePage()));
                         },
                         child: Container(
                           width: 150,
@@ -298,7 +302,10 @@ class _SearchFieldState extends State<SearchField> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => BancoDeDadosPage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BancoDeDadosPage()));
                         },
                         child: Container(
                           width: 150,
@@ -323,9 +330,9 @@ class _SearchFieldState extends State<SearchField> {
                     ],
                   ),
                 ]),
-
           ],
-        ),),
+        ),
+      ),
     );
   }
 }
