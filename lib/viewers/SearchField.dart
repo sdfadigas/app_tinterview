@@ -129,25 +129,27 @@ class _SearchFieldState extends State<SearchField> {
               padding: EdgeInsets.all(16.0),
 
               child: TextField(
-
-                onChanged: (value) {
+                 onChanged: (value) {
                   setState(() {
+
                     _searchText = value;
                   });
                 },
-                decoration: InputDecoration(
-                  labelText: 'Digite sua busca',
-                  suffixIcon: Icon(Icons.search),
-                  labelStyle: TextStyle(
-                      color: Color(0xFF222222)
-                  ),
-                  suffixStyle: TextStyle(
-                    color: Color(0xFF222222),
-                  ),
-                  border: OutlineInputBorder(
+                  decoration: InputDecoration(
+                    hintText: 'Digite sua busca',
+                    hintStyle: TextStyle(color: Colors.grey[700]),
+                    suffixIcon: Icon(Icons.search, color: Colors.grey),
+                    labelStyle: TextStyle(color: Color(0xFF222222)),
+                    suffixStyle: TextStyle(color: Color(0xFF222222)),
+                    filled: true,
+                    fillColor: Color(0xFFE5E5E5),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
 
+                    ),
                   ),
-                ),
+
+
               ),
             ),
             Row(

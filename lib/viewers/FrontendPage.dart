@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:app_tinterview/viewers/SearchField.dart';
 import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
 
 class FrontendPage extends StatefulWidget {
@@ -20,13 +19,6 @@ class _FrontendPageState extends State<FrontendPage> {
         title: Image.asset(
           "images/logo.png",
           width: 50,
-        ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SearchField()));
-          },
         ),
         actions: <Widget>[
           IconButton(
@@ -726,26 +718,31 @@ class _FrontendPageState extends State<FrontendPage> {
                 ],
               ),
             ]),
-            SizedBox(height: 22),
+            SizedBox(height: 32),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 ElevatedButton(
                   onPressed: () {
-                    // Ação ao pressionar o botão
+                    setState(() {
+                      for (int i = 0; i < _pressed.length; i++) {
+                        _pressed[i] = false;
+                      }
+                    });
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFFFAE800),
+                    backgroundColor: Color(0xFFD9D9D9),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
-                    minimumSize: Size(100, 50),
+                    minimumSize: Size(120, 50),
                   ),
                   child: Text('LIMPAR',
                       style: TextStyle(
-                          color: Color(0xFF222222),
+                          color: Colors.grey[800],
                           fontWeight: FontWeight.bold)),
                 ),
+                SizedBox(width: 22),
                 ElevatedButton(
                   onPressed: () {
                     // Ação ao pressionar o botão
@@ -755,16 +752,16 @@ class _FrontendPageState extends State<FrontendPage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
-                    minimumSize: Size(100, 50),
+                    minimumSize: Size(120, 50),
                   ),
                   child: Text('APLICAR',
                       style: TextStyle(
                           color: Color(0xFF222222),
                           fontWeight: FontWeight.bold)),
                 ),
-                SizedBox(height: 18),
               ],
             ),
+            SizedBox(height: 18),
           ],
         ),
       ),
