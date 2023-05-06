@@ -45,6 +45,7 @@ dependencies:
   firebase_core: ^2.10.0
   cloud_firestore: ^4.5.3
   firebase_core_platform_interface: ^4.6.0
+  firebase_database: ^10.1.2
 
 
 
