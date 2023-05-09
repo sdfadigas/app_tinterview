@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "36544421419",
+    "firebase_url": "https://apptinterview-9c173-default-rtdb.firebaseio.com",
     "project_id": "apptinterview-9c173",
     "storage_bucket": "apptinterview-9c173.appspot.com"
   },
@@ -37,6 +38,13 @@
             {
               "client_id": "36544421419-a0jvet76ddgmrb7a9jnrisr9cipn7sca.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "36544421419-uf33npu7m8mh78s443k3vldp346uiict.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.apptinterview.appTinterview"
+              }
             }
           ]
         }
