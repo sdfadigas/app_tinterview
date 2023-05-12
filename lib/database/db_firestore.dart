@@ -4,7 +4,22 @@ class DBFirestore {
   final FirebaseFirestore _firestore =
       FirebaseFirestore.instance; //recuperando instancia do FB
 
-  List<Map<String, dynamic>> data = [
+  // * Exportando ao banco
+  addData() async {
+    int i = 1;
+    for (var element in data) {
+      _firestore.collection('interview').doc(i.toString()).set(element);
+      i += 1;
+    }
+  }
+
+  // TODO: Consulta simples: filtro[tecnologia] ordenado por nível de dificuldade.
+
+  // TODO: Consulta complexa: SearchField
+
+
+  // * LISTA:
+    List<Map<String, dynamic>> data = [
     {
       "pergunta": "O que é HTML?",
       "resposta":
@@ -342,18 +357,6 @@ class DBFirestore {
     }
   ];
 
-  // * Exportando ao banco
-  addData() async {
-    int i = 1;
-    for (var element in data) {
-      _firestore.collection('interview').doc(i.toString()).set(element);
-      i += 1;
-    }
-  }
-
-  // * Consulta simples: filtro[tecnologia] ordenado por nível de dificuldade.
-
-  // * Consulta complexa: SearchField
-
-  // *
 }
+
+

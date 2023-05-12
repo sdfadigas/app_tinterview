@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons_null_safety/flutter_icons_null_safety.dart';
 import 'package:app_tinterview/viewers/BackendPage.dart';
@@ -6,20 +7,33 @@ import 'package:app_tinterview/viewers/FrontendPage.dart';
 import 'package:app_tinterview/viewers/MobilePage.dart';
 import 'package:app_tinterview/controllers/CustomDrawer.dart';
 
+import 'ScrollCircle.dart';
+
 class SearchField extends StatefulWidget {
+  const SearchField({super.key});
+
   @override
   _SearchFieldState createState() => _SearchFieldState();
 }
 
 class _SearchFieldState extends State<SearchField> {
   String _searchText = '';
+  List lista = [
+    'HTML',
+    'CSS',
+    'JAVASCRIP',
+    'ANGULAR',
+    'JAVA',
+    'SQL',
+    'FIREBASE'
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF222222),
+      backgroundColor: const Color(0xFF222222),
       appBar: AppBar(
-        backgroundColor: Color(0xFF222222),
+        backgroundColor: const Color(0xFF222222),
         title: Row(
           children: <Widget>[
             Image.asset(
@@ -30,12 +44,12 @@ class _SearchFieldState extends State<SearchField> {
           ],
         ),
       ),
-      endDrawer: CustomDrawer(),
+      endDrawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: TextField(
                 onChanged: (value) {
                   setState(() {
@@ -45,129 +59,35 @@ class _SearchFieldState extends State<SearchField> {
                 decoration: InputDecoration(
                   hintText: 'Digite sua busca',
                   hintStyle: TextStyle(color: Colors.grey[700]),
-                  suffixIcon: Icon(Icons.search, color: Colors.grey),
-                  labelStyle: TextStyle(color: Color(0xFF222222)),
-                  suffixStyle: TextStyle(color: Color(0xFF222222)),
+                  suffixIcon: const Icon(Icons.search, color: Colors.grey),
+                  labelStyle: const TextStyle(color: Color(0xFF222222)),
+                  suffixStyle: const TextStyle(color: Color(0xFF222222)),
                   filled: true,
-                  fillColor: Color(0xFFE5E5E5),
+                  fillColor: const Color(0xFFE5E5E5),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
               ),
             ),
-            SingleChildScrollView(
-              padding: EdgeInsets.only(left:16, right: 16),
-              scrollDirection: Axis.horizontal,
-              child:
-            Row(
 
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(FlutterIcons.js_faw5d),
-                  iconSize: 48,
-                  color: Color(0xFFeeeeee),
-                  onPressed: () {
-                    // Ação do ícone
-                  }, // Ícone JavaScript
-                ),
-                IconButton(
-                    icon: Icon(FlutterIcons.html5_faw5d), // Ícone HTML
-                    iconSize: 48,
-                    color: Color(0xFFeeeeee),
-                    onPressed: () {
-                      // Ação do ícone
-                    }),
-                IconButton(
-                    icon: Icon(FlutterIcons.css3_alt_faw5d), // Ícone HTML
-                    iconSize: 48,
-                    color: Color(0xFFeeeeee),
-                    onPressed: () {
-                      // Ação do ícone
-                    }),
-                IconButton(
-                    icon: Icon(FlutterIcons.python_faw5d), // Ícone HTML
-                    iconSize: 48,
-                    color: Color(0xFFeeeeee),
-                    onPressed: () {
-                      // Ação do ícone
-                    }),
-                IconButton(
-                    icon: Icon(FlutterIcons.java_faw5d), // Ícone HTML
-                    iconSize: 48,
-                    color: Color(0xFFeeeeee),
-                    onPressed: () {
-                      // Ação do ícone
-                    }),
-                IconButton(
-                    icon: Icon(FlutterIcons.ruby_mco), // Ícone HTML
-                    iconSize: 48,
-                    color: Color(0xFFeeeeee),
-                    onPressed: () {
-                      // Ação do ícone
-                    }),
-                IconButton(
-                    icon: Icon(FlutterIcons.php_faw5d), // Ícone HTML
-                    iconSize: 48,
-                    color: Color(0xFFeeeeee),
-                    onPressed: () {
-                      // Ação do ícone
-                    }),
-                IconButton(
-                    icon: Icon(FlutterIcons.language_swift_mco), // Ícone HTML
-                    iconSize: 48,
-                    color: Color(0xFFeeeeee),
-                    onPressed: () {
-                      // Ação do ícone
-                    }),
-                IconButton(
-                    icon: Icon(FlutterIcons.react_faw5d), // Ícone HTML
-                    iconSize: 48,
-                    color: Color(0xFFeeeeee),
-                    onPressed: () {
-                      // Ação do ícone
-                    }),
-                IconButton(
-                    icon: Icon(FlutterIcons.vuejs_faw5d), // Ícone HTML
-                    iconSize: 48,
-                    color: Color(0xFFeeeeee),
-                    onPressed: () {
-                      // Ação do ícone
-                    }),
-                IconButton(
-                    icon: Icon(FlutterIcons.angular_faw5d), // Ícone HTML
-                    iconSize: 48,
-                    color: Color(0xFFeeeeee),
-                    onPressed: () {
-                      // Ação do ícone
-                    }),
-                IconButton(
-                    icon: Icon(FlutterIcons.flask_empty_mco), // Ícone HTML
-                    iconSize: 48,
-                    color: Color(0xFFeeeeee),
-                    onPressed: () {
-                      // Ação do ícone
-                    }),
-                IconButton(
-                    icon: Icon(FlutterIcons.language_ruby_on_rails_mco), // Ícone HTML
-                    iconSize: 48,
-                    color: Color(0xFFeeeeee),
-                    onPressed: () {
-                      // Ação do ícone
-                    }),
 
-                IconButton(
-                    icon: Icon(FlutterIcons.firebase_mco), // Ícone HTML
-                    iconSize: 48,
-                    color: Color(0xFFeeeeee),
-                    onPressed: () {
-                      // Ação do ícone
-                    }),
+            //
+            SizedBox(
+              height: 80,
+              child: ListView.builder(
+                  itemCount: lista.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, Index) {
+                    return ScrollCircle(
+                      linguagem: lista[Index],
+                    );
+                  }),
+            ),
 
-              ],
-            ),),
-            SizedBox(height: 18),
+
+
+            const SizedBox(height: 18),
             InkWell(
               onTap: () {
                 // Ação do anúncio quando for clicado
@@ -177,7 +97,7 @@ class _SearchFieldState extends State<SearchField> {
                 width: double.infinity,
                 height: 100,
                 color: Colors.grey,
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Anúncio', // Conteúdo da caixa de anúncio
                     style: TextStyle(fontSize: 24, color: Colors.white),
@@ -185,7 +105,7 @@ class _SearchFieldState extends State<SearchField> {
                 ),
               ),
             ),
-            SizedBox(height: 18),
+            const SizedBox(height: 18),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -202,18 +122,15 @@ class _SearchFieldState extends State<SearchField> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: [
-
                         BoxShadow(
                             color: Colors.black.withOpacity(0.3),
                             spreadRadius: 3,
                             blurRadius: 1,
-                            offset: Offset(2,2)
-                        )
-
+                            offset: const Offset(2, 2))
                       ],
-                      color: Color(0xFF363533),
+                      color: const Color(0xFF363533),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Frontend',
                         textAlign: TextAlign.center,
@@ -241,11 +158,11 @@ class _SearchFieldState extends State<SearchField> {
                             color: Colors.black.withOpacity(0.3),
                             spreadRadius: 3,
                             blurRadius: 1,
-                            offset: Offset(-2, 2))
+                            offset: const Offset(-2, 2))
                       ],
-                      color: Color(0xFF363533),
+                      color: const Color(0xFF363533),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Backend',
                         textAlign: TextAlign.center,
@@ -261,7 +178,7 @@ class _SearchFieldState extends State<SearchField> {
               ],
             ),
             Column(children: <Widget>[
-              SizedBox(height: 18),
+              const SizedBox(height: 18),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -276,16 +193,16 @@ class _SearchFieldState extends State<SearchField> {
                       width: 140,
                       height: 140,
                       decoration: BoxDecoration(
-                          color: Color(0xFF363533),
+                          color: const Color(0xFF363533),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.black.withOpacity(0.3),
                                 spreadRadius: 3,
                                 blurRadius: 1,
-                                offset: Offset(2, -2))
+                                offset: const Offset(2, -2))
                           ]),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'Mobile',
                           textAlign: TextAlign.center,
@@ -315,11 +232,11 @@ class _SearchFieldState extends State<SearchField> {
                               color: Colors.black.withOpacity(0.3),
                               spreadRadius: 3,
                               blurRadius: 1,
-                              offset: Offset(-2, -2))
+                              offset: const Offset(-2, -2))
                         ],
-                        color: Color(0xFF363533),
+                        color: const Color(0xFF363533),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'Banco de dados',
                           textAlign: TextAlign.center,
@@ -335,7 +252,7 @@ class _SearchFieldState extends State<SearchField> {
                 ],
               ),
             ]),
-            SizedBox(height: 22)
+            const SizedBox(height: 22)
           ],
         ),
       ),

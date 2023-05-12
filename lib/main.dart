@@ -17,5 +17,5 @@ void main() async {
       debugShowCheckedModeBanner: false,
     ),
   );
-  DBFirestore().addData();
+  //DBFirestore().addData();
 }
