@@ -77,6 +77,25 @@ flutter:
   assets:
     - images/logo.png
     - images/logoFull.png
+    - images/icons/JAVA.png
+    - images/icons/HTML.png
+    - images/icons/CSS.png
+    - images/icons/JAVASCRIPT.png
+    - images/icons/ANGULAR.png
+    - images/icons/NODE.png
+    - images/icons/PYTHON.png
+ #   - images/icons/C.png
+ #   - images/icons/C++.png
+ #   - images/icons/C#.png
+ #   - images/icons/RUBY.png
+ #   - images/icons/SQL.png
+ #   - images/icons/NOSQL.png
+ #   - images/icons/FIREBASE.png
+ #   - images/icons/MONGODB.png
+ #   - images/icons/MYSQL.png
+    
+    
+    
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,3 +1,4 @@
+import 'package:app_tinterview/database/db_firestore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons_null_safety/flutter_icons_null_safety.dart';
@@ -18,15 +19,6 @@ class SearchField extends StatefulWidget {
 
 class _SearchFieldState extends State<SearchField> {
   String _searchText = '';
-  List lista = [
-    'HTML',
-    'CSS',
-    'JAVASCRIP',
-    'ANGULAR',
-    'JAVA',
-    'SQL',
-    'FIREBASE'
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -76,11 +68,11 @@ class _SearchFieldState extends State<SearchField> {
             SizedBox(
               height: 80,
               child: ListView.builder(
-                  itemCount: lista.length,
+                  itemCount: DBFirestore().lista_techs.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, Index) {
                     return ScrollCircle(
-                      linguagem: lista[Index],
+                      linguagem: DBFirestore().lista_techs[Index],
                     );
                   }),
             ),

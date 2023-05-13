@@ -13,13 +13,31 @@ class DBFirestore {
     }
   }
 
-  // TODO: Consulta simples: filtro[tecnologia] ordenado por nível de dificuldade.
+
+  // * Consulta simples: filtro[tecnologia] ordenado por nível de dificuldade.
+  
+  queryTech() async {
+    DocumentSnapshot snap =
+        await _firestore.collection("tinterview").doc().get();
+
+    //QuerySnapshot querySnapshot = await snap.get();
+  }
 
   // TODO: Consulta complexa: SearchField
 
+  // * Lista de linguagens:
+ final List lista_techs = [
+    'HTML',
+    'CSS',
+    'JAVASCRIPT',
+    'ANGULAR',
+    'NODE',
+    'PYTHON',
+    'JAVA',
+    ];
 
-  // * LISTA:
-    List<Map<String, dynamic>> data = [
+  // * Lista de perguntas para subir ao banco:
+  List<Map<String, dynamic>> data = [
     {
       "pergunta": "O que é HTML?",
       "resposta":
@@ -356,7 +374,4 @@ class DBFirestore {
       "filtros": ["BACKEND"]
     }
   ];
-
 }
-
-
