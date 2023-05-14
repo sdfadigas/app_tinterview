@@ -1,13 +1,11 @@
 import 'package:app_tinterview/database/db_firestore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons_null_safety/flutter_icons_null_safety.dart';
 import 'package:app_tinterview/viewers/BackendPage.dart';
 import 'package:app_tinterview/viewers/BancoDeDadosPage.dart';
 import 'package:app_tinterview/viewers/FrontendPage.dart';
 import 'package:app_tinterview/viewers/MobilePage.dart';
 import 'package:app_tinterview/controllers/CustomDrawer.dart';
-
 import 'ScrollCircle.dart';
 
 class SearchField extends StatefulWidget {
@@ -18,12 +16,13 @@ class SearchField extends StatefulWidget {
 }
 
 class _SearchFieldState extends State<SearchField> {
-  String _searchText = '';
+  String _pesquisa = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
+      
       appBar: AppBar(
         backgroundColor: const Color(0xFF222222),
         title: Row(
@@ -36,16 +35,21 @@ class _SearchFieldState extends State<SearchField> {
           ],
         ),
       ),
-      endDrawer: const CustomDrawer(),
+
+      endDrawer: const CustomDrawer(),//MENU
+
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            
+
+            // * CAIXA DE PESQUISA
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: TextField(
-                onChanged: (value) {
+                onChanged: (valor) {
                   setState(() {
-                    _searchText = value;
+                    _pesquisa = valor;
                   });
                 },
                 decoration: InputDecoration(
@@ -63,8 +67,8 @@ class _SearchFieldState extends State<SearchField> {
               ),
             ),
 
-
-            //
+            
+            // * LISTA HORIZONATAL DE TECNOLOGIAS OU 'STORIES'KKK
             SizedBox(
               height: 80,
               child: ListView.builder(
