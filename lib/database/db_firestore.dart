@@ -8,6 +8,10 @@ class DBFirestore {
   final FirebaseFirestore _firestore =
       FirebaseFirestore.instance; //recuperando instancia do FB
 
+  firestore() {
+    return _firestore;
+  }
+
   // * Exportando ao banco
   addData() async {
     int i = 1;
@@ -18,29 +22,33 @@ class DBFirestore {
   }
 
   // * CONSULTA SIMPLES: Recebe: uma linguaem | Retorna List Map com perguntas que a contém em "filtros:".
+  /*
   Future queryTech(linguagem) async {
     QuerySnapshot querySnapshot = await _firestore
         .collection("interview")
         .where("filtros", arrayContains: "$linguagem")
         //.orderBy("filtros: junior").orderBy("filtros: estágio").orderBy("filtros: senior").orderBy("filtros: pleno")
-        .get();
-    //print("$linguagem");
+        .get();  //print("$linguagem");
     late var dados;
     for (DocumentSnapshot item in querySnapshot.docs) {
-      dados = item.data(); //print(dados);
-    }
-    dados as Map;
-    var list = []; //print(dados as Map); //
+      dados = item.data(); print(dados);
+      }
+    return Future.value(dados);
+    }     
+    //dados as Map;
+    //var list = []; //print(dados as Map); //
     //print(("${dados["pergunta"]}"));
     //list = dados.entries.map((e) => Customer(e.key, e.value)).toList();
     //print(dados);
-    return Future.value(dados);      
-  }
+    
+ 
+
+  */
 
   // * CONSULTA COMPLEXA: SearchField
 
   // * Lista de linguagens:
-  final List lista_techs = [
+  List lista_techs = [
     'HTML',
     'CSS',
     'JAVASCRIPT',
