@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:app_tinterview/database/db_firestore.dart';
 import '../controllers/CustomDrawer.dart';
 import 'package:flutter_icons_null_safety/flutter_icons_null_safety.dart';
+import './Perg_Resp.dart';
 
 class Square extends StatelessWidget {
   final String linguagem;
@@ -60,35 +61,58 @@ class Square extends StatelessWidget {
               var dados = snapshot.data!.docs[index]
                   //as Map<String, dynamic>
                   ;
-              return 
+              return Container(
+                /* decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20)
+                ),  */
 
-              ListTile(  
-                tileColor: Color.fromARGB(255, 29, 29, 29),
-                visualDensity: VisualDensity(),
-                title: Text(
-                  dados["pergunta"],
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
+                color: Color.fromARGB(31, 27, 26, 26),
+                padding: EdgeInsets.only(
+                  top: 08,
+                  left: 10,
+                  right: 10,
                 ),
-                subtitle: Text(
-                  dados["resposta"],
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w200),
+                alignment: Alignment.center,
+                //itemExtend: 100.0,
+
+                child: ListTile(
+                  tileColor: Color.fromARGB(255, 29, 29, 29),
+                  //visualDensity: VisualDensity(),
+
+                  leading: CircleAvatar(
+                    backgroundColor: Color.fromARGB(255, 37, 37, 37),
+                    backgroundImage:
+                        AssetImage("images/icons/${linguagem}.png"),
+                  ),
+                  title: Text(
+                    dados["pergunta"],
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(
+                    dados["resposta"],
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w200),
+                  ),
+                  //trailing: Icon(Icons.bookmark, color: Color.fromARGB(255, 126, 126, 126)),
+                  onTap: () {
+                     PergResp pergResp = PergResp(dados: dados,);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => pergResp
+                              //PergResp(), //levado para próxima tela com os dados da linguagem
+                        ));
+                  },
                 ),
-                leading: CircleAvatar(
-                  //backgroundColor: Color.fromARGB(255, 255, 221, 118),
-                  backgroundImage: AssetImage("images/icons/${linguagem}.png"),
-                ),
-                trailing: Icon(Icons.bookmark,
-                  color: Color(0xFFD9D9D9)),
               );
             },
             //return Container();

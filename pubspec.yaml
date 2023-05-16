@@ -82,12 +82,12 @@ flutter:
     - images/icons/ANGULAR.png
     - images/icons/NODE.png
     - images/icons/PYTHON.png
- #   - images/icons/C.png
- #   - images/icons/C++.png
+ #   - images/icons/PHP.png
+    - images/icons/FLUTTER.png
  #   - images/icons/C#.png
- #   - images/icons/RUBY.png
+    - images/icons/RUBY.png
  #   - images/icons/SQL.png
- #   - images/icons/NOSQL.png
+    - images/icons/NODE.png
  #   - images/icons/FIREBASE.png
  #   - images/icons/MONGODB.png
  #   - images/icons/MYSQL.png
