@@ -37,6 +37,9 @@ class Square extends StatelessWidget {
         ),
       ),
       endDrawer: const CustomDrawer(),
+
+
+      
       body: StreamBuilder(
         stream: DBFirestore()
             .firestore()
@@ -62,37 +65,31 @@ class Square extends StatelessWidget {
                   //as Map<String, dynamic>
                   ;
               return Container(
-                /* decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20)
-                ),  */
-
-                color: Color.fromARGB(31, 27, 26, 26),
-                padding: EdgeInsets.only(
-                  top: 08,
-                  left: 10,
-                  right: 10,
-                ),
-                alignment: Alignment.center,
-                //itemExtend: 100.0,
-
+                padding: EdgeInsets.only(top: 08, left: 10, right: 10),
+                //alignment: Alignment.center,
                 child: ListTile(
-                  tileColor: Color.fromARGB(255, 29, 29, 29),
+                  minVerticalPadding: 8,
+                  horizontalTitleGap: 14,
+                  tileColor: Color.fromARGB(255, 44, 42, 42),
                   //visualDensity: VisualDensity(),
-
+                  minLeadingWidth: 30,
                   leading: CircleAvatar(
-                    backgroundColor: Color.fromARGB(255, 37, 37, 37),
+                    radius: 28,
+                    backgroundColor: Color.fromARGB(255, 41, 41, 41),
                     backgroundImage:
                         AssetImage("images/icons/${linguagem}.png"),
                   ),
                   title: Text(
                     dados["pergunta"],
-                    maxLines: 2,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
+                        height: 0,
                         color: Color.fromARGB(255, 255, 255, 255),
                         fontSize: 18,
                         fontWeight: FontWeight.bold),
                   ),
+
                   subtitle: Text(
                     dados["resposta"],
                     maxLines: 2,
@@ -102,20 +99,21 @@ class Square extends StatelessWidget {
                         fontSize: 14,
                         fontWeight: FontWeight.w200),
                   ),
-                  //trailing: Icon(Icons.bookmark, color: Color.fromARGB(255, 126, 126, 126)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(11),
+                  ),
+                  trailing: Icon(Icons.bookmark, color: Color.fromARGB(255, 126, 126, 126)),
+                  isThreeLine: true,
                   onTap: () {
-                     PergResp pergResp = PergResp(dados: dados,);
+                    PergResp pergResp = PergResp(dados: dados, linguagem: linguagem,);
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => pergResp
-                              //PergResp(), //levado para próxima tela com os dados da linguagem
-                        ));
+                      context,
+                      MaterialPageRoute(builder: (context) => pergResp),
+                    );
                   },
                 ),
               );
             },
-            //return Container();
           );
         },
       ),

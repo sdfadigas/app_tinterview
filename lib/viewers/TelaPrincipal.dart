@@ -7,6 +7,7 @@ import 'package:app_tinterview/viewers/FrontendPage.dart';
 import 'package:app_tinterview/viewers/MobilePage.dart';
 import 'package:app_tinterview/controllers/CustomDrawer.dart';
 import 'ScrollCircle.dart';
+import 'Sugestao.dart';
 
 class SearchField extends StatefulWidget {
   const SearchField({super.key});
@@ -22,7 +23,7 @@ class _SearchFieldState extends State<SearchField> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      
+
       appBar: AppBar(
         backgroundColor: const Color(0xFF222222),
         title: Row(
@@ -36,13 +37,11 @@ class _SearchFieldState extends State<SearchField> {
         ),
       ),
 
-      endDrawer: const CustomDrawer(),//MENU
+      endDrawer: const CustomDrawer(), //MENU
 
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            
-
             // * CAIXA DE PESQUISA
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -50,6 +49,7 @@ class _SearchFieldState extends State<SearchField> {
                 onChanged: (valor) {
                   setState(() {
                     _pesquisa = valor;
+                    Sugestao(pesquisa: _pesquisa);
                   });
                 },
                 decoration: InputDecoration(
@@ -67,7 +67,6 @@ class _SearchFieldState extends State<SearchField> {
               ),
             ),
 
-            
             // * LISTA HORIZONATAL DE TECNOLOGIAS OU 'STORIES'KKK
             SizedBox(
               height: 80,
@@ -81,8 +80,6 @@ class _SearchFieldState extends State<SearchField> {
                   }),
             ),
 
-
-
             const SizedBox(height: 18),
             InkWell(
               onTap: () {
@@ -90,7 +87,7 @@ class _SearchFieldState extends State<SearchField> {
                 print('Anúncio clicado!');
               },
               child: Container(
-                width: double.infinity,
+                width: 300,
                 height: 100,
                 color: Colors.grey,
                 child: const Center(

@@ -1,60 +1,109 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:app_tinterview/database/db_firestore.dart';
+import '../controllers/CustomDrawer.dart';
+import 'package:flutter_icons_null_safety/flutter_icons_null_safety.dart';
+import './Perg_Resp.dart';
 
-/*
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class Sugestao extends StatelessWidget {
+  final String pesquisa;
 
-  @override
-  State<MyWidget> createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<MyWidget> {
+  Sugestao({required this.pesquisa});
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      
-      body: StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection("tinterview").snapshots(),
-      builder: (context, snapshots){
-        return (snapshots.connectionState == ConnectionState.waiting)
-        ? Center(
-          child: CircularProgressIndicator(),
-          )
-        : ListView.builder(
-          itemCount: snapshots.data!.docs.lenght,
-          itemBuilder: (context, Index) {
-          var data = snapshots.data!.docs[Index].data() as Map<String, dynamic>;
-
-          if (name.isEmpty) {
-            return ListTile(
-              title: Text(
-                data['name'],
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(color: Colors.amber,
-                fontSize: 16,
-                fontWeight: FontWeight.bold),
+    return Scaffold(
+      backgroundColor: const Color(0xFF222222),
+      body: StreamBuilder(
+        stream: DBFirestore()
+            .firestore()
+            .collection('interview')
+            .where("pergunta", whereIn: "$pesquisa")
+            .snapshots(),
+        builder: (builder, AsyncSnapshot snapshot) {
+          //Future.delayed(const Duration(seconds: 3));
+          if (!snapshot.hasData)
+            return Center(
+              child: CircularProgressIndicator(
+                backgroundColor: Color.fromARGB(255, 252, 220, 116),
+                valueColor: new AlwaysStoppedAnimation<Color>(
+                  Color.fromARGB(255, 235, 180, 1),
                 ),
-                subtitle: Text(,
-                data['email'],
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  color: Colors.amber,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
-            ),
-            leading: CircleAvatar(
-              leading: CircleAvatar(
-                backgroundImage: NetworkImage(data['image']),
               ),
             );
-          }
-            if(data['name'].toString().startsWith(name.toLowerCase())){
+          return ListView.builder(
+            //itemExtent: 80.0,
+            itemCount: snapshot.data!.docs.length,
+            itemBuilder: (context, index) {
+              var dados = snapshot.data!.docs[index]
+                  //as Map<String, dynamic>
+                  ;
+
+              if (pesquisa.isEmpty) {
+                return Container(
+                  padding: EdgeInsets.only(top: 08, left: 10, right: 10),
+                  //alignment: Alignment.center,
+                  child: ListTile(
+                    minVerticalPadding: 8,
+                    horizontalTitleGap: 14,
+                    tileColor: Color.fromARGB(255, 44, 42, 42),
+                    //visualDensity: VisualDensity(),
+                    minLeadingWidth: 30,
+                    leading: CircleAvatar(
+                    radius: 28,
+                    backgroundColor: Color.fromARGB(255, 41, 41, 41),
+                    //backgroundImage: AssetImage("images/icons/${linguagem}.png"),
+                  ),
+                    title: Text(
+                      dados["pergunta"],
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          height: 0,
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+
+                    subtitle: Text(
+                      dados["resposta"],
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w200),
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(11),
+                    ),
+                    trailing: Icon(Icons.bookmark,
+                        color: Color.fromARGB(255, 126, 126, 126)),
+                    isThreeLine: true,
+                    onTap: () {
+                      //PergResp pergResp = PergResp(dados: dados, linguagem: ,);
+                      //Navigator.push(
+                      //  context,
+                      //  MaterialPageRoute(builder: (context) => pergResp),
+                      //);
+                    },
+                  ),
+                );
+              }
+            /*  if (dados["$pesquisa"]
+                  .toString()
+                  .toLowerCase()
+                  .startsWith(pesquisa.toLowerCase())) {
+              } */
+            },
+          );
+        },
+      ),
+    );
+  }
+}
+
+
+           /* if(data['name'].toString().startsWith(name.toLowerCase())){
                return ListTile(
               title: Text(
                 data['name'],
