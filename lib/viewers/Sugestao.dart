@@ -13,11 +13,27 @@ class Sugestao extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      body: StreamBuilder(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF222222),
+        title: Row(
+          children: <Widget>[
+            Image.asset(
+              "images/logo.png",
+              width: 40,
+              height: 40,
+            ),
+          ],
+        ),
+      ),
+      endDrawer: const CustomDrawer(),
+      body:
+    
+
+      StreamBuilder(
         stream: DBFirestore()
             .firestore()
             .collection('interview')
-            .where("pergunta", whereIn: "$pesquisa")
+            .where("pergunta", in "$pesquisa".toLowerCase())
             .snapshots(),
         builder: (builder, AsyncSnapshot snapshot) {
           //Future.delayed(const Duration(seconds: 3));
@@ -37,8 +53,8 @@ class Sugestao extends StatelessWidget {
               var dados = snapshot.data!.docs[index]
                   //as Map<String, dynamic>
                   ;
-
-              if (pesquisa.isEmpty) {
+              
+              if (pesquisa.isNotEmpty) {
                 return Container(
                   padding: EdgeInsets.only(top: 08, left: 10, right: 10),
                   //alignment: Alignment.center,
@@ -49,10 +65,10 @@ class Sugestao extends StatelessWidget {
                     //visualDensity: VisualDensity(),
                     minLeadingWidth: 30,
                     leading: CircleAvatar(
-                    radius: 28,
-                    backgroundColor: Color.fromARGB(255, 41, 41, 41),
-                    //backgroundImage: AssetImage("images/icons/${linguagem}.png"),
-                  ),
+                      radius: 28,
+                      backgroundColor: Color.fromARGB(255, 41, 41, 41),
+                      //backgroundImage: AssetImage("images/icons/${linguagem}.png"),
+                    ),
                     title: Text(
                       dados["pergunta"],
                       maxLines: 3,
@@ -89,7 +105,7 @@ class Sugestao extends StatelessWidget {
                   ),
                 );
               }
-            /*  if (dados["$pesquisa"]
+              /*  if (dados["$pesquisa"]
                   .toString()
                   .toLowerCase()
                   .startsWith(pesquisa.toLowerCase())) {

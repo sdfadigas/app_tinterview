@@ -47,21 +47,32 @@ class _SearchFieldState extends State<SearchField> {
               padding: const EdgeInsets.all(16.0),
               child: TextField(
                 onChanged: (valor) {
-                  setState(() {
-                    _pesquisa = valor;
-                    Sugestao(pesquisa: _pesquisa);
-                  });
+                  _pesquisa = valor;
                 },
                 decoration: InputDecoration(
                   hintText: 'Digite sua busca',
                   hintStyle: TextStyle(color: Colors.grey[700]),
-                  suffixIcon: const Icon(Icons.search, color: Colors.grey),
+                  suffixIcon: IconButton(
+                    padding: EdgeInsets.all(4.0),
+                    icon: const Icon(
+                      Icons.search,
+                      color: Color.fromARGB(255, 51, 49, 49),
+                      size: 45,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  Sugestao(pesquisa: _pesquisa)));
+                    },
+                  ),
                   labelStyle: const TextStyle(color: Color(0xFF222222)),
                   suffixStyle: const TextStyle(color: Color(0xFF222222)),
                   filled: true,
                   fillColor: const Color(0xFFE5E5E5),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
               ),
