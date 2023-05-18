@@ -33,7 +33,7 @@ class Sugestao extends StatelessWidget {
         stream: DBFirestore()
             .firestore()
             .collection('interview')
-            .where("pergunta", in "$pesquisa".toLowerCase())
+            .where("pergunta", isEqualTo: "$pesquisa".toLowerCase())
             .snapshots(),
         builder: (builder, AsyncSnapshot snapshot) {
           //Future.delayed(const Duration(seconds: 3));
