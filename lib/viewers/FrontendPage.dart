@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:app_tinterview/controllers/CustomDrawer.dart';
 
@@ -8,8 +7,8 @@ class FrontendPage extends StatefulWidget {
 }
 
 class _FrontendPageState extends State<FrontendPage> {
-
   List<bool> _pressed = List.filled(13, false);
+  List selecionadas = [];
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +73,7 @@ class _FrontendPageState extends State<FrontendPage> {
                     onTap: () {
                       setState(() {
                         _pressed[0] = !_pressed[0];
+                        selecionadas;
                       }
                           // Ação do botão quando for clicado
                           );

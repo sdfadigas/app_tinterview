@@ -91,28 +91,35 @@ class _SearchFieldState extends State<SearchField> {
                   }),
             ),
 
-            const SizedBox(height: 18),
+            const SizedBox(height: 20),
+
+            // * ANUNCIO
             InkWell(
               onTap: () {
                 // Ação do anúncio quando for clicado
                 print('Anúncio clicado!');
               },
               child: Container(
-                width: 300,
+                width: 385,
                 height: 100,
                 color: Colors.grey,
                 child: const Center(
-                  child: Text(
+                  child:
+                   
+                  Text(
                     'Anúncio', // Conteúdo da caixa de anúncio
                     style: TextStyle(fontSize: 24, color: Colors.white),
                   ),
                 ),
               ),
             ),
+
             const SizedBox(height: 18),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
+
                 InkWell(
                   onTap: () {
                     Navigator.push(
@@ -147,6 +154,8 @@ class _SearchFieldState extends State<SearchField> {
                     ),
                   ),
                 ),
+
+
                 InkWell(
                   onTap: () {
                     Navigator.push(context,
@@ -181,6 +190,8 @@ class _SearchFieldState extends State<SearchField> {
                 ),
               ],
             ),
+
+
             Column(children: <Widget>[
               const SizedBox(height: 18),
               Row(
@@ -219,6 +230,7 @@ class _SearchFieldState extends State<SearchField> {
                       ),
                     ),
                   ),
+
                   InkWell(
                     onTap: () {
                       Navigator.push(
@@ -256,7 +268,9 @@ class _SearchFieldState extends State<SearchField> {
                 ],
               ),
             ]),
+
             const SizedBox(height: 22)
+            
           ],
         ),
       ),

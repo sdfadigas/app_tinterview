@@ -6,7 +6,13 @@ import 'package:flutter_icons_null_safety/flutter_icons_null_safety.dart';
 import './Perg_Resp.dart';
 
 class Sugestao extends StatelessWidget {
-  final String pesquisa;
+  String pesquisa;
+  List<String> linguagem = [];
+
+  funcao(pesquisa) {
+    linguagem.add(pesquisa.toUpperCase());
+    return linguagem;
+  }
 
   Sugestao({required this.pesquisa});
   @override
@@ -26,14 +32,11 @@ class Sugestao extends StatelessWidget {
         ),
       ),
       endDrawer: const CustomDrawer(),
-      body:
-    
-
-      StreamBuilder(
+      body: StreamBuilder(
         stream: DBFirestore()
             .firestore()
             .collection('interview')
-            .where("pergunta", isEqualTo: "$pesquisa".toLowerCase())
+            .where("filtros", arrayContains: funcao(pesquisa))
             .snapshots(),
         builder: (builder, AsyncSnapshot snapshot) {
           //Future.delayed(const Duration(seconds: 3));
@@ -53,7 +56,7 @@ class Sugestao extends StatelessWidget {
               var dados = snapshot.data!.docs[index]
                   //as Map<String, dynamic>
                   ;
-              
+
               if (pesquisa.isNotEmpty) {
                 return Container(
                   padding: EdgeInsets.only(top: 08, left: 10, right: 10),
