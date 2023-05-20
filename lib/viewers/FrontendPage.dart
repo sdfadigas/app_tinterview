@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:app_tinterview/controllers/CustomDrawer.dart';
 
+import 'TelaPrincipal.dart';
+
 class FrontendPage extends StatefulWidget {
   @override
   _FrontendPageState createState() => _FrontendPageState();
@@ -14,38 +16,20 @@ class _FrontendPageState extends State<FrontendPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFF222222),
-      appBar: AppBar(
-        backgroundColor: Color(0xFF222222),
-        centerTitle: true,
-        title: Image.asset(
-          "images/logo.png",
-          width: 50,
-        ),
-      ),
+      appBar: TelaPrincipal().return_AppBar(),
       endDrawer: CustomDrawer(),
+      
+      
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             SizedBox(height: 18),
-            InkWell(
-              onTap: () {
-                // Ação do anúncio quando for clicado
-              },
-              child: Container(
-                width: double.infinity,
-                height: 100,
-                color: Colors.grey,
-                child: Center(
-                  child: Text(
-                    'Anúncio',
-                    style: TextStyle(fontSize: 24, color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
+            TelaPrincipal().return_Anuncio(),
+            
             SizedBox(height: 20),
             Column(
               children: <Widget>[
+                
                 Text("FRONT END",
                     style: TextStyle(
                         fontSize: 40,
@@ -54,6 +38,9 @@ class _FrontendPageState extends State<FrontendPage> {
               ],
             ),
             SizedBox(height: 20),
+
+
+
             Container(
               padding: EdgeInsets.only(left: 22),
               alignment: Alignment.centerLeft,
@@ -64,6 +51,9 @@ class _FrontendPageState extends State<FrontendPage> {
                       fontWeight: FontWeight.bold)),
             ),
             SizedBox(height: 18),
+
+
+
             Container(
               padding: EdgeInsets.only(left: 24),
               alignment: Alignment.centerLeft,
@@ -731,6 +721,8 @@ class _FrontendPageState extends State<FrontendPage> {
                           fontWeight: FontWeight.bold)),
                 ),
                 SizedBox(width: 22),
+
+
                 ElevatedButton(
                   onPressed: () {
                     // Ação ao pressionar o botão
@@ -747,6 +739,11 @@ class _FrontendPageState extends State<FrontendPage> {
                           color: Color(0xFF222222),
                           fontWeight: FontWeight.bold)),
                 ),
+
+
+
+
+                
               ],
             ),
             SizedBox(height: 18),

@@ -50,7 +50,7 @@ class _LoginState extends State<Login> {
                         if (user != null) {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => SearchField()),
+                            MaterialPageRoute(builder: (context) => TelaPrincipal()),
                           );
                         }
                       },
@@ -81,7 +81,7 @@ class _LoginState extends State<Login> {
                     child: GestureDetector(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SearchField()));
+                        MaterialPageRoute(builder: (context) => TelaPrincipal()));
                   },
                   child: Text('Iniciar como convidado',
                       style: TextStyle(

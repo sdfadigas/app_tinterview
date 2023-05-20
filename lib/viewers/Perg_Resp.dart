@@ -40,11 +40,11 @@ class PergResp extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Text(
               dados["pergunta"],
-              maxLines: 7,
+              maxLines: 1000,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                   color: Color.fromARGB(255, 255, 255, 255),
-                  fontSize: 17,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold),
             ),
           ),
@@ -57,7 +57,7 @@ class PergResp extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Text(
               dados["resposta"],
-              maxLines: 20,
+              maxLines: 10000,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                   color: Color.fromARGB(255, 255, 255, 255),

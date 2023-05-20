@@ -1,3 +1,4 @@
+import 'package:app_tinterview/viewers/TelaPrincipal.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:app_tinterview/database/db_firestore.dart';
@@ -6,45 +7,22 @@ import 'package:flutter_icons_null_safety/flutter_icons_null_safety.dart';
 import './Perg_Resp.dart';
 
 class Square extends StatelessWidget {
-  final String linguagem;
+  var linguagem;
 
   Square({required this.linguagem});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      /*appBar: AppBar(title: Card(
-        child: TextField(
-          decoration: InputDecoration(
-            prefixIcon: Icon(Icons.search), hintText: "Pesquisar"), onChanged: (val){
-              setState(() {
-                var name = val;
-              });
-            }, 
-          ),)
-      ),*/
 
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF222222),
-        title: Row(
-          children: <Widget>[
-            Image.asset(
-              "images/logo.png",
-              width: 40,
-              height: 40,
-            ),
-          ],
-        ),
-      ),
+      appBar: TelaPrincipal().return_AppBar(),
       endDrawer: const CustomDrawer(),
 
-
-      
       body: StreamBuilder(
         stream: DBFirestore()
             .firestore()
             .collection('interview')
-            .where("filtros", arrayContains: "$linguagem")
+            .where("filtros", arrayContains:'FRAMEWORK', 'ESTAGIO', 'TECNICA' ,'FRONTEND', 'JUNIOR','ANGULAR')
             .snapshots(),
         builder: (builder, AsyncSnapshot snapshot) {
           //Future.delayed(const Duration(seconds: 3));

@@ -1,44 +1,62 @@
 import 'package:app_tinterview/database/db_firestore.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:app_tinterview/viewers/Filtrar.dart';
 import 'package:flutter/material.dart';
 import 'package:app_tinterview/viewers/BackendPage.dart';
 import 'package:app_tinterview/viewers/BancoDeDadosPage.dart';
-import 'package:app_tinterview/viewers/FrontendPage.dart';
 import 'package:app_tinterview/viewers/MobilePage.dart';
 import 'package:app_tinterview/controllers/CustomDrawer.dart';
 import 'ScrollCircle.dart';
 import 'Sugestao.dart';
 
-class SearchField extends StatefulWidget {
-  const SearchField({super.key});
+class TelaPrincipal extends StatefulWidget {
+  
+// * FUNÇÃO AppBAR
+  return_AppBar() {
+    return AppBar(
+      backgroundColor: Color(0xFF222222),
+      centerTitle: true,
+      title: Image.asset(
+        "images/logo.png",
+        width: 48,
+        height: 48,
+      ),
+    );
+  }
+
+// * FUNÇÃO ANÚNCIO
+  return_Anuncio() {
+    return InkWell(
+      onTap: () {
+        print('Anúncio clicado!'); // Ação do anúncio quando for clicado
+      },
+      child: Container(
+        width: 385,
+        height: 100,
+        color: Colors.grey,
+        child: const Center(
+          child: Text(
+            'Anúncio', // Conteúdo da caixa de anúncio
+            style: TextStyle(fontSize: 24, color: Colors.white),
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
-  _SearchFieldState createState() => _SearchFieldState();
+  _TelaPrincipalState createState() => _TelaPrincipalState();
 }
 
-class _SearchFieldState extends State<SearchField> {
+class _TelaPrincipalState extends State<TelaPrincipal> {
   String _pesquisa = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF222222),
-        title: Row(
-          children: <Widget>[
-            Image.asset(
-              "images/logo.png",
-              width: 40,
-              height: 40,
-            ),
-          ],
-        ),
-      ),
-
-      endDrawer: const CustomDrawer(), //MENU
-
+      appBar: TelaPrincipal().return_AppBar(),
+      endDrawer: const CustomDrawer(),
+      
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -94,38 +112,18 @@ class _SearchFieldState extends State<SearchField> {
             const SizedBox(height: 20),
 
             // * ANUNCIO
-            InkWell(
-              onTap: () {
-                // Ação do anúncio quando for clicado
-                print('Anúncio clicado!');
-              },
-              child: Container(
-                width: 385,
-                height: 100,
-                color: Colors.grey,
-                child: const Center(
-                  child:
-                   
-                  Text(
-                    'Anúncio', // Conteúdo da caixa de anúncio
-                    style: TextStyle(fontSize: 24, color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
+            TelaPrincipal().return_Anuncio(),
 
             const SizedBox(height: 18),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-
+                // * BOTÃO FRONTEND
                 InkWell(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => FrontendPage()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Filtrar()));
                   },
                   child: Container(
                     width: 140,
@@ -155,6 +153,7 @@ class _SearchFieldState extends State<SearchField> {
                   ),
                 ),
 
+                // * BOTÃO BACKEND
 
                 InkWell(
                   onTap: () {
@@ -190,7 +189,6 @@ class _SearchFieldState extends State<SearchField> {
                 ),
               ],
             ),
-
 
             Column(children: <Widget>[
               const SizedBox(height: 18),
@@ -230,7 +228,6 @@ class _SearchFieldState extends State<SearchField> {
                       ),
                     ),
                   ),
-
                   InkWell(
                     onTap: () {
                       Navigator.push(
@@ -270,7 +267,6 @@ class _SearchFieldState extends State<SearchField> {
             ]),
 
             const SizedBox(height: 22)
-            
           ],
         ),
       ),
@@ -279,5 +275,5 @@ class _SearchFieldState extends State<SearchField> {
 }
 
 void main() {
-  runApp(SearchField());
+  runApp(TelaPrincipal());
 }
