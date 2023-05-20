@@ -22,7 +22,7 @@ class Square extends StatelessWidget {
         stream: DBFirestore()
             .firestore()
             .collection('interview')
-            .where("filtros", arrayContains:'FRAMEWORK', 'ESTAGIO', 'TECNICA' ,'FRONTEND', 'JUNIOR','ANGULAR')
+            .where("filtros", arrayContains: "$linguagem")
             .snapshots(),
         builder: (builder, AsyncSnapshot snapshot) {
           //Future.delayed(const Duration(seconds: 3));
