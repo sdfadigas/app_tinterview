@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_tinterview/controllers/CustomDrawer.dart';
 
-import 'TelaPrincipal.dart';
+import '../TelaPrincipal.dart';
 
 class FrontendPage extends StatefulWidget {
   @override

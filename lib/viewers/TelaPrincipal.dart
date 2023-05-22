@@ -1,10 +1,10 @@
 import 'package:app_tinterview/database/db_firestore.dart';
-import 'package:app_tinterview/viewers/Filtrar.dart';
 import 'package:flutter/material.dart';
-import 'package:app_tinterview/viewers/BackendPage.dart';
-import 'package:app_tinterview/viewers/BancoDeDadosPage.dart';
-import 'package:app_tinterview/viewers/MobilePage.dart';
+import 'package:app_tinterview/viewers/antigos%20fltros/BackendPage.dart';
+import 'package:app_tinterview/viewers/antigos%20fltros/BancoDeDadosPage.dart';
+import 'package:app_tinterview/viewers/antigos%20fltros/MobilePage.dart';
 import 'package:app_tinterview/controllers/CustomDrawer.dart';
+import 'Filtrar.dart';
 import 'ScrollCircle.dart';
 import 'Sugestao.dart';
 

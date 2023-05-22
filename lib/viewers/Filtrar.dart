@@ -4,12 +4,14 @@ import 'Square.dart';
 import 'TelaPrincipal.dart';
 
 class Filtrar extends StatefulWidget {
+  const Filtrar({super.key});
+
   // * TITULO STACK
   return_TituloStack(String tituloStack) {
     return Column(
       children: <Widget>[
         Text(tituloStack,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 40,
                 color: Color(0xFFD9D9D9),
                 fontWeight: FontWeight.bold)),
@@ -20,10 +22,10 @@ class Filtrar extends StatefulWidget {
   // * SUBTITULO
   return_Subtitulo(String subtitulo) {
     return Container(
-      padding: EdgeInsets.only(left: 22),
+      padding: const EdgeInsets.only(left: 22),
       alignment: Alignment.centerLeft,
       child: Text(subtitulo,
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 20,
               color: Color(0xFFD9D9D9),
               fontWeight: FontWeight.bold)),
@@ -36,13 +38,13 @@ class Filtrar extends StatefulWidget {
 
 class _FiltrarState extends State<Filtrar> {
   List<String> escolhas = [];
-  String entrev_Var = 'Tecnica';
-  String nivel_Var = 'Junior';
   String tecnolog_Var = 'Angular';
+  String entrev_Var = 'Sem Codigo';
+  String nivel_Var = 'Junior';
 
-  List<String> entrevista = ['Tudo', 'Com Código', 'Sem Código'];
-  List<String> nivel = ['Junior', 'Pleno', 'Sênior'];
-  List<String> tecnologias = ['HTML', 'CSS', 'JavaScript'];
+  List<String> entrevista = ['Sem Codigo', 'Com Codigo'];
+  List<String> nivel = ['Junior', 'Pleno', 'Senior'];
+  List<String> tecnologias = ['HTML', 'CSS', 'JavaScript', 'Angular'];
 
   @override
   Widget build(BuildContext context) {
@@ -56,9 +58,9 @@ class _FiltrarState extends State<Filtrar> {
             const SizedBox(height: 18),
             TelaPrincipal().return_Anuncio(),
             const SizedBox(height: 20),
-            Filtrar().return_TituloStack('FRONT END'),
+            const Filtrar().return_TituloStack('FRONT END'),
             const SizedBox(height: 20),
-            Filtrar().return_Subtitulo("Tipo de Entrevista"),
+            const Filtrar().return_Subtitulo("Tipo de Entrevista"),
             const SizedBox(height: 18),
             Wrap(
               children: entrevista
@@ -81,7 +83,7 @@ class _FiltrarState extends State<Filtrar> {
                   .toList(),
             ),
             const SizedBox(height: 18),
-            Filtrar().return_Subtitulo("Nível"),
+            const Filtrar().return_Subtitulo("Nível"),
             const SizedBox(height: 18),
             Wrap(
               children: nivel
@@ -104,7 +106,7 @@ class _FiltrarState extends State<Filtrar> {
                   .toList(),
             ),
             const SizedBox(height: 18),
-            Filtrar().return_Subtitulo("Tecnologias"),
+            const Filtrar().return_Subtitulo("Tecnologias"),
             const SizedBox(height: 18),
             Wrap(
               children: tecnologias
@@ -142,14 +144,15 @@ class _FiltrarState extends State<Filtrar> {
                 pressElevation: 7,
                 onPressed: () {
                   escolhas.clear();
+                  escolhas.add('FRONTEND');
+                  escolhas.add(tecnolog_Var.toUpperCase());
                   escolhas.add(entrev_Var.toUpperCase());
                   escolhas.add(nivel_Var.toUpperCase());
-                  escolhas.add(tecnolog_Var.toUpperCase());
-                  escolhas.add('FRONTEND');
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Square(linguagem: escolhas),
+                      builder: (context) => Square(linguagemList: escolhas),
                     ),
                   );
                 },
