@@ -1,45 +1,35 @@
 import 'package:flutter/material.dart';
 import '../controllers/CustomDrawer.dart';
+import 'TelaPrincipal.dart';
 
 class PergResp extends StatelessWidget {
   var dados;
-  var linguagem;
 
-  PergResp({required this.dados, required this.linguagem});
+  PergResp({required this.dados});
 
   @override
   Widget build(BuildContext context) {
+    List imagem = dados['filtros'];
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF222222),
-        title: Row(
-          children: <Widget>[
-            Image.asset(
-              "images/logo.png",
-              width: 40,
-              height: 40,
-            ),
-          ],
-        ),
-      ),
+      appBar: TelaPrincipal().return_AppBar(),
       endDrawer: const CustomDrawer(),
-
       body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
+        child: Column(children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: CircleAvatar(
               radius: 32,
               backgroundColor: Color.fromARGB(255, 41, 41, 41),
-              backgroundImage: AssetImage("images/icons/${linguagem}.png"),
+              backgroundImage:
+                  AssetImage("images/icons/${imagem[1]}.png"),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(
               dados["pergunta"],
+              textAlign: TextAlign.center,
               maxLines: 1000,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
@@ -57,6 +47,7 @@ class PergResp extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Text(
               dados["resposta"],
+              textAlign: TextAlign.justify,
               maxLines: 10000,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(

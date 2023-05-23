@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:app_tinterview/models/LoginLogoutGoogle.dart';
 import 'package:app_tinterview/viewers/AboutPage.dart';
-import 'package:app_tinterview/viewers/ExercisesPage.dart';
 import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
 
 
@@ -67,15 +66,6 @@ class _DrawerPageState extends State<DrawerPage> {
               title: Text('Meus Itens Salvos', style: TextStyle(color: Color(0xFFeeeeee))),
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => ItensSalvosPage()));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.question_answer, color: Color(0xFFeeeeee)),
-              title: Text('Questões para Praticar', style: TextStyle(color: Color(0xFFeeeeee))),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ExercisesPage()));
-
-                //  tem que ver se vai implementar mesmo
               },
             ),
             ListTile(

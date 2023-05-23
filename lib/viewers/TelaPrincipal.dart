@@ -1,15 +1,15 @@
 import 'package:app_tinterview/database/db_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:app_tinterview/viewers/antigos%20fltros/BackendPage.dart';
-import 'package:app_tinterview/viewers/antigos%20fltros/BancoDeDadosPage.dart';
-import 'package:app_tinterview/viewers/antigos%20fltros/MobilePage.dart';
 import 'package:app_tinterview/controllers/CustomDrawer.dart';
-import 'Filtrar.dart';
+import 'filtros/Filtro_FrontEnd.dart';
+import 'filtros/Filtro_BackEnd.dart';
+import 'filtros/Filtro_Mobile.dart';
+import 'filtros/Filtro_Banco.dart';
+
 import 'ScrollCircle.dart';
-import 'Sugestao.dart';
+import 'Square.dart';
 
 class TelaPrincipal extends StatefulWidget {
-  
 // * FUNÇÃO AppBAR
   return_AppBar() {
     return AppBar(
@@ -56,20 +56,20 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
       backgroundColor: const Color(0xFF222222),
       appBar: TelaPrincipal().return_AppBar(),
       endDrawer: const CustomDrawer(),
-      
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+
             // * CAIXA DE PESQUISA
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: TextField(
                 onChanged: (valor) {
-                  _pesquisa = valor;
+                  _pesquisa = valor.toUpperCase();
                 },
                 decoration: InputDecoration(
-                  hintText: 'Digite sua busca',
-                  hintStyle: TextStyle(color: Colors.grey[700]),
+                  hintText: 'Digite uma tecnologia',
+                  hintStyle: TextStyle(color: Colors.grey[700], fontSize: 19),
                   suffixIcon: IconButton(
                     padding: EdgeInsets.all(4.0),
                     icon: const Icon(
@@ -77,12 +77,12 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                       color: Color.fromARGB(255, 51, 49, 49),
                       size: 45,
                     ),
-                    onPressed: () {
-                      Navigator.push(
+                    onPressed: () async {
+                      var dados = await DBFirestore().queryTech(_pesquisa);
+                      await Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  Sugestao(pesquisa: _pesquisa)));
+                              builder: (context) => Square(dados_bd: dados)));
                     },
                   ),
                   labelStyle: const TextStyle(color: Color(0xFF222222)),
@@ -120,10 +120,11 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 // * BOTÃO FRONTEND
+
                 InkWell(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Filtrar()));
+                        MaterialPageRoute(builder: (context) => Filtro_FrontEnd()));
                   },
                   child: Container(
                     width: 140,
@@ -153,12 +154,13 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                   ),
                 ),
 
+
                 // * BOTÃO BACKEND
 
                 InkWell(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => BackendPage()));
+                        MaterialPageRoute(builder: (context) => Filtro_BackEnd()));
                   },
                   child: Container(
                     width: 140,
@@ -200,7 +202,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => MobilePage()));
+                              builder: (context) => Filtro_Mobile()));
                     },
                     child: Container(
                       width: 140,
@@ -233,7 +235,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => BancoDeDadosPage()));
+                              builder: (context) => Filtro_Banco()));
                     },
                     child: Container(
                       width: 140,

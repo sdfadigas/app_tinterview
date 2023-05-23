@@ -5,27 +5,24 @@ import '../controllers/CustomDrawer.dart';
 import './Perg_Resp.dart';
 
 class Square extends StatelessWidget {
-  List<String> linguagemList;
+  var dados_bd;
 
-  Square({super.key, required this.linguagemList});
+  Square({
+    super.key,
+    required this.dados_bd,
+  });
+
   @override
   Widget build(BuildContext context) {
-    String linguagem = linguagemList[1];
+    //dados_bd as Stream; //String linguagem;
+
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
       appBar: TelaPrincipal().return_AppBar(),
       endDrawer: const CustomDrawer(),
       body: StreamBuilder(
-        stream: DBFirestore()
-            .firestore()
-            .collection('interview')
-            .where("filtros", isEqualTo: linguagemList)
-
-            //.where("filtros.LINGUAGEM", isEqualTo: "HTML")
-
-            .snapshots(),
+        stream: dados_bd,
         builder: (builder, AsyncSnapshot snapshot) {
-          //Future.delayed(const Duration(seconds: 3));
           if (!snapshot.hasData) {
             return const Center(
               child: CircularProgressIndicator(
@@ -40,8 +37,8 @@ class Square extends StatelessWidget {
             //itemExtent: 80.0,
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
-              var dados = snapshot.data!.docs[index]
-                  ;
+              var dados = snapshot.data!.docs[index];
+              List imagem = dados['filtros'];
               return Container(
                 padding: const EdgeInsets.only(top: 08, left: 10, right: 10),
                 //alignment: Alignment.center,
@@ -54,7 +51,8 @@ class Square extends StatelessWidget {
                   leading: CircleAvatar(
                     radius: 28,
                     backgroundColor: const Color.fromARGB(255, 41, 41, 41),
-                    backgroundImage: AssetImage("images/icons/$linguagem.png"),
+                    backgroundImage:
+                        AssetImage("images/icons/${imagem[1]}.png"),
                   ),
                   title: Text(
                     dados["pergunta"],
@@ -85,7 +83,7 @@ class Square extends StatelessWidget {
                   onTap: () {
                     PergResp pergResp = PergResp(
                       dados: dados,
-                      linguagem: linguagem,
+                      //linguagem: dados["filtros[1]"],
                     );
                     Navigator.push(
                       context,

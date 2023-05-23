@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import '../controllers/CustomDrawer.dart';
-import 'Square.dart';
-import 'TelaPrincipal.dart';
+import '../../controllers/CustomDrawer.dart';
+import '../../database/db_firestore.dart';
+import '../Square.dart';
+import '../TelaPrincipal.dart';
 
-class Filtrar extends StatefulWidget {
-  const Filtrar({super.key});
+class Filtro_BackEnd extends StatefulWidget {
+  const Filtro_BackEnd({super.key});
 
   // * TITULO STACK
   return_TituloStack(String tituloStack) {
@@ -33,18 +34,18 @@ class Filtrar extends StatefulWidget {
   }
 
   @override
-  State<Filtrar> createState() => _FiltrarState();
+  State<Filtro_BackEnd> createState() => _Filtro_BackEndState();
 }
 
-class _FiltrarState extends State<Filtrar> {
+class _Filtro_BackEndState extends State<Filtro_BackEnd> {
   List<String> escolhas = [];
-  String tecnolog_Var = 'Angular';
+  String tecnolog_Var = '';
   String entrev_Var = 'Sem Codigo';
   String nivel_Var = 'Junior';
 
   List<String> entrevista = ['Sem Codigo', 'Com Codigo'];
   List<String> nivel = ['Junior', 'Pleno', 'Senior'];
-  List<String> tecnologias = ['HTML', 'CSS', 'JavaScript', 'Angular'];
+  List<String> tecnologias = [];
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +59,9 @@ class _FiltrarState extends State<Filtrar> {
             const SizedBox(height: 18),
             TelaPrincipal().return_Anuncio(),
             const SizedBox(height: 20),
-            const Filtrar().return_TituloStack('FRONT END'),
+            const Filtro_BackEnd().return_TituloStack('BACK END'),
             const SizedBox(height: 20),
-            const Filtrar().return_Subtitulo("Tipo de Entrevista"),
+            const Filtro_BackEnd().return_Subtitulo("Tipo de Entrevista"),
             const SizedBox(height: 18),
             Wrap(
               children: entrevista
@@ -83,7 +84,7 @@ class _FiltrarState extends State<Filtrar> {
                   .toList(),
             ),
             const SizedBox(height: 18),
-            const Filtrar().return_Subtitulo("Nível"),
+            const Filtro_BackEnd().return_Subtitulo("Nível"),
             const SizedBox(height: 18),
             Wrap(
               children: nivel
@@ -106,7 +107,7 @@ class _FiltrarState extends State<Filtrar> {
                   .toList(),
             ),
             const SizedBox(height: 18),
-            const Filtrar().return_Subtitulo("Tecnologias"),
+            const Filtro_BackEnd().return_Subtitulo("Tecnologias"),
             const SizedBox(height: 18),
             Wrap(
               children: tecnologias
@@ -132,7 +133,6 @@ class _FiltrarState extends State<Filtrar> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: ActionChip(
-                //avatar: Icon(Icons.send_and_archive_sharp),
                 shadowColor: Colors.amber.withOpacity(0.5),
                 label: const Text(
                   "Aplicar",
@@ -142,19 +142,20 @@ class _FiltrarState extends State<Filtrar> {
                   ),
                 ),
                 pressElevation: 7,
-                onPressed: () {
+                
+                onPressed: () async {
                   escolhas.clear();
-                  escolhas.add('FRONTEND');
+                  escolhas.add('BACKEND');
                   escolhas.add(tecnolog_Var.toUpperCase());
                   escolhas.add(entrev_Var.toUpperCase());
                   escolhas.add(nivel_Var.toUpperCase());
 
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => Square(linguagemList: escolhas),
-                    ),
-                  );
+                  var dados = await DBFirestore().queryFilter(escolhas);
+                  await Navigator.push(
+                  context,
+                     MaterialPageRoute(
+                       builder: (context) => Square(dados_bd: dados)));
+        
                 },
               ),
             ),
