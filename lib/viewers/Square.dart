@@ -1,28 +1,25 @@
-import 'package:app_tinterview/viewers/TelaPrincipal.dart';
 import 'package:flutter/material.dart';
-import 'package:app_tinterview/database/db_firestore.dart';
-import '../controllers/CustomDrawer.dart';
+import 'package:provider/provider.dart';
+import 'package:app_tinterview/viewers/TelaPrincipal.dart';
+import 'package:app_tinterview/controllers/CustomDrawer.dart';
+import 'package:app_tinterview/controllers/SavedQuestions.dart';
 import './Perg_Resp.dart';
+import './ItensSalvosPage.dart';
 
 class Square extends StatelessWidget {
-  var dados_bd;
+  final Stream dados_bd;
 
-  Square({
-    super.key,
-    required this.dados_bd,
-  });
+  Square({required this.dados_bd});
 
   @override
   Widget build(BuildContext context) {
-    //dados_bd as Stream; //String linguagem;
-
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
       appBar: TelaPrincipal().return_AppBar(),
       endDrawer: const CustomDrawer(),
       body: StreamBuilder(
         stream: dados_bd,
-        builder: (builder, AsyncSnapshot snapshot) {
+        builder: (context, AsyncSnapshot snapshot) {
           if (!snapshot.hasData) {
             return const Center(
               child: CircularProgressIndicator(
@@ -33,20 +30,28 @@ class Square extends StatelessWidget {
               ),
             );
           }
+
           return ListView.builder(
-            //itemExtent: 80.0,
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
               var dados = snapshot.data!.docs[index];
               List imagem = dados['filtros'];
+              String pergunta = dados["pergunta"];
+              String resposta = dados["resposta"];
+
+              final question = Question(
+                title: pergunta,
+                subtitle: resposta,
+                image: imagem[1],
+                data: dados,
+              );
+
               return Container(
-                padding: const EdgeInsets.only(top: 08, left: 10, right: 10),
-                //alignment: Alignment.center,
+                padding: const EdgeInsets.only(top: 8, left: 10, right: 10),
                 child: ListTile(
                   minVerticalPadding: 8,
                   horizontalTitleGap: 14,
                   tileColor: const Color.fromARGB(255, 44, 42, 42),
-                  //visualDensity: VisualDensity(),
                   minLeadingWidth: 30,
                   leading: CircleAvatar(
                     radius: 28,
@@ -55,35 +60,61 @@ class Square extends StatelessWidget {
                         AssetImage("images/icons/${imagem[1]}.png"),
                   ),
                   title: Text(
-                    dados["pergunta"],
+                    pergunta,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                        height: 0,
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
+                      height: 0,
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-
                   subtitle: Text(
-                    dados["resposta"],
+                    resposta,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 14,
-                        fontWeight: FontWeight.w200),
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      fontSize: 14,
+                      fontWeight: FontWeight.w200,
+                    ),
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(11),
                   ),
-                  trailing: const Icon(Icons.bookmark,
-                      color: Color.fromARGB(255, 126, 126, 126)),
+                  trailing: Consumer<SavedQuestionsProvider>(
+                    builder: (context, savedQuestionsProvider, _) {
+                      final question = Question(
+                        title: pergunta,
+                        subtitle: resposta,
+                        image: imagem[1],
+                        data: dados,
+                      );
+                      final isSaved =
+                          savedQuestionsProvider.isQuestionSaved(question);
+
+                      return GestureDetector(
+                        onTap: () {
+                          if (isSaved) {
+                            savedQuestionsProvider.removeQuestion(question);
+                          } else {
+                            savedQuestionsProvider.saveQuestion(question);
+                          }
+                        },
+                        child: Icon(
+                          isSaved ? Icons.bookmark : Icons.bookmark_border,
+                          color: isSaved
+                              ? Color.fromARGB(255, 126, 126, 126)
+                              : Colors.grey,
+                        ),
+                      );
+                    },
+                  ),
                   isThreeLine: true,
                   onTap: () {
                     PergResp pergResp = PergResp(
                       dados: dados,
-                      //linguagem: dados["filtros[1]"],
                     );
                     Navigator.push(
                       context,

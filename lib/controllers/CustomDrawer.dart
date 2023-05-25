@@ -18,25 +18,25 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
   Future<void> _pickImage() async {
     final pickedFile =
-    await ImagePicker().pickImage(source: ImageSource.gallery);
+        await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       setState(() {
         _image = File(pickedFile.path);
       });
-    }}
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: Color(0xFF222222),
-      child: ListView (
+      child: ListView(
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children:[
+              children: [
                 GestureDetector(
                   onTap: _pickImage,
                   child: CircleAvatar(
@@ -57,31 +57,34 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
           ),
           ListTile(
-
             leading: Icon(Icons.bookmark, color: Color(0xFFeeeeee)),
-            title: Text('Meus Itens Salvos', style: TextStyle(color: Color(0xFFeeeeee))),
+            title: Text('Meus Itens Salvos',
+                style: TextStyle(color: Color(0xFFeeeeee))),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => ItensSalvosPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ItensSalvosPage()));
             },
           ),
           ListTile(
             leading: Icon(Icons.info, color: Color(0xFFeeeeee)),
-            title: Text('Sobre',style: TextStyle(color: Color(0xFFeeeeee))),
+            title: Text('Sobre', style: TextStyle(color: Color(0xFFeeeeee))),
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => AboutPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AboutPage()));
             },
           ),
           Divider(),
-
           ListTile(
             leading: Icon(Icons.logout, color: Color(0xFFeeeeee)),
             title: Text('Sair', style: TextStyle(color: Color(0xFFeeeeee))),
             onTap: () async {
               await LoginController().signOut();
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Login()));
             },
           ),
-        ],),
+        ],
+      ),
     );
   }
 }
