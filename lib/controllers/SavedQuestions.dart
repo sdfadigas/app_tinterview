@@ -15,7 +15,7 @@ class Question {
 }
 
 class SavedQuestionsProvider extends ChangeNotifier {
-  List<Question> _savedQuestions = [];
+  final List<Question> _savedQuestions = [];
 
   List<Question> get savedQuestions => _savedQuestions;
 

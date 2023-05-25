@@ -1,7 +1,6 @@
 // ignore_for_file: empty_constructor_bodies
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
 class DBFirestore {
   //List lista_techs = [];

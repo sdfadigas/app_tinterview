@@ -60,13 +60,16 @@ class _CustomDrawerState extends State<CustomDrawer> {
             title: const Text('Meus Itens Salvos',
                 style: TextStyle(color: Color(0xFFeeeeee))),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ItensSalvosPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ItensSalvosPage()));
             },
           ),
           ListTile(
             leading: const Icon(Icons.info, color: Color(0xFFeeeeee)),
-            title: const Text('Sobre', style: TextStyle(color: Color(0xFFeeeeee))),
+            title:
+                const Text('Sobre', style: TextStyle(color: Color(0xFFeeeeee))),
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const AboutPage()));
@@ -75,11 +78,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
           const Divider(),
           ListTile(
             leading: const Icon(Icons.logout, color: Color(0xFFeeeeee)),
-            title: const Text('Sair', style: TextStyle(color: Color(0xFFeeeeee))),
+            title:
+                const Text('Sair', style: TextStyle(color: Color(0xFFeeeeee))),
             onTap: () {
               //await LoginController().signOut();
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => const Login()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Login()));
             },
           ),
         ],

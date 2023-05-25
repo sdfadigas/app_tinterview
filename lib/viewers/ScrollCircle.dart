@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 class ScrollCircle extends StatelessWidget {
   final String linguagem;
 
-  ScrollCircle({required this.linguagem});
+  const ScrollCircle({super.key, required this.linguagem});
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 0, right: 3),
+      padding: const EdgeInsets.only(left: 0, right: 3),
       child: SizedBox(
         height: 80,
         width: 80,
         child: IconButton(
-          icon: Image.asset("images/icons/${linguagem}.png"),
+          icon: Image.asset("images/icons/$linguagem.png"),
           iconSize: 48,
           onPressed: () async {
             var dados = await DBFirestore().queryTech(linguagem);

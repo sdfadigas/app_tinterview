@@ -8,6 +8,8 @@ import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
 
 
 class DrawerPage extends StatefulWidget {
+  const DrawerPage({super.key});
+
   @override
   _DrawerPageState createState() => _DrawerPageState();
 }
@@ -31,7 +33,7 @@ class _DrawerPageState extends State<DrawerPage> {
 
 
       child: Container(
-        color: Color(0xFF222222),
+        color: const Color(0xFF222222),
         alignment: Alignment.centerRight,
         child: ListView(
           padding: EdgeInsets.zero,
@@ -49,8 +51,8 @@ class _DrawerPageState extends State<DrawerPage> {
                       backgroundImage: _image != null ? FileImage(_image!) : null,
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Text(
+                  const SizedBox(height: 10),
+                  const Text(
                     "Boas Vindas!",
                     style: TextStyle(
                       fontSize: 18,
@@ -62,27 +64,27 @@ class _DrawerPageState extends State<DrawerPage> {
             ),
             ListTile(
 
-              leading: Icon(Icons.bookmark, color: Color(0xFFeeeeee)),
-              title: Text('Meus Itens Salvos', style: TextStyle(color: Color(0xFFeeeeee))),
+              leading: const Icon(Icons.bookmark, color: Color(0xFFeeeeee)),
+              title: const Text('Meus Itens Salvos', style: TextStyle(color: Color(0xFFeeeeee))),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ItensSalvosPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ItensSalvosPage()));
               },
             ),
             ListTile(
-              leading: Icon(Icons.info, color: Color(0xFFeeeeee)),
-              title: Text('Sobre',style: TextStyle(color: Color(0xFFeeeeee))),
+              leading: const Icon(Icons.info, color: Color(0xFFeeeeee)),
+              title: const Text('Sobre',style: TextStyle(color: Color(0xFFeeeeee))),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => AboutPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AboutPage()));
               },
             ),
-            Divider(),
+            const Divider(),
 
             ListTile(
-              leading: Icon(Icons.logout, color: Color(0xFFeeeeee)),
-              title: Text('Sair', style: TextStyle(color: Color(0xFFeeeeee))),
+              leading: const Icon(Icons.logout, color: Color(0xFFeeeeee)),
+              title: const Text('Sair', style: TextStyle(color: Color(0xFFeeeeee))),
               onTap: () async {
                 await LoginController().signOut();
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const Login()));
               },
             ),
           ],),

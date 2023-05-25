@@ -16,11 +16,11 @@ class Cadastro extends StatefulWidget {
 class _CadastroState extends State<Cadastro> {
 
   // controladores
-  TextEditingController _controllerNome = TextEditingController();
-  TextEditingController _controllerEmail = TextEditingController();
-  TextEditingController _controllerSenha = TextEditingController();
+  final TextEditingController _controllerNome = TextEditingController();
+  final TextEditingController _controllerEmail = TextEditingController();
+  final TextEditingController _controllerSenha = TextEditingController();
   String _mensagemErro = "";
-  ValidadorCampos _validador = ValidadorCamposPadrao();
+  final ValidadorCampos _validador = ValidadorCamposPadrao();
 
   void _validarCampos() {
     // recuperar dados dos campos
@@ -63,64 +63,64 @@ class _CadastroState extends State<Cadastro> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cadastro"),
+        title: const Text("Cadastro"),
       ),
-      backgroundColor: Color(0xFF323232),
+      backgroundColor: const Color(0xFF323232),
       body: Container(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Center(
               child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 (Padding(
-                    padding: EdgeInsets.only(bottom: 50),
+                    padding: const EdgeInsets.only(bottom: 50),
                     child: Image.asset(
                       "images/logo.png",
                       width: 70,
                       height: 70,
                     ))),
                 Padding(
-                  padding: EdgeInsets.only(bottom: 8),
+                  padding: const EdgeInsets.only(bottom: 8),
                   child: TextField(
                     controller: _controllerNome,
                     autofocus: true,
                     keyboardType: TextInputType.text,
-                    style: TextStyle(fontSize: 20, color: Color(0xFFEEEEEE)),
+                    style: const TextStyle(fontSize: 20, color: Color(0xFFEEEEEE)),
                     decoration: InputDecoration(
-                      contentPadding: EdgeInsets.fromLTRB(
+                      contentPadding: const EdgeInsets.fromLTRB(
                         32,
                         16,
                         32,
                         16,
                       ),
                       hintText: "Nome",
-                      hintStyle: TextStyle(color: Color(0xFFE7D110)),
+                      hintStyle: const TextStyle(color: Color(0xFFE7D110)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(color: Color(0xFFE7D110)),
+                        borderSide: const BorderSide(color: Color(0xFFE7D110)),
                       ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(bottom: 8),
+                  padding: const EdgeInsets.only(bottom: 8),
                   child: TextField(
                     controller: _controllerEmail,
                     keyboardType: TextInputType.emailAddress,
-                    style: TextStyle(fontSize: 20, color: Color(0xFFEEEEEE)),
+                    style: const TextStyle(fontSize: 20, color: Color(0xFFEEEEEE)),
                     decoration: InputDecoration(
-                      contentPadding: EdgeInsets.fromLTRB(
+                      contentPadding: const EdgeInsets.fromLTRB(
                         32,
                         16,
                         32,
                         16,
                       ),
                       hintText: "Email",
-                      hintStyle: TextStyle(color: Color(0xFFE7D110)),
+                      hintStyle: const TextStyle(color: Color(0xFFE7D110)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(color: Color(0xFFE7D110)),
+                        borderSide: const BorderSide(color: Color(0xFFE7D110)),
                       ),
                     ),
                   ),
@@ -129,19 +129,19 @@ class _CadastroState extends State<Cadastro> {
                   controller: _controllerSenha,
                   obscureText: true,
                   keyboardType: TextInputType.text,
-                  style: TextStyle(fontSize: 20, color: Color(0xFFEEEEEE)),
+                  style: const TextStyle(fontSize: 20, color: Color(0xFFEEEEEE)),
                   decoration: InputDecoration(
-                    contentPadding: EdgeInsets.fromLTRB(
+                    contentPadding: const EdgeInsets.fromLTRB(
                       32,
                       16,
                       32,
                       16,
                     ),
                     hintText: "Senha",
-                    hintStyle: TextStyle(color: Color(0xFFE7D110)),
+                    hintStyle: const TextStyle(color: Color(0xFFE7D110)),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0xFFE7D110),
                         width: 5.0,
                       ),
@@ -149,22 +149,22 @@ class _CadastroState extends State<Cadastro> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 16, bottom: 10),
+                  padding: const EdgeInsets.only(top: 16, bottom: 10),
                   child: ElevatedButton(
-                      child: Text(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFFE7D110)),
+                      onPressed: () {
+                        _validarCampos();
+                      },
+                      child: const Text(
                         "Cadastrar",
                         style:
                             TextStyle(color: Color(0xFF323232), fontSize: 20),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFFE7D110)),
-                      onPressed: () {
-                        _validarCampos();
-                      }),
+                      )),
                 ),
                 Center(
                     child: Text(_mensagemErro,
-                        style: TextStyle(color: Colors.red, fontSize: 20)))
+                        style: const TextStyle(color: Colors.red, fontSize: 20)))
               ],
             ),
           ))),

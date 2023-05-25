@@ -4,18 +4,17 @@ import 'package:app_tinterview/viewers/TelaPrincipal.dart';
 import 'package:app_tinterview/controllers/CustomDrawer.dart';
 import 'package:app_tinterview/controllers/SavedQuestions.dart';
 import './Perg_Resp.dart';
-import './ItensSalvosPage.dart';
 
 class Square extends StatelessWidget {
   final Stream dados_bd;
 
-  Square({required this.dados_bd});
+  const Square({super.key, required this.dados_bd});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      appBar: TelaPrincipal().return_AppBar(),
+      appBar: const TelaPrincipal().return_AppBar(),
       endDrawer: const CustomDrawer(),
       body: StreamBuilder(
         stream: dados_bd,
@@ -105,7 +104,7 @@ class Square extends StatelessWidget {
                         child: Icon(
                           isSaved ? Icons.bookmark : Icons.bookmark_border,
                           color: isSaved
-                              ? Color.fromARGB(255, 126, 126, 126)
+                              ? const Color.fromARGB(255, 126, 126, 126)
                               : Colors.grey,
                         ),
                       );

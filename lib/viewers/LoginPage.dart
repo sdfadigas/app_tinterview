@@ -19,16 +19,16 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF323232),
+      backgroundColor: const Color(0xFF323232),
       body: Container(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Center(
               child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 (Padding(
-                    padding: EdgeInsets.only(bottom: 32),
+                    padding: const EdgeInsets.only(bottom: 32),
                     child: Image.asset(
                       "images/logo.png",
                       width: 120,
@@ -37,7 +37,7 @@ class _LoginState extends State<Login> {
 
 
                Padding(
-                  padding: EdgeInsets.only(top: 12, bottom: 4),
+                  padding: const EdgeInsets.only(top: 12, bottom: 4),
                   child: SizedBox(
 
                     width: double.infinity,
@@ -50,7 +50,7 @@ class _LoginState extends State<Login> {
                         if (user != null) {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => TelaPrincipal()),
+                            MaterialPageRoute(builder: (context) => const TelaPrincipal()),
                           );
                         }
                       },
@@ -58,7 +58,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Padding(
-                    padding: EdgeInsets.only(bottom: 4),
+                    padding: const EdgeInsets.only(bottom: 4),
                     child: SignInButton(
                       Buttons.GitHub,
                       text: "Login com o GitHUb",
@@ -67,7 +67,7 @@ class _LoginState extends State<Login> {
                       },
                     )),
                 Padding(
-                    padding: EdgeInsets.only(bottom: 32),
+                    padding: const EdgeInsets.only(bottom: 32),
                     child: SignInButton(
                       Buttons.Facebook,
                       text: "Login com o Facebook",
@@ -76,14 +76,14 @@ class _LoginState extends State<Login> {
                       },
                     )),
 
-                Padding(padding: EdgeInsets.only(top: 16, bottom: 4)),
+                const Padding(padding: EdgeInsets.only(top: 16, bottom: 4)),
                 Center(
                     child: GestureDetector(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => TelaPrincipal()));
+                        MaterialPageRoute(builder: (context) => const TelaPrincipal()));
                   },
-                  child: Text('Iniciar como convidado',
+                  child: const Text('Iniciar como convidado',
                       style: TextStyle(
                           color: Color(0xFFE7D110),
                           fontSize: 16,

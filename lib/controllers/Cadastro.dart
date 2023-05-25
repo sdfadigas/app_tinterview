@@ -11,11 +11,12 @@ class Cadastro extends StatefulWidget {
 }
 
 class _CadastroState extends State<Cadastro> {
-  TextEditingController _controllerNome = TextEditingController();
-  TextEditingController _controllerEmail = TextEditingController();
-  TextEditingController _controllerSenha = TextEditingController();
+  final TextEditingController _controllerNome = TextEditingController();
+  final TextEditingController _controllerEmail = TextEditingController();
+  final TextEditingController _controllerSenha = TextEditingController();
+  // ignore: unused_field
   String _mensagemErro = "";
-  ValidadorCampos _validador = ValidadorCamposPadrao();
+  final ValidadorCampos _validador = ValidadorCamposPadrao();
 
   void _validarCampos() {
     // recuperar dados dos campos
@@ -34,7 +35,8 @@ class _CadastroState extends State<Cadastro> {
       void _cadastrarUsuario() {
         FirebaseAuth auth = FirebaseAuth.instance;
         auth
-            .createUserWithEmailAndPassword(email: usuario.email, password: usuario.senha)
+            .createUserWithEmailAndPassword(
+                email: usuario.email, password: usuario.senha)
             .then((firebaseUser) {
           setState(() {
             _mensagemErro = "Sucesso ao cadastrar";

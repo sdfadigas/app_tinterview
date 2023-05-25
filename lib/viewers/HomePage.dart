@@ -11,31 +11,32 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
+  @override
   void initState() {
     super.initState();
     _carregarApp();
   }
 
   Future<void> _carregarApp() async {
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 3));
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => Login()),
+      MaterialPageRoute(builder: (context) => const Login()),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFAE800),
+      backgroundColor: const Color(0xFFFAE800),
       body: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(bottom: 32),
+                  padding: const EdgeInsets.only(bottom: 32),
                   child: Image.asset(
                     "images/logoFull.png",
                     width: 300,

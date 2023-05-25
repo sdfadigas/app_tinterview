@@ -9,16 +9,16 @@ class ItensSalvosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF222222),
+      backgroundColor: const Color(0xFF222222),
       appBar: AppBar(
-        backgroundColor: Color(0xFF222222),
+        backgroundColor: const Color(0xFF222222),
         centerTitle: true,
         title: Image.asset(
           "images/logo.png",
           width: 50,
         ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -27,10 +27,10 @@ class ItensSalvosPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            SizedBox(height: 18),
-            Row(
+            const SizedBox(height: 18),
+            const Row(
               children: <Widget>[
-                Container(
+                SizedBox(
                   width: 50,
                   height: 50,
                   child: Icon(
@@ -51,13 +51,13 @@ class ItensSalvosPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 18),
+            const SizedBox(height: 18),
             Consumer<SavedQuestionsProvider>(
               builder: (context, savedQuestionsProvider, _) {
                 final savedQuestions = savedQuestionsProvider.savedQuestions;
                 return ListView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: savedQuestions.length,
                   itemBuilder: (context, index) {
                     var question = savedQuestions[index];
