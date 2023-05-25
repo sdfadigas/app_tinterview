@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:app_tinterview/viewers/LoginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:app_tinterview/models/LoginLogoutGoogle.dart';
 import 'package:app_tinterview/viewers/AboutPage.dart';
 import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
 
@@ -29,7 +28,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Color(0xFF222222),
+      backgroundColor: const Color(0xFF222222),
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
@@ -45,8 +44,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     backgroundImage: _image != null ? FileImage(_image!) : null,
                   ),
                 ),
-                SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   "Boas Vindas!",
                   style: TextStyle(
                     fontSize: 18,
@@ -57,30 +56,30 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.bookmark, color: Color(0xFFeeeeee)),
-            title: Text('Meus Itens Salvos',
+            leading: const Icon(Icons.bookmark, color: Color(0xFFeeeeee)),
+            title: const Text('Meus Itens Salvos',
                 style: TextStyle(color: Color(0xFFeeeeee))),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ItensSalvosPage()));
+                  MaterialPageRoute(builder: (context) => const ItensSalvosPage()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.info, color: Color(0xFFeeeeee)),
-            title: Text('Sobre', style: TextStyle(color: Color(0xFFeeeeee))),
+            leading: const Icon(Icons.info, color: Color(0xFFeeeeee)),
+            title: const Text('Sobre', style: TextStyle(color: Color(0xFFeeeeee))),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => AboutPage()));
+                  MaterialPageRoute(builder: (context) => const AboutPage()));
             },
           ),
-          Divider(),
+          const Divider(),
           ListTile(
-            leading: Icon(Icons.logout, color: Color(0xFFeeeeee)),
-            title: Text('Sair', style: TextStyle(color: Color(0xFFeeeeee))),
-            onTap: () async {
-              await LoginController().signOut();
+            leading: const Icon(Icons.logout, color: Color(0xFFeeeeee)),
+            title: const Text('Sair', style: TextStyle(color: Color(0xFFeeeeee))),
+            onTap: () {
+              //await LoginController().signOut();
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Login()));
+                  context, MaterialPageRoute(builder: (context) => const Login()));
             },
           ),
         ],

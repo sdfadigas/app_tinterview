@@ -38,8 +38,8 @@ class _HomeState extends State<Home> {
                   padding: EdgeInsets.only(bottom: 32),
                   child: Image.asset(
                     "images/logoFull.png",
-                    width: 400,
-                    height: 300,
+                    width: 300,
+                    height: 200,
                   ),
                 ),
               ],

@@ -39,25 +39,29 @@ class Filtro_Mobile extends StatefulWidget {
 
 class _Filtro_MobileState extends State<Filtro_Mobile> {
   List<String> escolhas = [];
-  String tecnolog_Var = '';
+  String tecnolog_Var = 'Flutter';
   String entrev_Var = 'Sem Codigo';
   String nivel_Var = 'Junior';
 
   List<String> entrevista = ['Sem Codigo', 'Com Codigo'];
   List<String> nivel = ['Junior', 'Pleno', 'Senior'];
-  List<String> tecnologias = [];
+  List<String> tecnologias = [
+    'Flutter',
+    'Java',
+    'Swift',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      appBar: TelaPrincipal().return_AppBar(),
+      appBar: const TelaPrincipal().return_AppBar(),
       endDrawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             const SizedBox(height: 18),
-            TelaPrincipal().return_Anuncio(),
+            const TelaPrincipal().return_Anuncio(),
             const SizedBox(height: 20),
             const Filtro_Mobile().return_TituloStack('MOBILE'),
             const SizedBox(height: 20),
@@ -142,20 +146,18 @@ class _Filtro_MobileState extends State<Filtro_Mobile> {
                   ),
                 ),
                 pressElevation: 7,
-                
                 onPressed: () async {
                   escolhas.clear();
-                  escolhas.add('MOBILE');
+                  escolhas.add('BACKEND');
                   escolhas.add(tecnolog_Var.toUpperCase());
                   escolhas.add(entrev_Var.toUpperCase());
                   escolhas.add(nivel_Var.toUpperCase());
 
                   var dados = await DBFirestore().queryFilter(escolhas);
                   await Navigator.push(
-                  context,
-                     MaterialPageRoute(
-                       builder: (context) => Square(dados_bd: dados)));
-        
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Square(dados_bd: dados)));
                 },
               ),
             ),

@@ -39,25 +39,33 @@ class Filtro_BackEnd extends StatefulWidget {
 
 class _Filtro_BackEndState extends State<Filtro_BackEnd> {
   List<String> escolhas = [];
-  String tecnolog_Var = '';
+  String tecnolog_Var = 'Java';
   String entrev_Var = 'Sem Codigo';
   String nivel_Var = 'Junior';
 
   List<String> entrevista = ['Sem Codigo', 'Com Codigo'];
   List<String> nivel = ['Junior', 'Pleno', 'Senior'];
-  List<String> tecnologias = [];
+  List<String> tecnologias = [
+    'Java',
+    'Flutter',
+    'Python',
+    'C#',
+    'Swift',
+    'PHP',
+    'Ruby',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      appBar: TelaPrincipal().return_AppBar(),
+      appBar: const TelaPrincipal().return_AppBar(),
       endDrawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             const SizedBox(height: 18),
-            TelaPrincipal().return_Anuncio(),
+            const TelaPrincipal().return_Anuncio(),
             const SizedBox(height: 20),
             const Filtro_BackEnd().return_TituloStack('BACK END'),
             const SizedBox(height: 20),
@@ -142,7 +150,6 @@ class _Filtro_BackEndState extends State<Filtro_BackEnd> {
                   ),
                 ),
                 pressElevation: 7,
-                
                 onPressed: () async {
                   escolhas.clear();
                   escolhas.add('BACKEND');
@@ -152,10 +159,9 @@ class _Filtro_BackEndState extends State<Filtro_BackEnd> {
 
                   var dados = await DBFirestore().queryFilter(escolhas);
                   await Navigator.push(
-                  context,
-                     MaterialPageRoute(
-                       builder: (context) => Square(dados_bd: dados)));
-        
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Square(dados_bd: dados)));
                 },
               ),
             ),
