@@ -76,8 +76,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
           ListTile(
             leading: Icon(Icons.logout, color: Color(0xFFeeeeee)),
             title: Text('Sair', style: TextStyle(color: Color(0xFFeeeeee))),
-            onTap: () async {
-              await LoginController().signOut();
+            onTap: ()  {
+              //await LoginController().signOut();
               Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
             },
           ),

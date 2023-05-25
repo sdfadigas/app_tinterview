@@ -10,10 +10,12 @@ import 'ScrollCircle.dart';
 import 'Square.dart';
 
 class TelaPrincipal extends StatefulWidget {
+  const TelaPrincipal({super.key});
+
 // * FUNÇÃO AppBAR
   return_AppBar() {
     return AppBar(
-      backgroundColor: Color(0xFF222222),
+      backgroundColor: const Color(0xFF222222),
       centerTitle: true,
       title: Image.asset(
         "images/logo.png",
@@ -31,13 +33,12 @@ class TelaPrincipal extends StatefulWidget {
       },
       child: Container(
         width: 385,
-        height: 100,
+        height: 110,
         color: Colors.grey,
-        child: const Center(
-          child: Text(
-            'Anúncio', // Conteúdo da caixa de anúncio
-            style: TextStyle(fontSize: 24, color: Colors.white),
-          ),
+        child: Image.asset(
+          "images/publicity/SENAI.png",
+          width: 385,
+          height: 100,
         ),
       ),
     );
@@ -54,11 +55,12 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      appBar: TelaPrincipal().return_AppBar(),
+      appBar: const TelaPrincipal().return_AppBar(),
       endDrawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
+            const SizedBox(height: 15),
 
             // * CAIXA DE PESQUISA
             Padding(
@@ -71,7 +73,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                   hintText: 'Digite uma tecnologia',
                   hintStyle: TextStyle(color: Colors.grey[700], fontSize: 19),
                   suffixIcon: IconButton(
-                    padding: EdgeInsets.all(4.0),
+                    padding: const EdgeInsets.all(4.0),
                     icon: const Icon(
                       Icons.search,
                       color: Color.fromARGB(255, 51, 49, 49),
@@ -112,9 +114,9 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             const SizedBox(height: 20),
 
             // * ANUNCIO
-            TelaPrincipal().return_Anuncio(),
+            const TelaPrincipal().return_Anuncio(),
 
-            const SizedBox(height: 18),
+            const SizedBox(height: 35),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -123,8 +125,10 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
 
                 InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Filtro_FrontEnd()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Filtro_FrontEnd()));
                   },
                   child: Container(
                     width: 140,
@@ -154,13 +158,14 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                   ),
                 ),
 
-
                 // * BOTÃO BACKEND
 
                 InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Filtro_BackEnd()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Filtro_BackEnd()));
                   },
                   child: Container(
                     width: 140,
@@ -202,7 +207,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Filtro_Mobile()));
+                              builder: (context) => const Filtro_Mobile()));
                     },
                     child: Container(
                       width: 140,
@@ -235,7 +240,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Filtro_Banco()));
+                              builder: (context) => const Filtro_Banco()));
                     },
                     child: Container(
                       width: 140,
@@ -277,5 +282,5 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
 }
 
 void main() {
-  runApp(TelaPrincipal());
+  runApp(const TelaPrincipal());
 }

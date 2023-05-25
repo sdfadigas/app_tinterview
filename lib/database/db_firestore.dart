@@ -39,15 +39,22 @@ class DBFirestore {
   }
 
   // * Lista de linguagens:
-  List lista_techs = [
+   List lista_techs = [
+    'JAVASCRIPT',
     "PYTHON",
+    'ANGULAR',
+    "RUBY",
+    "SWIFT",
+    "C#",
+    "PHP", 
+    "SQL",
     "FLUTTER",
     'JAVA',
-    'CSS',
-    'ANGULAR',
     'HTML',
-    'JAVASCRIPT',
-    "RUBY"
+    'CSS',
+    "REACT", 
+    "VUE",
+
   ];
 
   // * Lista de perguntas para subir ao banco:

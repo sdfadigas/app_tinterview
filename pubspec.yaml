@@ -83,15 +83,20 @@ flutter:
     - images/icons/ANGULAR.png
     - images/icons/NODE.png
     - images/icons/PYTHON.png
- #   - images/icons/PHP.png
+    - images/icons/PHP.png
     - images/icons/FLUTTER.png
- #   - images/icons/C#.png
+    - images/icons/C#.png
     - images/icons/RUBY.png
- #   - images/icons/SQL.png
+    - images/icons/SQL.png
     - images/icons/NODE.png
- #   - images/icons/FIREBASE.png
- #   - images/icons/MONGODB.png
- #   - images/icons/MYSQL.png
+    - images/icons/REACT.png
+    - images/icons/SWIFT.png
+    - images/icons/SQL.png
+    - images/icons/VUE.png
+    - images/publicity/SENAI.png
+    - images/publicity/SENAISENAI.png
+    - images/publicity/SENAI2.jpg
+    - images/publicity/SENAILOGO.jpg
     
     
     

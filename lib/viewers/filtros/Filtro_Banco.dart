@@ -51,13 +51,13 @@ class _Filtro_BancoState extends State<Filtro_Banco> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      appBar: TelaPrincipal().return_AppBar(),
+      appBar: const TelaPrincipal().return_AppBar(),
       endDrawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             const SizedBox(height: 18),
-            TelaPrincipal().return_Anuncio(),
+            const TelaPrincipal().return_Anuncio(),
             const SizedBox(height: 20),
             const Filtro_Banco().return_TituloStack('MOBILE'),
             const SizedBox(height: 20),
@@ -142,20 +142,18 @@ class _Filtro_BancoState extends State<Filtro_Banco> {
                   ),
                 ),
                 pressElevation: 7,
-                
                 onPressed: () async {
                   escolhas.clear();
-                  escolhas.add('BANCO');
+                  escolhas.add('BACKEND');
                   escolhas.add(tecnolog_Var.toUpperCase());
                   escolhas.add(entrev_Var.toUpperCase());
                   escolhas.add(nivel_Var.toUpperCase());
 
                   var dados = await DBFirestore().queryFilter(escolhas);
                   await Navigator.push(
-                  context,
-                     MaterialPageRoute(
-                       builder: (context) => Square(dados_bd: dados)));
-        
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Square(dados_bd: dados)));
                 },
               ),
             ),
