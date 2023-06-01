@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../controllers/CustomDrawer.dart';
-import 'TelaPrincipal.dart';
+import 'package:app_tinterview/viewers/widgets.dart';
 
 class PergResp extends StatelessWidget {
   var dados;
@@ -12,7 +12,7 @@ class PergResp extends StatelessWidget {
     List imagem = dados['filtros'];
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      appBar: const TelaPrincipal().return_AppBar(),
+      appBar: return_AppBar(),
       endDrawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
@@ -21,8 +21,7 @@ class PergResp extends StatelessWidget {
             child: CircleAvatar(
               radius: 32,
               backgroundColor: const Color.fromARGB(255, 41, 41, 41),
-              backgroundImage:
-                  AssetImage("images/icons/${imagem[1]}.png"),
+              backgroundImage: AssetImage("images/icons/${imagem[1]}.png"),
             ),
           ),
           Padding(

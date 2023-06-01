@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:app_tinterview/controllers/SavedQuestions.dart';
 import 'package:app_tinterview/viewers/Perg_Resp.dart';
 import 'package:provider/provider.dart';
+import 'package:app_tinterview/viewers/widgets.dart';
 
 class ItensSalvosPage extends StatelessWidget {
   const ItensSalvosPage({Key? key}) : super(key: key);
@@ -10,20 +11,7 @@ class ItensSalvosPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF222222),
-        centerTitle: true,
-        title: Image.asset(
-          "images/logo.png",
-          width: 50,
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
+      appBar: return_AppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -52,6 +40,7 @@ class ItensSalvosPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 18),
+            return_Anuncio(),
             Consumer<SavedQuestionsProvider>(
               builder: (context, savedQuestionsProvider, _) {
                 final savedQuestions = savedQuestionsProvider.savedQuestions;

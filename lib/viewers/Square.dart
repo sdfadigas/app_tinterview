@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:app_tinterview/viewers/TelaPrincipal.dart';
 import 'package:app_tinterview/controllers/CustomDrawer.dart';
 import 'package:app_tinterview/controllers/SavedQuestions.dart';
 import './Perg_Resp.dart';
+import 'package:app_tinterview/viewers/widgets.dart';
 
 class Square extends StatelessWidget {
   final Stream dados_bd;
@@ -14,7 +14,7 @@ class Square extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      appBar: const TelaPrincipal().return_AppBar(),
+      appBar: return_AppBar(),
       endDrawer: const CustomDrawer(),
       body: StreamBuilder(
         stream: dados_bd,
@@ -37,13 +37,6 @@ class Square extends StatelessWidget {
               List imagem = dados['filtros'];
               String pergunta = dados["pergunta"];
               String resposta = dados["resposta"];
-
-              final question = Question(
-                title: pergunta,
-                subtitle: resposta,
-                image: imagem[1],
-                data: dados,
-              );
 
               return Container(
                 padding: const EdgeInsets.only(top: 8, left: 10, right: 10),

@@ -5,44 +5,13 @@ import 'filtros/Filtro_FrontEnd.dart';
 import 'filtros/Filtro_BackEnd.dart';
 import 'filtros/Filtro_Mobile.dart';
 import 'filtros/Filtro_Banco.dart';
+import 'package:app_tinterview/viewers/widgets.dart';
 
 import 'ScrollCircle.dart';
 import 'Square.dart';
 
 class TelaPrincipal extends StatefulWidget {
-  const TelaPrincipal({super.key});
-
-// * FUNÇÃO AppBAR
-  return_AppBar() {
-    return AppBar(
-      backgroundColor: const Color(0xFF222222),
-      centerTitle: true,
-      title: Image.asset(
-        "images/logo.png",
-        width: 48,
-        height: 48,
-      ),
-    );
-  }
-
-// * FUNÇÃO ANÚNCIO
-  return_Anuncio() {
-    return InkWell(
-      onTap: () {
-        print('Anúncio clicado!'); // Ação do anúncio quando for clicado
-      },
-      child: Container(
-        width: 385,
-        height: 110,
-        color: Colors.grey,
-        child: Image.asset(
-          "images/publicity/SENAI.png",
-          width: 385,
-          height: 100,
-        ),
-      ),
-    );
-  }
+  const TelaPrincipal({Key? key}) : super(key: key);
 
   @override
   _TelaPrincipalState createState() => _TelaPrincipalState();
@@ -55,13 +24,12 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      appBar: const TelaPrincipal().return_AppBar(),
+      appBar: return_AppBar(),
       endDrawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             const SizedBox(height: 15),
-
             // * CAIXA DE PESQUISA
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -114,7 +82,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             const SizedBox(height: 20),
 
             // * ANUNCIO
-            const TelaPrincipal().return_Anuncio(),
+            return_Anuncio(),
 
             const SizedBox(height: 35),
 

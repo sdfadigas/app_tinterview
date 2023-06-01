@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../controllers/CustomDrawer.dart';
 import '../../database/db_firestore.dart';
 import '../Square.dart';
-import '../TelaPrincipal.dart';
+import 'package:app_tinterview/viewers/widgets.dart';
 
 class Filtro_BackEnd extends StatefulWidget {
   const Filtro_BackEnd({super.key});
@@ -59,13 +59,13 @@ class _Filtro_BackEndState extends State<Filtro_BackEnd> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      appBar: const TelaPrincipal().return_AppBar(),
+      appBar: return_AppBar(),
       endDrawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             const SizedBox(height: 18),
-            const TelaPrincipal().return_Anuncio(),
+            return_Anuncio(),
             const SizedBox(height: 20),
             const Filtro_BackEnd().return_TituloStack('BACK END'),
             const SizedBox(height: 20),

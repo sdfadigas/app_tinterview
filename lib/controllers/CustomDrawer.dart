@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:app_tinterview/viewers/AboutPage.dart';
 import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
+import 'package:app_tinterview/viewers/QuizPage.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -73,6 +74,15 @@ class _CustomDrawerState extends State<CustomDrawer> {
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const AboutPage()));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.lightbulb, color: Color(0xFFeeeeee)),
+            title:
+                const Text('Quiz', style: TextStyle(color: Color(0xFFeeeeee))),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => QuizPage()));
             },
           ),
           const Divider(),

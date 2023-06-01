@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../controllers/CustomDrawer.dart';
 import '../../database/db_firestore.dart';
 import '../Square.dart';
-import '../TelaPrincipal.dart';
+import 'package:app_tinterview/viewers/widgets.dart';
 
 class Filtro_Banco extends StatefulWidget {
   const Filtro_Banco({super.key});
@@ -51,13 +51,13 @@ class _Filtro_BancoState extends State<Filtro_Banco> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      appBar: const TelaPrincipal().return_AppBar(),
+      appBar: return_AppBar(),
       endDrawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             const SizedBox(height: 18),
-            const TelaPrincipal().return_Anuncio(),
+            return_Anuncio(),
             const SizedBox(height: 20),
             const Filtro_Banco().return_TituloStack('MOBILE'),
             const SizedBox(height: 20),
