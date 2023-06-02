@@ -81,8 +81,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
             title:
                 const Text('Quiz', style: TextStyle(color: Color(0xFFeeeeee))),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => QuizPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => QuizScreen()));
             },
           ),
           const Divider(),

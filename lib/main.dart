@@ -4,6 +4,7 @@ import 'package:app_tinterview/controllers/SavedQuestions.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'viewers/HomePage.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,8 +13,9 @@ void main() async {
   runApp(
     ChangeNotifierProvider(
       create: (context) => SavedQuestionsProvider(),
-      child: const MaterialApp(
-        home: Home(),
+      child: MaterialApp(
+        theme: ThemeData(fontFamily: 'RockoFLF'),
+        home: const Home(),
         debugShowCheckedModeBanner: false,
       ),
     ),

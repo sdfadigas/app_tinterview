@@ -1,6 +1,7 @@
 import 'package:app_tinterview/database/db_firestore.dart';
 import 'package:app_tinterview/viewers/Square.dart';
 import 'package:flutter/material.dart';
+
 class ScrollCircle extends StatelessWidget {
   final String linguagem;
 
@@ -20,7 +21,9 @@ class ScrollCircle extends StatelessWidget {
             await Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => Square(dados_bd: dados) , //levado para próxima tela com os dados da linguagem
+                builder: (context) => Square(
+                    dados_bd:
+                        dados), //levado para próxima tela com os dados da linguagem
               ),
             );
           },
