@@ -38,36 +38,29 @@ class DBFirestore {
   }
 
   // * Lista de linguagens:
-   List lista_techs = [
+  List lista_techs = [
     'JAVASCRIPT',
     "PYTHON",
     'ANGULAR',
     "RUBY",
     "SWIFT",
     "C#",
-    "PHP", 
+    "PHP",
     "SQL",
     "FLUTTER",
     'JAVA',
     'HTML',
     'CSS',
-    "REACT", 
+    "REACT",
     "VUE",
-
   ];
 
   // * Lista de perguntas para subir ao banco:
-  List<Map<String, dynamic>> data = [
-    
-  ];
-
+  List<Map<String, dynamic>> data = [];
 }
 
-
-
-
-    // * CONSULTA SIMPLES: Recebe: Retorna List Map com perguntas que a contém em "filtros:".
-  /*
+// * CONSULTA SIMPLES: Recebe: Retorna List Map com perguntas que a contém em "filtros:".
+/*
   Future queryTech(linguagem) async {
     QuerySnapshot querySnapshot = await _firestore
         .collection("interview")

@@ -61,7 +61,7 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   void loadQuestions() async {
-    QuerySnapshot snapshot = await firestore.collection('questions').get();
+    QuerySnapshot snapshot = await firestore.collection('quiz').get();
 
     List<Question> loadedQuestions = [];
     snapshot.docs.forEach((doc) {
@@ -194,11 +194,24 @@ class ResultPage extends StatelessWidget {
 
 class Question {
   final String question;
-  final bool answer;
+  final List<String> options;
+  final int answerIndex;
 
-  Question({required this.question, required this.answer});
+  Question({
+    required this.question,
+    required this.options,
+    required this.answerIndex,
+  });
 
-  Question.fromSnapshot(DocumentSnapshot snapshot)
-      : question = snapshot['question'],
-        answer = snapshot['answer'];
+  factory Question.fromSnapshot(DocumentSnapshot snapshot) {
+    Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+
+    return Question(
+      question: data['question'],
+      options: List<String>.from(data['options']),
+      answerIndex: data['answerIndex'],
+    );
+  }
+
+  String get answer => options[answerIndex];
 }
