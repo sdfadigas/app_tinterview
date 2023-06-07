@@ -24,7 +24,16 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      appBar: return_AppBar(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color(0xFF222222),
+        centerTitle: true,
+        title: Image.asset(
+          "images/logo.png",
+          width: 48,
+          height: 48,
+        ),
+      ),
       endDrawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(
@@ -68,15 +77,31 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
 
             // * LISTA HORIZONATAL DE TECNOLOGIAS OU 'STORIES'KKK
             SizedBox(
-              height: 80,
-              child: ListView.builder(
-                  itemCount: DBFirestore().lista_techs.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, Index) {
-                    return ScrollCircle(
-                      linguagem: DBFirestore().lista_techs[Index],
-                    );
-                  }),
+              width: double.infinity,
+              child: Center(
+                child: SizedBox(
+                  height: 80,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: DBFirestore().lista_techs.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return ScrollCircle(
+                              linguagem: DBFirestore().lista_techs[index],
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ),
 
             const SizedBox(height: 20),
@@ -86,12 +111,12 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
 
             const SizedBox(height: 35),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Wrap(
+              alignment: WrapAlignment.spaceEvenly,
               children: <Widget>[
                 // * BOTÃO FRONTEND
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(18.0),
                   child: InkWell(
                     onTap: () {
                       Navigator.push(
@@ -130,7 +155,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
 
                 // * BOTÃO BACKEND
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(18.0),
                   child: InkWell(
                     onTap: () {
                       Navigator.push(
@@ -166,91 +191,85 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                     ),
                   ),
                 ),
-              ],
-            ),
 
-            Column(children: <Widget>[
-              const SizedBox(height: 18),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Filtro_Mobile()));
-                      },
-                      child: Container(
-                        width: 140,
-                        height: 140,
-                        decoration: BoxDecoration(
-                            color: const Color(0xFF363533),
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  spreadRadius: 3,
-                                  blurRadius: 1,
-                                  offset: const Offset(2, -2))
-                            ]),
-                        child: const Center(
-                          child: Text(
-                            'Mobile',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: Color(0xFFeeeeee),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Filtro_Banco()));
-                      },
-                      child: Container(
-                        width: 140,
-                        height: 140,
-                        decoration: BoxDecoration(
+                // * BOTÃO MOBILE
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Filtro_Mobile()));
+                    },
+                    child: Container(
+                      width: 140,
+                      height: 140,
+                      decoration: BoxDecoration(
+                          color: const Color(0xFF363533),
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.black.withOpacity(0.3),
                                 spreadRadius: 3,
                                 blurRadius: 1,
-                                offset: const Offset(-2, -2))
-                          ],
-                          color: const Color(0xFF363533),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            'Banco de dados',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: Color(0xFFeeeeee),
-                            ),
+                                offset: const Offset(2, -2))
+                          ]),
+                      child: const Center(
+                        child: Text(
+                          'Mobile',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                            color: Color(0xFFeeeeee),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
-            ]),
+                ),
 
+                // * BOTÃO BANCO DE DADOS
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Filtro_Banco()));
+                    },
+                    child: Container(
+                      width: 140,
+                      height: 140,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              spreadRadius: 3,
+                              blurRadius: 1,
+                              offset: const Offset(-2, -2))
+                        ],
+                        color: const Color(0xFF363533),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Banco de dados',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                            color: Color(0xFFeeeeee),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
             const SizedBox(height: 22)
           ],
         ),

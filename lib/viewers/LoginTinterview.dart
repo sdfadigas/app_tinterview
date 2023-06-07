@@ -97,7 +97,7 @@ class LoginTinterview extends StatelessWidget {
                   prefixIcon: Icon(Icons.lock, color: Colors.white),
                 ),
               ),
-              SizedBox(height: 16.0),
+              SizedBox(height: 26.0),
               Align(
                 alignment: Alignment.center,
                 child: ElevatedButton(
@@ -114,7 +114,7 @@ class LoginTinterview extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 16.0),
+              SizedBox(height: 26.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

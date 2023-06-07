@@ -28,7 +28,6 @@ class _CadastroState extends State<Cadastro> {
       builder: (context, child) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Cadastro'),
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
