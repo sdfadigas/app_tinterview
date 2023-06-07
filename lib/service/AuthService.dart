@@ -39,7 +39,8 @@ class AuthService extends ChangeNotifier {
       _getUser();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        throw AuthException('A senha é muito fraca!');
+        throw AuthException(
+            'A senha é muito fraca! Deve ter 6 ou mais caracteres');
       } else if (e.code == 'email-already-in-use') {
         throw AuthException('Este email já está cadastrado');
       } else {

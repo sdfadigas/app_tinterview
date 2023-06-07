@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../constant/constant.dart';
+import '../viewers/TelaPrincipal.dart';
 
 class Register extends ChangeNotifier {
   bool isLoading = false;
@@ -26,16 +27,23 @@ class Register extends ChangeNotifier {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Tente novamente mais tarde, error: ${e.message}'),
+          content: Text('erro: ${e.message}'),
         ),
       );
     }
     notifyListeners();
   }
 
-  showMensageSuccess(context) {
+  showMensageSuccess(BuildContext context) async {
     ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Cadastro realizado com sucesso!!')));
-    Navigator.popUntil(context, ModalRoute.withName(ConstantsRoute.TELA_PRINCIPAL));
+      const SnackBar(content: Text('Cadastro realizado com sucesso!!')),
+    );
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const TelaPrincipal()),
+    );
   }
 }

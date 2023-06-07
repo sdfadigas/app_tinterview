@@ -51,7 +51,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "Boas Vindas! ${_user.nome ?? ''}",
+                  _user.nome != null
+                      ? "Boas Vindas, ${_user.nome} !"
+                      : "Boas Vindas!",
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,

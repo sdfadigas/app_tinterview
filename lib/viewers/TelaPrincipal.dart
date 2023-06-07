@@ -90,36 +90,38 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 // * BOTÃO FRONTEND
-
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Filtro_FrontEnd()));
-                  },
-                  child: Container(
-                    width: 140,
-                    height: 140,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            spreadRadius: 3,
-                            blurRadius: 1,
-                            offset: const Offset(2, 2))
-                      ],
-                      color: const Color(0xFF363533),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Frontend',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                          color: Color(0xFFeeeeee),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Filtro_FrontEnd()));
+                    },
+                    child: Container(
+                      width: 140,
+                      height: 140,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              spreadRadius: 3,
+                              blurRadius: 1,
+                              offset: const Offset(2, 2))
+                        ],
+                        color: const Color(0xFF363533),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Frontend',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                            color: Color(0xFFeeeeee),
+                          ),
                         ),
                       ),
                     ),
@@ -127,36 +129,38 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                 ),
 
                 // * BOTÃO BACKEND
-
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Filtro_BackEnd()));
-                  },
-                  child: Container(
-                    width: 140,
-                    height: 140,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            spreadRadius: 3,
-                            blurRadius: 1,
-                            offset: const Offset(-2, 2))
-                      ],
-                      color: const Color(0xFF363533),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'Backend',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
-                          color: Color(0xFFeeeeee),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Filtro_BackEnd()));
+                    },
+                    child: Container(
+                      width: 140,
+                      height: 140,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              spreadRadius: 3,
+                              blurRadius: 1,
+                              offset: const Offset(-2, 2))
+                        ],
+                        color: const Color(0xFF363533),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          'Backend',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                            color: Color(0xFFeeeeee),
+                          ),
                         ),
                       ),
                     ),
@@ -170,68 +174,74 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Filtro_Mobile()));
-                    },
-                    child: Container(
-                      width: 140,
-                      height: 140,
-                      decoration: BoxDecoration(
-                          color: const Color(0xFF363533),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Filtro_Mobile()));
+                      },
+                      child: Container(
+                        width: 140,
+                        height: 140,
+                        decoration: BoxDecoration(
+                            color: const Color(0xFF363533),
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.black.withOpacity(0.3),
+                                  spreadRadius: 3,
+                                  blurRadius: 1,
+                                  offset: const Offset(2, -2))
+                            ]),
+                        child: const Center(
+                          child: Text(
+                            'Mobile',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                              color: Color(0xFFeeeeee),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Filtro_Banco()));
+                      },
+                      child: Container(
+                        width: 140,
+                        height: 140,
+                        decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.black.withOpacity(0.3),
                                 spreadRadius: 3,
                                 blurRadius: 1,
-                                offset: const Offset(2, -2))
-                          ]),
-                      child: const Center(
-                        child: Text(
-                          'Mobile',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24,
-                            color: Color(0xFFeeeeee),
-                          ),
+                                offset: const Offset(-2, -2))
+                          ],
+                          color: const Color(0xFF363533),
                         ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Filtro_Banco()));
-                    },
-                    child: Container(
-                      width: 140,
-                      height: 140,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
-                              spreadRadius: 3,
-                              blurRadius: 1,
-                              offset: const Offset(-2, -2))
-                        ],
-                        color: const Color(0xFF363533),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Banco de dados',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24,
-                            color: Color(0xFFeeeeee),
+                        child: const Center(
+                          child: Text(
+                            'Banco de dados',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24,
+                              color: Color(0xFFeeeeee),
+                            ),
                           ),
                         ),
                       ),

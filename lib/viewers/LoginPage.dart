@@ -29,6 +29,51 @@ class Login extends StatelessWidget {
                     ))),
                 Padding(
                   padding: const EdgeInsets.only(top: 12, bottom: 4),
+                  child: Container(
+                    width: double.infinity,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: Color(0xFFFFED00),
+                      borderRadius: BorderRadius.circular(2),
+                    ),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginTinterview()),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 34),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Transform.scale(
+                              scale: 2.0,
+                              child: Image.asset(
+                                "images/logo.png",
+                                width: 36,
+                                height: 36,
+                              ),
+                            ),
+                            SizedBox(width: 2),
+                            Text(
+                              "Login com TInterview",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 14.4,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 6, bottom: 4),
                   child: SizedBox(
                     width: double.infinity,
                     child: SignInButton(
@@ -52,7 +97,7 @@ class Login extends StatelessWidget {
                     padding: const EdgeInsets.only(bottom: 4),
                     child: SignInButton(
                       Buttons.GitHub,
-                      text: "Login com o GitHUb",
+                      text: "Login com o GitHub",
                       onPressed: () {
                         //instanciar a função de login com o github
                       },
@@ -66,19 +111,7 @@ class Login extends StatelessWidget {
                         //instanciar a função de login com o facebook
                       },
                     )),
-                Padding(
-                    padding: const EdgeInsets.only(bottom: 32),
-                    child: SignInButton(
-                      Buttons.Tumblr,
-                      text: "Login com TInterview",
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginTela()));
-                      },
-                    )),
-                const Padding(padding: EdgeInsets.only(top: 16, bottom: 4)),
+                const Padding(padding: EdgeInsets.only(bottom: 4)),
                 Center(
                   child: GestureDetector(
                     onTap: () {
@@ -89,7 +122,14 @@ class Login extends StatelessWidget {
                     },
                     child: const Text('Iniciar como convidado',
                         style: TextStyle(
-                            color: Color(0xFFE7D110),
+                            shadows: [
+                              Shadow(
+                                color: Colors.black,
+                                blurRadius: 8,
+                                offset: Offset.zero,
+                              ),
+                            ],
+                            color: Colors.white,
                             fontSize: 20,
                             fontWeight: FontWeight.bold)),
                   ),
