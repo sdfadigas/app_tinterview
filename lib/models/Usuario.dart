@@ -1,25 +1,34 @@
-class Usuario {
-  late String _nome;
-  late String _email;
-  late String _senha;
+import 'package:app_tinterview/controllers/SavedQuestions.dart';
+import 'package:flutter/material.dart';
 
-  Usuario();
+class UsuarioProvider extends ChangeNotifier {
+  String? id;
+  String? nome;
+  String? email;
+  String? senha;
+  List<Question>? questoesfavoritas;
 
-  String get senha => _senha;
+  void clearUserData() {
+    id = null;
+    nome = null;
+    email = null;
+    senha = null;
+    questoesfavoritas = null;
 
-  set senha(String value) {
-    _senha = value;
+    notifyListeners();
   }
 
-  String get email => _email;
-
-  set email(String value) {
-    _email = value;
+  fromJson(Map<String, dynamic> json) {
+    id = json['UIDusuario'];
+    nome = json['nome'];
+    email = json['email'];
   }
 
-  String get nome => _nome;
-
-  set nome(String value) {
-    _nome = value;
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['UIDusuario'] = id;
+    data['nome'] = senha;
+    data['email'] = email;
+    return data;
   }
 }

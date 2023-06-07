@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:app_tinterview/models/QuizQuestion.dart';
 import 'package:app_tinterview/viewers/widgets.dart';
 
+import 'dart:async';
+
 class QuizScreen extends StatefulWidget {
   @override
   _QuizScreenState createState() => _QuizScreenState();
@@ -16,11 +18,20 @@ class _QuizScreenState extends State<QuizScreen> {
   int wrongAnswers = 0;
   bool isGameOver = false;
   bool isLoading = true;
+  List<Color> buttonColors = [];
+  List<bool> buttonEnabled = [];
+  Timer? timer;
 
   @override
   void initState() {
     super.initState();
     fetchQuestions();
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
   }
 
   void fetchQuestions() async {
@@ -34,30 +45,53 @@ class _QuizScreenState extends State<QuizScreen> {
           answerIndex: data['answerIndex'],
         );
       }).toList();
-      isLoading = false; // Indica que as perguntas foram carregadas
+      initializeButtonColors();
+      initializeButtonEnabled();
+      isLoading = false;
     });
   }
 
+  void initializeButtonColors() {
+    buttonColors = List<Color>.filled(
+      questions[currentQuestionIndex].options.length,
+      Colors.blue,
+    );
+  }
+
+  void initializeButtonEnabled() {
+    buttonEnabled = List<bool>.filled(
+      questions[currentQuestionIndex].options.length,
+      true,
+    );
+  }
+
   void checkAnswer(int selectedIndex) {
-    if (selectedIndex == questions[currentQuestionIndex].answerIndex) {
-      setState(() {
+    setState(() {
+      if (selectedIndex == questions[currentQuestionIndex].answerIndex) {
         score++;
-      });
-    } else {
-      setState(() {
+        buttonColors[selectedIndex] = Colors.green;
+      } else {
         wrongAnswers++;
-        if (wrongAnswers >= 3) {
-          isGameOver = true;
-        }
-      });
-    }
-    goToNextQuestion();
+        buttonColors[selectedIndex] = Colors.red;
+      }
+      buttonEnabled = List<bool>.filled(
+        questions[currentQuestionIndex].options.length,
+        false,
+      );
+    });
+
+    timer = Timer(Duration(milliseconds: 500), () {
+      goToNextQuestion();
+    });
   }
 
   void goToNextQuestion() {
     setState(() {
+      timer?.cancel();
       if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex++;
+        initializeButtonColors();
+        initializeButtonEnabled();
       } else {
         isGameOver = true;
       }
@@ -70,6 +104,8 @@ class _QuizScreenState extends State<QuizScreen> {
       score = 0;
       wrongAnswers = 0;
       isGameOver = false;
+      initializeButtonColors();
+      initializeButtonEnabled();
     });
   }
 
@@ -79,7 +115,10 @@ class _QuizScreenState extends State<QuizScreen> {
         Text(
           'Pergunta ${currentQuestionIndex + 1}/${questions.length}',
           style: TextStyle(
-              fontSize: 24, color: Colors.white, fontFamily: 'RockoFLF'),
+            fontSize: 24,
+            color: Colors.white,
+            fontFamily: 'RockoFLF',
+          ),
         ),
         const SizedBox(height: 20),
         Text(
@@ -92,18 +131,22 @@ class _QuizScreenState extends State<QuizScreen> {
             .options
             .asMap()
             .entries
-            .map((option) => ElevatedButton(
-                  onPressed: isGameOver ? null : () => checkAnswer(option.key),
-                  child: Text(option.value),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
-                    textStyle: TextStyle(fontSize: 16),
-                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+            .map(
+              (option) => ElevatedButton(
+                onPressed: buttonEnabled[option.key]
+                    ? () => checkAnswer(option.key)
+                    : null,
+                child: Text(option.value),
+                style: ElevatedButton.styleFrom(
+                  primary: buttonColors[option.key],
+                  textStyle: TextStyle(fontSize: 16),
+                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                ))
+                ),
+              ),
+            )
             .toList(),
       ],
     );
@@ -152,12 +195,13 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF222222),
-      appBar: return_AppBar(),
+      appBar: AppBar(
+        title: Text('Quiz'),
+      ),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
-            return_Anuncio(),
             SizedBox(height: 20),
             isLoading
                 ? CircularProgressIndicator()
@@ -167,4 +211,16 @@ class _QuizScreenState extends State<QuizScreen> {
       ),
     );
   }
+}
+
+class Question {
+  final String question;
+  final List<String> options;
+  final int answerIndex;
+
+  Question({
+    required this.question,
+    required this.options,
+    required this.answerIndex,
+  });
 }

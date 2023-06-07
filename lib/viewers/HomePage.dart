@@ -1,53 +1,85 @@
+import 'package:app_tinterview/constant/constant.dart';
+import 'package:app_tinterview/models/Usuario.dart';
+import 'package:app_tinterview/service/AuthService.dart';
+import 'package:app_tinterview/viewers/TelaPrincipal.dart';
 import 'package:flutter/material.dart';
 import 'package:app_tinterview/viewers/LoginPage.dart';
-import 'dart:async';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+import 'package:provider/provider.dart';
 
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-
-  @override
-  void initState() {
-    super.initState();
-    _carregarApp();
-  }
-
-  Future<void> _carregarApp() async {
-    await Future.delayed(const Duration(seconds: 3));
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const Login()),
-    );
-  }
+class AuthCheck extends StatelessWidget {
+  const AuthCheck({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFAE800),
-      body: Container(
-        padding: const EdgeInsets.all(16),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 32),
-                  child: Image.asset(
-                    "images/logoFull.png",
-                    width: 300,
-                    height: 200,
-                  ),
+    AuthService auth = Provider.of<AuthService>(context);
+    UsuarioProvider usuarioProvider = Provider.of<UsuarioProvider>(context);
+
+    return FutureBuilder(
+      future: Home(),
+      builder: (context, snapshot) {
+        if (auth.usuario == null) {
+          return Login();
+        } else if (usuarioProvider.id != '') {
+          return TelaPrincipal();
+        } else {
+          return HomeFree();
+        }
+      },
+    );
+  }
+}
+
+Future<Widget> Home() async {
+  print('teala aqui');
+  Future.delayed(Duration(seconds: 10));
+
+  return Scaffold(
+    backgroundColor: const Color(0xFFFAE800),
+    body: Container(
+      padding: const EdgeInsets.all(16),
+      child: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(bottom: 32),
+                child: Image.asset(
+                  "images/logoFull.png",
+                  width: 300,
+                  height: 200,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
+Widget HomeFree() {
+  print('teala aqui3');
+  return Scaffold(
+    backgroundColor: const Color(0xFFFAE800),
+    body: Container(
+      padding: const EdgeInsets.all(16),
+      child: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(bottom: 32),
+                child: Image.asset(
+                  "images/logoFull.png",
+                  width: 300,
+                  height: 200,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
 }

@@ -1,14 +1,37 @@
 import 'package:flutter/material.dart';
-class AboutPage extends StatefulWidget {
-  const AboutPage({Key? key}) : super(key: key);
 
-  @override
-  State<AboutPage> createState() => _AboutPageState();
-}
-
-class _AboutPageState extends State<AboutPage> {
+class AboutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: const Color(0xFF222222),
+      appBar: returnAppBar(),
+      body: Center(
+        child: Text(
+          'Sobre',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+          ),
+        ),
+      ),
+    );
   }
+
+  AppBar returnAppBar() {
+    return AppBar(
+      title: Text(
+        'Sobre',
+        style: TextStyle(
+          fontSize: 20,
+        ),
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: AboutPage(),
+  ));
 }

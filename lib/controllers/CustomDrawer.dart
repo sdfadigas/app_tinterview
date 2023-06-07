@@ -1,10 +1,12 @@
 import 'dart:io';
-import 'package:app_tinterview/viewers/LoginPage.dart';
+import 'package:app_tinterview/constant/constant.dart';
+import 'package:app_tinterview/models/Usuario.dart';
+import 'package:app_tinterview/service/AuthService.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:app_tinterview/viewers/AboutPage.dart';
 import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
 import 'package:app_tinterview/viewers/QuizPage.dart';
+import 'package:provider/provider.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({Key? key}) : super(key: key);
@@ -28,6 +30,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
   @override
   Widget build(BuildContext context) {
+    final _user = Provider.of<UsuarioProvider>(context);
+
     return Drawer(
       backgroundColor: const Color(0xFF222222),
       child: ListView(
@@ -46,8 +50,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const Text(
-                  "Boas Vindas!",
+                Text(
+                  "Boas Vindas! ${_user.nome ?? ''}",
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,
@@ -72,8 +76,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             title:
                 const Text('Sobre', style: TextStyle(color: Color(0xFFeeeeee))),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const AboutPage()));
+              Navigator.pushNamed(context, ConstantsRoute.ABOUT);
             },
           ),
           ListTile(
@@ -91,9 +94,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
             title:
                 const Text('Sair', style: TextStyle(color: Color(0xFFeeeeee))),
             onTap: () {
-              //await LoginController().signOut();
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Login()));
+              context.read<AuthService>().logout();
+              Navigator.pushReplacementNamed(context, ConstantsRoute.LOGIN);
             },
           ),
         ],

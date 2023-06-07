@@ -1,9 +1,11 @@
+/*
+import 'package:app_tinterview/controllers/UserController.dart';
+import 'package:app_tinterview/service/AuthService.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:app_tinterview/models/Usuario.dart';
 import 'package:app_tinterview/models/Cadastro.dart';
-
-
+import 'package:provider/provider.dart';
 
 class Cadastro extends StatefulWidget {
   const Cadastro({Key? key}) : super(key: key);
@@ -12,9 +14,7 @@ class Cadastro extends StatefulWidget {
   State<Cadastro> createState() => _CadastroState();
 }
 
-
 class _CadastroState extends State<Cadastro> {
-
   // controladores
   final TextEditingController _controllerNome = TextEditingController();
   final TextEditingController _controllerEmail = TextEditingController();
@@ -32,7 +32,7 @@ class _CadastroState extends State<Cadastro> {
       if (_validador.validarNome(_controllerNome.text) &&
           _validador.validarEmail(_controllerEmail.text) &&
           _validador.validarSenha(_controllerSenha.text)) {
-        Usuario usuario = Usuario();
+        UsuarioProvider usuario = Provider.of<UsuarioProvider>(context);
         usuario.nome = nome;
         usuario.email = email;
         usuario.senha = senha;
@@ -41,7 +41,7 @@ class _CadastroState extends State<Cadastro> {
           FirebaseAuth auth = FirebaseAuth.instance;
           auth
               .createUserWithEmailAndPassword(
-              email: usuario.nome, password: usuario.senha)
+                  email: usuario.nome!, password: usuario.senha!)
               .then((firebaseUser) {
             setState(() {
               _mensagemErro = "Sucesso ao cadastrar";
@@ -58,7 +58,6 @@ class _CadastroState extends State<Cadastro> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,9 +66,9 @@ class _CadastroState extends State<Cadastro> {
       ),
       backgroundColor: const Color(0xFF323232),
       body: Container(
-          padding: const EdgeInsets.all(16),
-          child: Center(
-              child: SingleChildScrollView(
+        padding: const EdgeInsets.all(16),
+        child: Center(
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
@@ -86,7 +85,8 @@ class _CadastroState extends State<Cadastro> {
                     controller: _controllerNome,
                     autofocus: true,
                     keyboardType: TextInputType.text,
-                    style: const TextStyle(fontSize: 20, color: Color(0xFFEEEEEE)),
+                    style:
+                        const TextStyle(fontSize: 20, color: Color(0xFFEEEEEE)),
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.fromLTRB(
                         32,
@@ -108,7 +108,8 @@ class _CadastroState extends State<Cadastro> {
                   child: TextField(
                     controller: _controllerEmail,
                     keyboardType: TextInputType.emailAddress,
-                    style: const TextStyle(fontSize: 20, color: Color(0xFFEEEEEE)),
+                    style:
+                        const TextStyle(fontSize: 20, color: Color(0xFFEEEEEE)),
                     decoration: InputDecoration(
                       contentPadding: const EdgeInsets.fromLTRB(
                         32,
@@ -129,7 +130,8 @@ class _CadastroState extends State<Cadastro> {
                   controller: _controllerSenha,
                   obscureText: true,
                   keyboardType: TextInputType.text,
-                  style: const TextStyle(fontSize: 20, color: Color(0xFFEEEEEE)),
+                  style:
+                      const TextStyle(fontSize: 20, color: Color(0xFFEEEEEE)),
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.fromLTRB(
                       32,
@@ -164,10 +166,14 @@ class _CadastroState extends State<Cadastro> {
                 ),
                 Center(
                     child: Text(_mensagemErro,
-                        style: const TextStyle(color: Colors.red, fontSize: 20)))
+                        style:
+                            const TextStyle(color: Colors.red, fontSize: 20)))
               ],
             ),
-          ))),
+          ),
+        ),
+      ),
     );
   }
 }
+*/

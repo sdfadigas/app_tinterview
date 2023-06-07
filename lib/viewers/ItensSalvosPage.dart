@@ -16,7 +16,7 @@ class ItensSalvosPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             const SizedBox(height: 18),
-            const Row(
+            Row(
               children: <Widget>[
                 SizedBox(
                   width: 50,

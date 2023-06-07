@@ -1,9 +1,9 @@
-class Question {
+class QuizQuestion {
   String question;
   List<String> options;
   int answerIndex;
 
-  Question(
+  QuizQuestion(
       {required this.question,
       required this.options,
       required this.answerIndex});
