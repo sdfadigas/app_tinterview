@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../../controllers/CustomDrawer.dart';
 import '../../database/db_firestore.dart';
 import '../Square.dart';
-import 'package:app_tinterview/viewers/widgets.dart';
+import 'package:app_tinterview/viewers/widgets/appbar.dart';
+
+import '../widgets/anuncio_widget.dart';
 
 class Filtro_Banco extends StatefulWidget {
   const Filtro_Banco({super.key});
@@ -57,7 +59,7 @@ class _Filtro_BancoState extends State<Filtro_Banco> {
         child: Column(
           children: <Widget>[
             const SizedBox(height: 18),
-            return_Anuncio(),
+            AnuncioWidget(),
             const SizedBox(height: 20),
             const Filtro_Banco().return_TituloStack('MOBILE'),
             const SizedBox(height: 20),

@@ -5,6 +5,7 @@ import 'package:app_tinterview/viewers/AboutPage.dart';
 import 'package:app_tinterview/viewers/LoginPage.dart';
 import 'package:app_tinterview/viewers/TelaPrincipal.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:app_tinterview/controllers/SavedQuestions.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -14,6 +15,7 @@ import 'viewers/HomePage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   Provider.debugCheckInvalidValueType = null;
@@ -32,6 +34,15 @@ void main() async {
         ),
         ChangeNotifierProvider<SavedQuestionsProvider>(
             create: (context) => SavedQuestionsProvider()),
+        Provider<BannerAd>(
+          create: (_) => BannerAd(
+            size: AdSize.banner,
+            adUnitId: 'ca-app-pub-2622741109834061~5616858727',
+            listener: BannerAdListener(),
+            request: AdRequest(),
+          )..load(),
+          dispose: (_, ad) => ad.dispose(),
+        ),
       ],
       child: MaterialApp(
         theme: ThemeData(fontFamily: 'RockoFLF'),

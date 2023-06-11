@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../../controllers/CustomDrawer.dart';
 import '../../database/db_firestore.dart';
 import '../Square.dart';
-import 'package:app_tinterview/viewers/widgets.dart';
+import 'package:app_tinterview/viewers/widgets/appbar.dart';
+
+import '../widgets/anuncio_widget.dart';
 
 class Filtro_FrontEnd extends StatefulWidget {
   const Filtro_FrontEnd({super.key});
@@ -64,7 +66,7 @@ class _Filtro_FrontEndState extends State<Filtro_FrontEnd> {
         child: Column(
           children: <Widget>[
             const SizedBox(height: 18),
-            return_Anuncio(),
+            AnuncioWidget(),
             const SizedBox(height: 20),
             const Filtro_FrontEnd().return_TituloStack('FRONT END'),
             const SizedBox(height: 20),

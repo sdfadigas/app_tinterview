@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../controllers/CustomDrawer.dart';
-import 'package:app_tinterview/viewers/widgets.dart';
+import 'package:app_tinterview/viewers/widgets/appbar.dart';
 
 class PergResp extends StatelessWidget {
   var dados;

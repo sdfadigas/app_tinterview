@@ -5,7 +5,7 @@ import 'filtros/Filtro_FrontEnd.dart';
 import 'filtros/Filtro_BackEnd.dart';
 import 'filtros/Filtro_Mobile.dart';
 import 'filtros/Filtro_Banco.dart';
-import 'package:app_tinterview/viewers/widgets.dart';
+import 'widgets/anuncio_widget.dart';
 
 import 'ScrollCircle.dart';
 import 'Square.dart';
@@ -107,7 +107,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             const SizedBox(height: 20),
 
             // * ANUNCIO
-            return_Anuncio(),
+            AnuncioWidget(),
 
             const SizedBox(height: 35),
 

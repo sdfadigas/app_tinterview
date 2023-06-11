@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../../controllers/CustomDrawer.dart';
 import '../../database/db_firestore.dart';
 import '../Square.dart';
-import 'package:app_tinterview/viewers/widgets.dart';
+import 'package:app_tinterview/viewers/widgets/appbar.dart';
+
+import '../widgets/anuncio_widget.dart';
 
 class Filtro_Mobile extends StatefulWidget {
   const Filtro_Mobile({super.key});
@@ -61,7 +63,7 @@ class _Filtro_MobileState extends State<Filtro_Mobile> {
         child: Column(
           children: <Widget>[
             const SizedBox(height: 18),
-            return_Anuncio(),
+            AnuncioWidget(),
             const SizedBox(height: 20),
             const Filtro_Mobile().return_TituloStack('MOBILE'),
             const SizedBox(height: 20),

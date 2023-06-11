@@ -1,8 +1,9 @@
+import 'package:app_tinterview/viewers/widgets/anuncio_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:app_tinterview/controllers/SavedQuestions.dart';
 import 'package:app_tinterview/viewers/Perg_Resp.dart';
 import 'package:provider/provider.dart';
-import 'package:app_tinterview/viewers/widgets.dart';
+import 'package:app_tinterview/viewers/widgets/appbar.dart';
 
 class ItensSalvosPage extends StatelessWidget {
   const ItensSalvosPage({Key? key}) : super(key: key);
@@ -40,7 +41,7 @@ class ItensSalvosPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 18),
-            return_Anuncio(),
+            AnuncioWidget(),
             Consumer<SavedQuestionsProvider>(
               builder: (context, savedQuestionsProvider, _) {
                 final savedQuestions = savedQuestionsProvider.savedQuestions;
