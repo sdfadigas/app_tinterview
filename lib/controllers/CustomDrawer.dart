@@ -52,7 +52,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 const SizedBox(height: 10),
                 Text(
                   _user.nome != null
-                      ? "Boas Vindas, ${_user.nome} !"
+                      ? "Boas Vindas, ${_user.nome}!"
                       : "Boas Vindas!",
                   style: TextStyle(
                     fontSize: 18,

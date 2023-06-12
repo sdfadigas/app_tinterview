@@ -1,9 +1,7 @@
 import 'package:app_tinterview/constant/constant.dart';
 import 'package:app_tinterview/service/AuthService.dart';
 import 'package:app_tinterview/viewers/Cadastro.dart';
-import 'package:app_tinterview/viewers/TelaPrincipal.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 class LoginTinterview extends StatelessWidget {
@@ -15,7 +13,7 @@ class LoginTinterview extends StatelessWidget {
 
   final snackBar = SnackBar(
     content: Text(
-      "Usuário e senha incorretos",
+      "Usuário e/ou senha incorretos",
       style: TextStyle(
         color: Colors.red,
         fontSize: 22.0,
@@ -30,7 +28,12 @@ class LoginTinterview extends StatelessWidget {
         await context
             .read<AuthService>()
             .login(_emailController.text, _passwordController.text);
-        Navigator.pushNamed(context, ConstantsRoute.TELA_PRINCIPAL);
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          ConstantsRoute.TELA_PRINCIPAL,
+          (Route<dynamic> route) => false,
+        );
+        // ignore: unused_catch_clause
       } on AuthException catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
