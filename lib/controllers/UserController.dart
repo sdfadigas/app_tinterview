@@ -29,7 +29,7 @@ class UserController extends ChangeNotifier {
   }
 
   Future<void> cadastrarUser(UsuarioProvider user) async {
-    var doc = _db.collection("User").doc();
+    var doc = _db.collection("usuarios").doc();
     final result = {
       'UIDusuario': user.id,
       'nome': user.nome,
@@ -42,7 +42,7 @@ class UserController extends ChangeNotifier {
       User? user, UsuarioProvider usuario) async {
     Map<String, dynamic> data = {};
     await _db
-        .collection("User")
+        .collection("usuarios")
         .where('UIDusuario', isEqualTo: user!.uid)
         .get()
         .then((value) {

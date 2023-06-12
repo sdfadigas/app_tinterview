@@ -115,10 +115,11 @@ class Login extends StatelessWidget {
                 Center(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const TelaPrincipal()));
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const TelaPrincipal()),
+                      );
                     },
                     child: const Text('Iniciar como convidado',
                         style: TextStyle(
