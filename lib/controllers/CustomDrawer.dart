@@ -8,6 +8,8 @@ import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
 import 'package:app_tinterview/viewers/QuizPage.dart';
 import 'package:provider/provider.dart';
 
+import '../viewers/codeteste.dart';
+
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({Key? key}) : super(key: key);
 
@@ -88,6 +90,15 @@ class _CustomDrawerState extends State<CustomDrawer> {
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => QuizScreen()));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.code, color: Color(0xFFeeeeee)),
+            title: const Text('Code Interview (Exemplo)',
+                style: TextStyle(color: Color(0xFFeeeeee))),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CodeInterviewPage()));
             },
           ),
           const Divider(),
