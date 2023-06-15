@@ -102,7 +102,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               Container(
                 margin: EdgeInsets.only(left: 10.0),
                 child: ListTile(
-                  title: const Text('FrontEnd'),
+                  title: const Text('Frontend'),
                   textColor: Colors.white,
                   onTap: () {
                     Navigator.push(
@@ -119,7 +119,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               Container(
                 margin: EdgeInsets.only(left: 10.0),
                 child: ListTile(
-                  title: const Text('BackEnd'),
+                  title: const Text('Backend'),
                   textColor: Colors.white,
                   onTap: () {
                     Navigator.push(
