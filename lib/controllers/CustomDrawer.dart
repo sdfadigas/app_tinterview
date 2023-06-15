@@ -8,6 +8,7 @@ import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
 import 'package:app_tinterview/viewers/QuizPage.dart';
 import 'package:provider/provider.dart';
 
+import '../viewers/VagasPage.dart';
 import '../viewers/codeteste.dart';
 
 class CustomDrawer extends StatefulWidget {
@@ -76,14 +77,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.info, color: Color(0xFFeeeeee)),
-            title:
-                const Text('Sobre', style: TextStyle(color: Color(0xFFeeeeee))),
-            onTap: () {
-              Navigator.pushNamed(context, ConstantsRoute.ABOUT);
-            },
-          ),
-          ListTile(
             leading: const Icon(Icons.lightbulb, color: Color(0xFFeeeeee)),
             title:
                 const Text('Quiz', style: TextStyle(color: Color(0xFFeeeeee))),
@@ -99,6 +92,55 @@ class _CustomDrawerState extends State<CustomDrawer> {
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => CodeInterviewPage()));
+            },
+          ),
+          ExpansionTile(
+            leading: const Icon(Icons.person_search, color: Color(0xFFeeeeee)),
+            title: const Text('Repositório de Vagas',
+                style: TextStyle(color: Color(0xFFeeeeee))),
+            children: [
+              Container(
+                margin: EdgeInsets.only(left: 10.0),
+                child: ListTile(
+                  title: const Text('FrontEnd'),
+                  textColor: Colors.white,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VagasPage(
+                          url: 'https://github.com/frontendbr/vagas/issues',
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10.0),
+                child: ListTile(
+                  title: const Text('BackEnd'),
+                  textColor: Colors.white,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VagasPage(
+                          url: 'https://github.com/backend-br/vagas/issues',
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+          ListTile(
+            leading: const Icon(Icons.info, color: Color(0xFFeeeeee)),
+            title:
+                const Text('Sobre', style: TextStyle(color: Color(0xFFeeeeee))),
+            onTap: () {
+              Navigator.pushNamed(context, ConstantsRoute.ABOUT);
             },
           ),
           const Divider(),

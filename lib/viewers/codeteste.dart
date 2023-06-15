@@ -2,8 +2,6 @@ import 'package:app_tinterview/viewers/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_highlight/flutter_highlight.dart';
 import 'package:flutter_highlight/themes/a11y-dark.dart';
-import 'package:flutter_highlight/themes/atom-one-light.dart';
-import 'package:flutter_highlight/themes/dark.dart';
 
 class CodeInterviewPage extends StatelessWidget {
   final String code = '''
