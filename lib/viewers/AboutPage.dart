@@ -9,9 +9,9 @@ class AboutPage extends StatelessWidget {
       appBar: return_AppBar(),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(46.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
                 'Sobre o App',
