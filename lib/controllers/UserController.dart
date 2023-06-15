@@ -41,13 +41,26 @@ class UserController extends ChangeNotifier {
   Future<Map<String, dynamic>> getUser(
       User? user, UsuarioProvider usuario) async {
     Map<String, dynamic> data = {};
-    await _db
-        .collection("usuarios")
-        .where('UIDusuario', isEqualTo: user!.uid)
-        .get()
-        .then((value) {
-      data = value.docs.single.data();
-    });
+
+    // Se o usuário estiver logado com o Google Sign-In
+    if (user?.providerData.first.providerId == 'google.com') {
+      data = {
+        'UIDusuario': user!.uid,
+        'nome': user.displayName,
+        'email': user.email,
+      };
+    }
+    // Se o usuário estiver logado com o provedor de email/senha ou outros provedores
+    else {
+      final querySnapshot = await _db
+          .collection("usuarios")
+          .where('UIDusuario', isEqualTo: user!.uid)
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        data = querySnapshot.docs.first.data();
+      }
+    }
 
     setDataUser(usuario, data);
     return data;

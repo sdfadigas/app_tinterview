@@ -34,6 +34,17 @@ class _CustomDrawerState extends State<CustomDrawer> {
   @override
   Widget build(BuildContext context) {
     final _user = Provider.of<UsuarioProvider>(context);
+    final _authService = Provider.of<AuthService>(context);
+
+    String? imageUrl =
+        _authService.usuario != null ? _authService.usuario!.photoURL : null;
+
+    ImageProvider? backgroundImage;
+    if (_image != null) {
+      backgroundImage = FileImage(_image!);
+    } else if (imageUrl != null) {
+      backgroundImage = NetworkImage(imageUrl);
+    }
 
     return Drawer(
       backgroundColor: const Color(0xFF222222),
@@ -42,23 +53,25 @@ class _CustomDrawerState extends State<CustomDrawer> {
         children: [
           DrawerHeader(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: _pickImage,
+                  onTap: imageUrl == null
+                      ? _pickImage
+                      : null, // Impede a seleção de imagem se a imagem do Google estiver carregada
                   child: CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 30,
-                    backgroundImage: _image != null ? FileImage(_image!) : null,
+                    backgroundImage: backgroundImage,
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 Text(
                   _user.nome != null
                       ? "Boas Vindas, ${_user.nome}!"
                       : "Boas Vindas!",
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 17.5,
                     color: Colors.white,
                   ),
                 ),
