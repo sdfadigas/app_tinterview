@@ -75,6 +75,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     color: Colors.white,
                   ),
                 ),
+                const SizedBox(height: 10),
+                Divider(
+                  color: Color.fromARGB(255, 46, 45, 45),
+                  thickness: 1,
+                ),
               ],
             ),
           ),
@@ -111,6 +116,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             leading: const Icon(Icons.person_search, color: Color(0xFFeeeeee)),
             title: const Text('Repositório de Vagas',
                 style: TextStyle(color: Color(0xFFeeeeee))),
+            iconColor: Colors.white,
             children: [
               Container(
                 margin: EdgeInsets.only(left: 10.0),
