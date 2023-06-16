@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:app_tinterview/constant/constant.dart';
 import 'package:app_tinterview/models/Usuario.dart';
 import 'package:app_tinterview/service/AuthService.dart';
+import 'package:app_tinterview/viewers/AboutPage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:app_tinterview/viewers/ItensSalvosPage.dart';
@@ -88,10 +89,15 @@ class _CustomDrawerState extends State<CustomDrawer> {
             title: const Text('Meus Itens Salvos',
                 style: TextStyle(color: Color(0xFFeeeeee))),
             onTap: () {
-              Navigator.push(
+              final userUID = _user.id;
+              if (userUID != null) {
+                Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ItensSalvosPage()));
+                    builder: (context) => ItensSalvosPage(userUID: userUID),
+                  ),
+                );
+              }
             },
           ),
           ListTile(
@@ -99,8 +105,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
             title:
                 const Text('Quiz', style: TextStyle(color: Color(0xFFeeeeee))),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => QuizScreen()));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => QuizScreen(),
+                ),
+              );
             },
           ),
           ListTile(
@@ -108,8 +118,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
             title: const Text('Code Interview (Exemplo)',
                 style: TextStyle(color: Color(0xFFeeeeee))),
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CodeInterviewPage()));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CodeInterviewPage(),
+                ),
+              );
             },
           ),
           ExpansionTile(

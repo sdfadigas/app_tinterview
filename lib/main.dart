@@ -32,8 +32,7 @@ void main() async {
           update: (context, auth, usuario, previous) =>
               UserController(auth.usuario, usuario, auth),
         ),
-        ChangeNotifierProvider<SavedQuestionsProvider>(
-            create: (context) => SavedQuestionsProvider()),
+        ChangeNotifierProvider(create: (_) => SavedQuestionsProvider()),
         Provider<BannerAd>(
           create: (_) => BannerAd(
             size: AdSize.banner,
@@ -57,5 +56,4 @@ void main() async {
       ),
     ),
   );
-  //DBFirestore().addData();
 }
