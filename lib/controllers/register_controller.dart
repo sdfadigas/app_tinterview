@@ -3,8 +3,6 @@ import 'package:app_tinterview/models/Usuario.dart';
 import 'package:app_tinterview/service/AuthService.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../constant/constant.dart';
 import '../viewers/TelaPrincipal.dart';
 
 class Register extends ChangeNotifier {

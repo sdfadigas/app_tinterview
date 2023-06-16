@@ -4,6 +4,7 @@ import 'package:app_tinterview/viewers/Cadastro.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class LoginTinterview extends StatelessWidget {
   LoginTinterview({Key? key}) : super(key: key);
 
@@ -11,7 +12,7 @@ class LoginTinterview extends StatelessWidget {
   final TextEditingController _passwordController = TextEditingController();
   String _errorMessage = '';
 
-  final snackBar = SnackBar(
+  final snackBar = const SnackBar(
     content: Text(
       "Usuário e/ou senha incorretos",
       style: TextStyle(
@@ -44,15 +45,15 @@ class LoginTinterview extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      backgroundColor: Color(0xFF323232),
+      backgroundColor: const Color(0xFF323232),
       body: SingleChildScrollView(
         // Adicionado SingleChildScrollView
         child: Container(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Login',
                 style: TextStyle(
                   color: Colors.white,
@@ -60,18 +61,18 @@ class LoginTinterview extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 8.0),
-              Text(
+              const SizedBox(height: 8.0),
+              const Text(
                 'Por favor, faça login para aproveitar todas as nossas funcionalidades.',
                 style: TextStyle(
                   color: Colors.white54,
                 ),
               ),
-              SizedBox(height: 70.0),
+              const SizedBox(height: 70.0),
               TextField(
                 controller: _emailController,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
+                style: const TextStyle(color: Colors.white),
+                decoration: const InputDecoration(
                   labelText: 'E-mail',
                   labelStyle: TextStyle(color: Colors.white),
                   enabledBorder: OutlineInputBorder(
@@ -83,12 +84,12 @@ class LoginTinterview extends StatelessWidget {
                   prefixIcon: Icon(Icons.email, color: Colors.white),
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               TextField(
                 controller: _passwordController,
                 obscureText: true,
-                style: TextStyle(color: Colors.white),
-                decoration: InputDecoration(
+                style: const TextStyle(color: Colors.white),
+                decoration: const InputDecoration(
                   labelText: 'Senha',
                   labelStyle: TextStyle(color: Colors.white),
                   enabledBorder: OutlineInputBorder(
@@ -100,28 +101,29 @@ class LoginTinterview extends StatelessWidget {
                   prefixIcon: Icon(Icons.lock, color: Colors.white),
                 ),
               ),
-              SizedBox(height: 26.0),
+              const SizedBox(height: 26.0),
               Align(
                 alignment: Alignment.center,
                 child: ElevatedButton(
                   onPressed: _login,
-                  child: Text('Entrar'),
+                  child: const Text('Entrar'),
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xFFFFED00),
+                    primary: const Color(0xFFFFED00),
                     onPrimary: Colors.black,
                     elevation: 2,
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 40, vertical: 16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: 26.0),
+              const SizedBox(height: 26.0),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     'Não tem conta? ',
                     style: TextStyle(
                       color: Colors.white,
@@ -134,7 +136,7 @@ class LoginTinterview extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => Cadastro()),
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       'Registre-se agora',
                       style: TextStyle(
                         color: Colors.blue,
@@ -144,10 +146,10 @@ class LoginTinterview extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Text(
                 _errorMessage,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.red,
                 ),
               ),

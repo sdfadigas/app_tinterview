@@ -1,4 +1,3 @@
-import 'package:app_tinterview/viewers/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -44,20 +43,21 @@ class _VagasPageState extends State<VagasPage> {
           width: 48,
           height: 48,
         ),
+        //TODO
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.help_outline),
+            icon: const Icon(Icons.help_outline),
             onPressed: () {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
                   return AlertDialog(
-                    title: Text('Ajuda'),
-                    content: Text(
-                        'Para aplicar filtros, utilize o botão: \n\n"Labels" \n\n\n Para limpar os filtros, utilize o botão: \n\n "Clear current search query, filters, and sorts"'),
+                    title: const Text('Ajuda'),
+                    content: const Text(
+                        'Para aplicar filtros, utilize o botão: \n\n"Labels" \n\n\nPara limpar os filtros, utilize o botão: \n\n "Clear current search query, filters, and sorts"'),
                     actions: <Widget>[
                       TextButton(
-                        child: Text('Fechar'),
+                        child: const Text('Fechar'),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },

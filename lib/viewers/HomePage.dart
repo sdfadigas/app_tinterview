@@ -1,4 +1,3 @@
-import 'package:app_tinterview/constant/constant.dart';
 import 'package:app_tinterview/models/Usuario.dart';
 import 'package:app_tinterview/service/AuthService.dart';
 import 'package:app_tinterview/viewers/TelaPrincipal.dart';

@@ -9,6 +9,7 @@ void main() async {
   runApp(QuizConfigPage());
 }
 
+// ignore: must_be_immutable
 class QuizConfigPage extends StatelessWidget {
   List<Map<String, dynamic>> quizQuestions = [
     {

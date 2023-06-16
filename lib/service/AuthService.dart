@@ -53,6 +53,7 @@ class AuthService extends ChangeNotifier {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: senha);
       _getUser();
+      // ignore: unused_catch_clause
     } on FirebaseAuthException catch (e) {
       throw AuthException('Usuario Inválido');
     }
