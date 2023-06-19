@@ -1,3 +1,4 @@
+import 'package:app_tinterview/viewers/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -76,9 +77,13 @@ class _QuizScreenState extends State<QuizScreen> {
         questions[currentQuestionIndex].options.length,
         false,
       );
+
+      if (wrongAnswers >= 3) {
+        isGameOver = true;
+      }
     });
 
-    timer = Timer(Duration(milliseconds: 500), () {
+    timer = Timer(const Duration(milliseconds: 500), () {
       goToNextQuestion();
     });
   }
@@ -108,45 +113,84 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   Widget buildQuiz() {
-    return Column(
-      children: [
-        Text(
-          'Pergunta ${currentQuestionIndex + 1}/${questions.length}',
-          style: TextStyle(
-            fontSize: 24,
-            color: Colors.white,
-            fontFamily: 'RockoFLF',
-          ),
-        ),
-        const SizedBox(height: 20),
-        Text(
-          questions[currentQuestionIndex].question,
-          style: TextStyle(fontSize: 18, color: Color(0xFFE7D110)),
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(height: 20),
-        ...questions[currentQuestionIndex]
-            .options
-            .asMap()
-            .entries
-            .map(
-              (option) => ElevatedButton(
-                onPressed: buttonEnabled[option.key]
-                    ? () => checkAnswer(option.key)
-                    : null,
-                child: Text(option.value),
-                style: ElevatedButton.styleFrom(
-                  primary: buttonColors[option.key],
-                  textStyle: TextStyle(fontSize: 16),
-                  padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+    return Container(
+      width: 400,
+      height: 700,
+      decoration: BoxDecoration(
+        color: const Color(0xFF222222),
+        borderRadius: BorderRadius.circular(46),
+      ),
+      padding: const EdgeInsets.only(top: 30, bottom: 80, left: 20, right: 20),
+      child: Column(
+        children: [
+          const SizedBox(height: 20),
+          Container(
+            height: 200, // Defina a altura fixa da pergunta aqui
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Text(
+                    questions[currentQuestionIndex].question,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                ),
+                  const SizedBox(height: 15),
+                  const Divider(
+                    height: 1,
+                    thickness: 2,
+                    color: Color.fromARGB(255, 53, 53, 53),
+                  ),
+                ],
               ),
-            )
-            .toList(),
-      ],
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: questions[currentQuestionIndex].options.length,
+              itemBuilder: (context, index) {
+                final option = questions[currentQuestionIndex].options[index];
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 8),
+                  child: ElevatedButton(
+                    onPressed:
+                        buttonEnabled[index] ? () => checkAnswer(index) : null,
+                    child: Text(option, style: const TextStyle(fontSize: 26)),
+                    style: ButtonStyle(
+                      minimumSize: MaterialStateProperty.all<Size>(
+                        const Size(double.infinity, 60),
+                      ),
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                      padding: MaterialStateProperty.all<EdgeInsets>(
+                          const EdgeInsets.symmetric(
+                              horizontal: 24, vertical: 12)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                      ),
+                      backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                        (Set<MaterialState> states) {
+                          if (buttonColors[index] == Colors.green) {
+                            return Colors.green;
+                          } else if (buttonColors[index] == Colors.red) {
+                            return Colors.red;
+                          } else {
+                            return const Color.fromARGB(255, 34, 34, 34);
+                          }
+                        },
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -155,56 +199,95 @@ class _QuizScreenState extends State<QuizScreen> {
     int correctAnswers = score;
     int incorrectAnswers = wrongAnswers;
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          'Pontuação: $score',
-          style: TextStyle(fontSize: 24, color: Colors.white),
-        ),
-        SizedBox(height: 20),
-        Text(
-          'Você acertou $correctAnswers de $totalQuestions perguntas.',
-          style: TextStyle(fontSize: 18, color: Colors.white),
-          textAlign: TextAlign.center,
-        ),
-        Text(
-          'Você errou $incorrectAnswers perguntas.',
-          style: TextStyle(fontSize: 18, color: Colors.white),
-          textAlign: TextAlign.center,
-        ),
-        SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: restartQuiz,
-          child: Text('Recomeçar'),
-          style: ElevatedButton.styleFrom(
-            textStyle: const TextStyle(fontSize: 34),
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+    return Container(
+      width: 400,
+      height: 700,
+      decoration: BoxDecoration(
+        color: const Color(0xFF333333),
+        borderRadius: BorderRadius.circular(46),
+      ),
+      padding: const EdgeInsets.only(top: 100),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            'Pontuação: $score',
+            style: const TextStyle(fontSize: 48, color: Colors.white),
+          ),
+          const SizedBox(height: 80),
+          Text(
+            'Você acertou $correctAnswers pergunta(s).',
+            style: const TextStyle(fontSize: 18, color: Colors.white),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 2),
+          Text(
+            'Você errou $incorrectAnswers perguntas.',
+            style: const TextStyle(fontSize: 18, color: Colors.white),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 80),
+          ElevatedButton(
+            onPressed: restartQuiz,
+            child: const Text('Recomeçar'),
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  const Color.fromARGB(255, 46, 46, 46)),
+              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+              textStyle: MaterialStateProperty.all<TextStyle>(
+                  const TextStyle(fontSize: 24)),
+              padding: MaterialStateProperty.all<EdgeInsets>(
+                  const EdgeInsets.symmetric(horizontal: 24, vertical: 12)),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF222222),
       appBar: AppBar(
-        title: Text('Quiz'),
+        backgroundColor: const Color(0xFF222222),
+        centerTitle: true,
+        title: Image.asset(
+          "images/logo.png",
+          width: 48,
+          height: 48,
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: Text(
+              '${currentQuestionIndex + 1}/${questions.length}',
+              style: const TextStyle(fontSize: 38),
+            ),
+          ),
+        ],
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          children: [
-            SizedBox(height: 20),
-            isLoading
-                ? CircularProgressIndicator()
-                : (isGameOver ? buildResult() : buildQuiz()),
-          ],
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/bkg.png"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              isLoading
+                  ? const CircularProgressIndicator()
+                  : (isGameOver ? buildResult() : buildQuiz()),
+            ],
+          ),
         ),
       ),
     );

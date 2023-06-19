@@ -79,29 +79,30 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   # assets:
   assets:
-    - images/logoFull.png
-    - images/logo.png
-    - images/icons/JAVA.png
-    - images/icons/HTML.png
-    - images/icons/CSS.png
-    - images/icons/JAVASCRIPT.png
-    - images/icons/ANGULAR.png
-    - images/icons/NODE.png
-    - images/icons/PYTHON.png
-    - images/icons/PHP.png
-    - images/icons/FLUTTER.png
-    - images/icons/C#.png
-    - images/icons/RUBY.png
-    - images/icons/SQL.png
-    - images/icons/NODE.png
-    - images/icons/REACT.png
-    - images/icons/SWIFT.png
-    - images/icons/SQL.png
-    - images/icons/VUE.png
-    - images/publicity/SENAI.png
-    - images/publicity/SENAISENAI.png
-    - images/publicity/SENAI2.jpg
-    - images/publicity/SENAILOGO.jpg
+    - assets/images/logoFull.png
+    - assets/images/logo.png
+    - assets/images/icons/JAVA.png
+    - assets/images/icons/HTML.png
+    - assets/images/icons/CSS.png
+    - assets/images/icons/JAVASCRIPT.png
+    - assets/images/icons/ANGULAR.png
+    - assets/images/icons/NODE.png
+    - assets/images/icons/PYTHON.png
+    - assets/images/icons/PHP.png
+    - assets/images/icons/FLUTTER.png
+    - assets/images/icons/C#.png
+    - assets/images/icons/RUBY.png
+    - assets/images/icons/SQL.png
+    - assets/images/icons/NODE.png
+    - assets/images/icons/REACT.png
+    - assets/images/icons/SWIFT.png
+    - assets/images/icons/SQL.png
+    - assets/images/icons/VUE.png
+    - assets/images/publicity/SENAI.png
+    - assets/images/publicity/SENAISENAI.png
+    - assets/images/publicity/SENAI2.jpg
+    - assets/images/publicity/SENAILOGO.jpg
+    - assets/images/bkg.png
     
     
     
