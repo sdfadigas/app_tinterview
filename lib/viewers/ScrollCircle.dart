@@ -14,7 +14,7 @@ class ScrollCircle extends StatelessWidget {
         height: 80,
         width: 80,
         child: IconButton(
-          icon: Image.asset("images/icons/$linguagem.png"),
+          icon: Image.asset("assets/images/icons/$linguagem.png"),
           iconSize: 48,
           onPressed: () async {
             var dados = await DBFirestore().queryTech(linguagem);

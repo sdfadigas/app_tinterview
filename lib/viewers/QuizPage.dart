@@ -42,6 +42,7 @@ class _QuizScreenState extends State<QuizScreen> {
           question: data['question'],
           options: List<String>.from(data['options']),
           answerIndex: data['answerIndex'],
+          hint: data['hint'], // Adicione o atributo hint
         );
       }).toList();
       initializeButtonColors();
@@ -112,6 +113,29 @@ class _QuizScreenState extends State<QuizScreen> {
     });
   }
 
+  void showHint() {
+    final currentQuestion = questions[currentQuestionIndex];
+    final hint = currentQuestion.hint; // Obtenha a dica da pergunta atual
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Dica'),
+          content: Text(hint),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Fechar'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Widget buildQuiz() {
     return Container(
       width: 400,
@@ -120,12 +144,12 @@ class _QuizScreenState extends State<QuizScreen> {
         color: const Color(0xFF222222),
         borderRadius: BorderRadius.circular(46),
       ),
-      padding: const EdgeInsets.only(top: 30, bottom: 80, left: 20, right: 20),
+      padding: const EdgeInsets.only(top: 30, bottom: 20, left: 20, right: 20),
       child: Column(
         children: [
           const SizedBox(height: 20),
           Container(
-            height: 200, // Defina a altura fixa da pergunta aqui
+            height: 200,
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -189,6 +213,25 @@ class _QuizScreenState extends State<QuizScreen> {
               },
             ),
           ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: showHint,
+            child: const Text('Mostrar Dica'),
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  const Color.fromARGB(255, 46, 46, 46)),
+              foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+              textStyle: MaterialStateProperty.all<TextStyle>(
+                  const TextStyle(fontSize: 24)),
+              padding: MaterialStateProperty.all<EdgeInsets>(
+                  const EdgeInsets.symmetric(horizontal: 24, vertical: 12)),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -214,30 +257,31 @@ class _QuizScreenState extends State<QuizScreen> {
             'Pontuação: $score',
             style: const TextStyle(fontSize: 48, color: Colors.white),
           ),
-          const SizedBox(height: 80),
+          const SizedBox(height: 40),
           Text(
-            'Você acertou $correctAnswers pergunta(s).',
-            style: const TextStyle(fontSize: 18, color: Colors.white),
+            'Você respondeu corretamente $correctAnswers de $totalQuestions perguntas.',
+            style: const TextStyle(fontSize: 24, color: Colors.white),
             textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 2),
-          Text(
-            'Você errou $incorrectAnswers perguntas.',
-            style: const TextStyle(fontSize: 18, color: Colors.white),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 80),
+          const SizedBox(height: 20),
+          if (incorrectAnswers >= 3)
+            Text(
+              'Você errou $incorrectAnswers vezes e falhou no teste.',
+              style: const TextStyle(fontSize: 24, color: Colors.red),
+              textAlign: TextAlign.center,
+            ),
+          const SizedBox(height: 40),
           ElevatedButton(
             onPressed: restartQuiz,
-            child: const Text('Recomeçar'),
+            child: const Text('Reiniciar Quiz'),
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(
-                  const Color.fromARGB(255, 46, 46, 46)),
+              backgroundColor:
+                  MaterialStateProperty.all<Color>(const Color(0xFF222222)),
               foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
               textStyle: MaterialStateProperty.all<TextStyle>(
                   const TextStyle(fontSize: 24)),
               padding: MaterialStateProperty.all<EdgeInsets>(
-                  const EdgeInsets.symmetric(horizontal: 24, vertical: 12)),
+                  const EdgeInsets.symmetric(horizontal: 40, vertical: 16)),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -257,7 +301,7 @@ class _QuizScreenState extends State<QuizScreen> {
         backgroundColor: const Color(0xFF222222),
         centerTitle: true,
         title: Image.asset(
-          "images/logo.png",
+          "assets/images/logo.png",
           width: 48,
           height: 48,
         ),
@@ -298,10 +342,12 @@ class Question {
   final String question;
   final List<String> options;
   final int answerIndex;
+  final String hint; // Adicione o atributo hint
 
   Question({
     required this.question,
     required this.options,
     required this.answerIndex,
+    required this.hint, // Adicione o atributo hint
   });
 }

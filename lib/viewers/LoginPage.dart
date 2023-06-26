@@ -23,7 +23,7 @@ class Login extends StatelessWidget {
                 (Padding(
                     padding: const EdgeInsets.only(bottom: 32),
                     child: Image.asset(
-                      "images/logo.png",
+                      "assets/images/logo.png",
                       width: 120,
                       height: 120,
                     ))),
@@ -52,7 +52,7 @@ class Login extends StatelessWidget {
                             Transform.scale(
                               scale: 2.0,
                               child: Image.asset(
-                                "images/logo.png",
+                                "assets/images/logo.png",
                                 width: 36,
                                 height: 36,
                               ),

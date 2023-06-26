@@ -58,8 +58,8 @@ class Square extends StatelessWidget {
                           radius: 28,
                           backgroundColor:
                               const Color.fromARGB(255, 41, 41, 41),
-                          backgroundImage:
-                              AssetImage("images/icons/${imagem[1]}.png"),
+                          backgroundImage: AssetImage(
+                              "assets/images/icons/${imagem[1]}.png"),
                         ),
                         title: Text(
                           pergunta,

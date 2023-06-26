@@ -95,7 +95,7 @@ class ItensSalvosPage extends StatelessWidget {
                                 backgroundColor:
                                     const Color.fromARGB(255, 41, 41, 41),
                                 backgroundImage: AssetImage(
-                                    "images/icons/${imagem?[1]}.png"),
+                                    "assets/images/icons/${imagem?[1]}.png"),
                               ),
                               title: Text(
                                 pergunta ?? '',

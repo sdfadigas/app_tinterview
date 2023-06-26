@@ -44,7 +44,7 @@ Future<Widget> Home() async {
               Padding(
                 padding: const EdgeInsets.only(bottom: 32),
                 child: Image.asset(
-                  "images/logoFull.png",
+                  "assets/images/logoFull.png",
                   width: 300,
                   height: 200,
                 ),
@@ -70,7 +70,7 @@ Widget HomeFree() {
               Padding(
                 padding: const EdgeInsets.only(bottom: 32),
                 child: Image.asset(
-                  "images/logoFull.png",
+                  "assets/images/logoFull.png",
                   width: 300,
                   height: 200,
                 ),

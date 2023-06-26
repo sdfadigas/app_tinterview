@@ -22,7 +22,8 @@ class PergResp extends StatelessWidget {
             child: CircleAvatar(
               radius: 32,
               backgroundColor: const Color.fromARGB(255, 41, 41, 41),
-              backgroundImage: AssetImage("images/icons/${imagem[1]}.png"),
+              backgroundImage:
+                  AssetImage("assets/images/icons/${imagem[1]}.png"),
             ),
           ),
           Padding(

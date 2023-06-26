@@ -5,7 +5,7 @@ AppBar return_AppBar() {
     backgroundColor: const Color(0xFF222222),
     centerTitle: true,
     title: Image.asset(
-      "images/logo.png",
+      "assets/images/logo.png",
       width: 48,
       height: 48,
     ),
