@@ -42,7 +42,7 @@ class _QuizScreenState extends State<QuizScreen> {
           question: data['question'],
           options: List<String>.from(data['options']),
           answerIndex: data['answerIndex'],
-          hint: data['hint'], // Adicione o atributo hint
+          hint: data['hint'],
         );
       }).toList();
       initializeButtonColors();
@@ -115,7 +115,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   void showHint() {
     final currentQuestion = questions[currentQuestionIndex];
-    final hint = currentQuestion.hint; // Obtenha a dica da pergunta atual
+    final hint = currentQuestion.hint;
 
     showDialog(
       context: context,
@@ -342,12 +342,12 @@ class Question {
   final String question;
   final List<String> options;
   final int answerIndex;
-  final String hint; // Adicione o atributo hint
+  final String hint;
 
   Question({
     required this.question,
     required this.options,
     required this.answerIndex,
-    required this.hint, // Adicione o atributo hint
+    required this.hint,
   });
 }
