@@ -45,10 +45,6 @@ Certifique-se de ter um emulador ou dispositivo conectado para visualizar o apli
 
 Contribuições são mais que bem-vindas! Caso tenha sugestões ou melhorias para o TInterview, sinta-se à vontade para abrir uma issue ou enviar um pull request.
 
-## Licença
 
-Este projeto é licenciado sob a [MIT License](LICENSE).
-
----
 
 O TInterview é mais que um aplicativo; é a ferramenta definitiva para transformar sua jornada de aprendizado em programação. Explore, pratique e alcance novos patamares em suas habilidades de programação. Boa jornada!
