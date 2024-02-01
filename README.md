@@ -1,6 +1,6 @@
 # TInterview - Seu Hub de Entrevistas de Código em Flutter (Versão Beta)
 
-O TInterview é um aplicativo em Flutter, alimentado por Firebase, cuidadosamente desenvolvido para oferecer uma experiência abrangente para entusiastas da programação e aspirantes a desenvolvedores. Este hub centralizado de informações sobre programação integra uma funcionalidade única de Code Interview, proporcionando uma jornada educativa e prática para aqueles que desejam aprender, praticar e aprimorar suas habilidades em tecnologia e linguagens de programação.
+O TInterview é um aplicativo em Flutter, cuidadosamente desenvolvido para oferecer uma experiência abrangente para entusiastas da programação e aspirantes a desenvolvedores. Este hub centralizado de informações sobre programação integra uma funcionalidade única de Code Interview, proporcionando uma jornada educativa e prática para aqueles que desejam aprender, praticar e aprimorar suas habilidades em tecnologia e linguagens de programação.
 
 ## Funcionalidades Principais
 
